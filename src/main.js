@@ -43,7 +43,7 @@ function setTab(name) {
   panels.forEach(function (p) { p.hidden = p.dataset.tab !== name; });
   navs.forEach(function (n) { n.hidden = n.dataset.tab !== name; });
   tabs.forEach(function (t) { var on = t.dataset.tab === name; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
-  q.placeholder = { cleaning: 'Cari: fillna, outlier, duplikat, to_numeric…', prediksi: 'Cari: soal 3, crosstab, korelasi…' }[name]
+  q.placeholder = { cleaning: 'Cari: fillna, outlier, duplikat, to_numeric…', prediksi: 'Cari: soal 3, crosstab, korelasi…', materi: 'Cari: seaborn, kaggle, groupby…' }[name]
     || 'Cari: boxplot, groupby, crosstab, heatmap…';
   try { localStorage.setItem('cheat-tab', name); } catch (e) {}
   filter();

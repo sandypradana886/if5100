@@ -12,6 +12,8 @@ Referensi cepat untuk praktikum **IF5100 Pemrograman untuk Data Analitik** (ITB)
 - **Prediksi Soal**: studi kasus *Kopi Senja* dengan 7 soal kode (cleaning, 5 jenis visualisasi, debugging),
   5 tugas analisis, dan 7 soal teori. Setiap jawaban sudah dijalankan; grafik dan angka di kunci adalah output
   aslinya. Notebook soal & kunci bisa diunduh dari halaman (`public/notebook/`).
+- **Materi**: daftar slide kuliah yang menjadi dasar isi web, link dokumentasi pandas/matplotlib/seaborn/plotly,
+  Colab I/O, 6 dataset Kaggle dari slide 12b, alat bantu memilih grafik & warna, dan buku rujukan.
 
 Tekan `/` untuk mencari snippet. Tombol **Salin** menyalin kode.
 

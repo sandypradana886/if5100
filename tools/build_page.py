@@ -963,12 +963,114 @@ for s in PRED:
                      [{"kind": "html", "title": b["title"], "body": b["body"], "search": b["search"], "fig": None}
                       for b in s["blocks"]], "pred"))
 
-TABS = [("visualisasi", "Visualisasi", "viz"), ("cleaning", "Cleaning Data", "clean"), ("prediksi", "Prediksi Soal", "pred")]
+# ---- tab 4: materi & referensi (all links checked to respond; see notes for the two that did not) ----
+from urllib.parse import urlparse
+
+
+def linklist(items):
+    lis = []
+    for title, url, desc in items:
+        dom = urlparse(url).netloc.removeprefix("www.")
+        lis.append(f'<li><a href="{html.escape(url)}" target="_blank" rel="noopener">{html.escape(title)}</a>'
+                   f'<span class="dom">{dom}</span><p>{desc}</p></li>')
+    return f'<ul class="links">{"".join(lis)}</ul>'
+
+
+def linkcard(title, items, note=""):
+    body = linklist(items) + (f'<p class="note">{note}</p>' if note else "")
+    search = title + " " + " ".join(f"{t} {u} {d}" for t, u, d in items)
+    return {"kind": "html", "title": title, "body": body, "fig": None, "wide": False, "search": search}
+
+
+SLIDES = """
+<ul class="slides">
+<li><b>IF5100-11</b> Data Processing Pipeline, EDA, Data Pre-processing, Feature Engineering<span>dasar tab Cleaning Data</span></li>
+<li><b>IF5100-12a</b> Data Visualization: tujuan visualisasi, teknik visual analitik, visual encoding, Python (pandas, matplotlib, seaborn)<span>dasar tab Visualisasi</span></li>
+<li><b>IF5100-12b</b> Independent Study Dataviz 2: 17 contoh grafik berdasarkan taksonomi Andy Kirk<span>dasar snippet & ilustrasi grafik</span></li>
+</ul>
+<p class="note">File slide hanya dibagikan lewat Teams kelas, jadi tidak diunggah ke web publik ini.</p>
+"""
+
+CUR_TAB[0] = "ref"
+section("m-kuliah", "Materi kuliah", "", "Slide yang menjadi dasar isi web ini.", [
+    rich("Slide IF5100", SLIDES),
+])
+section("m-docs", "Dokumentasi library", "", "Rujukan resmi untuk setiap fungsi yang dipakai di web ini.", [
+    linkcard("pandas", [
+        ("User Guide", "https://pandas.pydata.org/docs/user_guide/index.html", "Panduan lengkap pandas."),
+        ("Group by: split-apply-combine", "https://pandas.pydata.org/docs/user_guide/groupby.html", "<code>groupby</code>, <code>agg</code>, <code>transform</code>."),
+        ("Reshaping & pivot tables", "https://pandas.pydata.org/docs/user_guide/reshaping.html", "<code>pivot_table</code>, <code>melt</code>, <code>stack/unstack</code>, <code>crosstab</code>."),
+        ("Working with missing data", "https://pandas.pydata.org/docs/user_guide/missing_data.html", "<code>isna</code>, <code>fillna</code>, <code>dropna</code>, <code>interpolate</code>."),
+        ("Working with text data", "https://pandas.pydata.org/docs/user_guide/text.html", "<code>.str.strip/.lower/.replace/.extract</code>."),
+        ("Time series", "https://pandas.pydata.org/docs/user_guide/timeseries.html", "<code>to_datetime</code>, <code>resample</code>, <code>rolling</code>."),
+        ("Chart visualization", "https://pandas.pydata.org/docs/user_guide/visualization.html", "<code>df.plot(kind=...)</code>."),
+    ]),
+    linkcard("matplotlib", [
+        ("Users guide", "https://matplotlib.org/stable/users/index.html", "Konsep figure, axes, dan styling."),
+        ("Examples gallery", "https://matplotlib.org/stable/gallery/index.html", "Contoh kode untuk hampir semua jenis grafik."),
+        ("Choosing colormaps", "https://matplotlib.org/stable/users/explain/colors/colormaps.html", "Sequential, diverging, dan qualitative."),
+    ]),
+    linkcard("seaborn", [
+        ("Tutorial", "https://seaborn.pydata.org/tutorial.html", "Distribusi, kategori, relasi, dan tema."),
+        ("API reference", "https://seaborn.pydata.org/api.html", "Daftar fungsi dan parameternya."),
+        ("Example gallery", "https://seaborn.pydata.org/examples/index.html", "Contoh grafik beserta kodenya."),
+    ]),
+    linkcard("plotly & lainnya", [
+        ("Plotly Express", "https://plotly.com/python/plotly-express/", "<code>px.bar</code>, <code>px.scatter</code>, <code>px.treemap</code>, dll."),
+        ("Sankey diagram", "https://plotly.com/python/sankey-diagram/", "<code>go.Sankey</code>."),
+        ("Treemap", "https://plotly.com/python/treemaps/", "<code>px.treemap</code> dan <code>path</code>."),
+        ("Candlestick", "https://plotly.com/python/candlestick-charts/", "<code>go.Candlestick</code>."),
+        ("Scatter matrix (SPLOM)", "https://plotly.com/python/splom/", "<code>go.Splom</code>."),
+        ("PyWaffle", "https://github.com/gyli/PyWaffle", "Waffle / square pie chart."),
+        ("wordcloud", "https://amueller.github.io/word_cloud/", "<code>WordCloud</code>, stopwords."),
+        ("scikit-learn: preprocessing", "https://scikit-learn.org/stable/modules/preprocessing.html", "<code>MinMaxScaler</code>, <code>StandardScaler</code>, encoder."),
+    ]),
+])
+section("m-colab", "Colab & dataset", "", "Import data dan dataset yang dipakai di slide 12b.", [
+    linkcard("Google Colab", [
+        ("External data: Drive, upload, URL", "https://colab.research.google.com/notebooks/io.ipynb", "Cara resmi mount Google Drive dan upload file di Colab."),
+        ("Pandas Cookbook (independent study sebelumnya)", "https://tutswiki.com/pandas-cookbook/", "Tutorial pandas Chapter 1–8."),
+    ]),
+    linkcard("Dataset Kaggle dari slide", [
+        ("Indonesia Coronavirus Cases", "https://www.kaggle.com/datasets/ardisragen/indonesia-coronavirus-cases", "<code>patient.csv</code>, <code>cases.csv</code>: dot plot, bar, histogram, pie, stacked, line, area."),
+        ("Vehicle dataset from CarDekho", "https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho", "<code>cardata.csv</code>: waffle chart."),
+        ("Data for Datavis", "https://www.kaggle.com/datasets/alexisbcook/data-for-datavis", "<code>insurance.csv</code>: scatter plot."),
+        ("Word cloud with Python (Kickstarter)", "https://www.kaggle.com/code/adiljadoon/word-cloud-with-python", "<code>most_backed.csv</code>: word cloud."),
+        ("Pima Indians Diabetes Database", "https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database", "<code>diabetes.csv</code>: scatter matrix."),
+        ("Apple Stock Prices 2010–2017", "https://www.kaggle.com/datasets/fayomi/apple-stock-prices-from-20102017", "<code>apple.csv</code>: candlestick."),
+    ], "Dua link terakhir tidak merespons saat dicek otomatis. Kalau tidak bisa dibuka, cari judul datasetnya di Kaggle."),
+])
+section("m-viz", "Memilih grafik & warna", "", "Bantuan memilih bentuk grafik dan palet.", [
+    linkcard("Memilih grafik", [
+        ("From Data to Viz", "https://www.data-to-viz.com/", "Pohon keputusan: tipe data → grafik yang cocok."),
+        ("Python Graph Gallery", "https://python-graph-gallery.com/", "Ratusan contoh grafik matplotlib/seaborn/plotly."),
+        ("FT Visual Vocabulary", "https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary", "Grafik dikelompokkan berdasarkan tujuan (deviation, ranking, part-to-whole, …)."),
+    ]),
+    linkcard("Warna & persepsi", [
+        ("ColorBrewer", "https://colorbrewer2.org/", "Palet sequential, diverging, qualitative yang aman buta warna."),
+        ("Anscombe's quartet", "https://en.wikipedia.org/wiki/Anscombe%27s_quartet", "Kenapa data harus divisualisasikan, bukan hanya diringkas."),
+    ]),
+])
+BOOKS = """
+<ul class="slides">
+<li><b>Andy Kirk (2012).</b> <i>Data Visualization: A Successful Design Process.</i> Packt Publishing.<span>taksonomi categorical/hierarchical/relational/temporal/spatial</span></li>
+<li><b>Noah Iliinsky &amp; Julie Steele (2011).</b> <i>Designing Data Visualizations.</i> O'Reilly.<span>visual encoding, kompatibilitas dengan realitas, konsistensi</span></li>
+<li><b>Colin Ware (2004).</b> <i>Information Visualization: Perception for Design.</i> Morgan Kaufmann.<span>keuntungan visualisasi, persepsi</span></li>
+<li><b>Steve Wexler, Jeffrey Shaffer &amp; Andy Cotgreave (2017).</b> <i>The Big Book of Dashboards.</i> Wiley.<span>contoh dashboard</span></li>
+</ul>
+"""
+section("m-buku", "Buku rujukan slide", "", "Daftar pustaka slide 12a.", [
+    rich("Buku", BOOKS),
+])
+
+TABS = [("visualisasi", "Visualisasi", "viz"), ("cleaning", "Cleaning Data", "clean"), ("prediksi", "Prediksi Soal", "pred"),
+        ("materi", "Materi", "ref")]
 FLOW = {
     "viz": '<div class="flow"><b>Import</b>→<b>Cek data</b>→<b>Ringkas (groupby/crosstab)</b>→<b>Pilih grafik</b>→<b>Plot + judul/label/legend</b>→<b>Interpretasi</b></div>'
            '<div class="legend"><span><i class="sw c-cat"></i>categorical</span><span><i class="sw c-hie"></i>hierarchical</span><span><i class="sw c-tem"></i>temporal</span><span><i class="sw c-rel"></i>relational</span><span><i class="sw c-spa"></i>spatial</span></div>',
     "clean": '<div class="flow"><b>Diagnosis</b>→<b>Seragamkan</b>→<b>Tipe & NaN</b>→<b>Duplikat</b>→<b>Missing</b>→<b>Outlier</b>→<b>Buang kolom</b>→<b>Encoding/scaling</b>→<b>Validasi</b></div>',
     "pred": '<div class="flow"><b>Setup dataset</b>→<b>Soal 1 cleaning</b>→<b>Soal 2–6 visualisasi</b>→<b>Soal 7 debugging</b>→<b>Tugas analisis</b>→<b>Teori</b></div>',
+    "ref": '<div class="flow"><b>Slide kuliah</b>→<b>Dokumentasi</b>→<b>Colab & dataset</b>→<b>Memilih grafik</b>→<b>Buku</b></div>',
 }
 tab_btns, navs, panels = [], [], []
 for tid, tlabel, key in TABS:
