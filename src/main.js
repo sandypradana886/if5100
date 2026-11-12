@@ -8,8 +8,8 @@ document.querySelectorAll('pre code').forEach(function (el) { hljs.highlightElem
 
 document.querySelectorAll('.copy').forEach(function (btn) {
   btn.addEventListener('click', function () {
-    var code = btn.closest('.card').querySelector('code');
-    var text = code.innerText;
+    var code = btn.closest('.codeblock, .card').querySelector('code');
+    var text = code.textContent;
     function done(ok) { btn.textContent = ok ? 'Tersalin' : 'Pilih teks'; btn.classList.toggle('ok', ok); setTimeout(function () { btn.textContent = 'Salin'; btn.classList.remove('ok'); }, 1400); }
     function fallback() { var r = document.createRange(); r.selectNodeContents(code); var s = getSelection(); s.removeAllRanges(); s.addRange(r); done(false); }
     try { navigator.clipboard.writeText(text).then(function () { done(true); }, fallback); } catch (e) { fallback(); }
@@ -19,7 +19,14 @@ document.querySelectorAll('.copy').forEach(function (btn) {
 var q = document.getElementById('q'), count = document.getElementById('count'), empty = document.getElementById('empty');
 var panels = document.querySelectorAll('.panel'), navs = document.querySelectorAll('nav.idx'), tabs = document.querySelectorAll('.tab');
 var active = 'visualisasi';
-document.querySelectorAll('.card').forEach(function (c) { c.dataset.search = (c.dataset.search + ' ' + c.innerText).toLowerCase(); });
+// textContent (not innerText) so text inside closed "Lihat jawaban" panels is searchable too
+document.querySelectorAll('.card').forEach(function (c) { c.dataset.search = (c.dataset.search + ' ' + c.textContent).toLowerCase(); });
+
+// keep section anchors clear of the sticky bar, whatever its height on this screen
+var bar = document.querySelector('.top');
+function syncTopHeight() { document.documentElement.style.setProperty('--top-h', bar.offsetHeight + 'px'); }
+syncTopHeight();
+if (window.ResizeObserver) new ResizeObserver(syncTopHeight).observe(bar);
 
 function filter() {
   var panel = document.getElementById('panel-' + active);
@@ -36,7 +43,8 @@ function setTab(name) {
   panels.forEach(function (p) { p.hidden = p.dataset.tab !== name; });
   navs.forEach(function (n) { n.hidden = n.dataset.tab !== name; });
   tabs.forEach(function (t) { var on = t.dataset.tab === name; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
-  q.placeholder = name === 'cleaning' ? 'Cari: fillna, outlier, duplikat, to_numeric…' : 'Cari: boxplot, heatmap, unstack, <br>…';
+  q.placeholder = { cleaning: 'Cari: fillna, outlier, duplikat, to_numeric…', prediksi: 'Cari: soal 3, crosstab, korelasi…' }[name]
+    || 'Cari: boxplot, groupby, crosstab, heatmap…';
   try { localStorage.setItem('cheat-tab', name); } catch (e) {}
   filter();
 }

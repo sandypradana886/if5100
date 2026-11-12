@@ -121,6 +121,110 @@ section("pilih", "Pilih grafik", "", "Taksonomi Andy Kirk (2012): categorical ·
 ])
 
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Bentuk data tiap grafik: mini tables computed with pandas on a tiny example
+import pandas as pd
+
+TRX = pd.DataFrame({
+    "tanggal": ["01-09", "01-09", "02-09", "02-09", "02-09", "03-09"],
+    "cabang": ["Bandung", "Jakarta", "Jakarta", "Bandung", "Jakarta", "Bandung"],
+    "kategori": ["Kopi", "Kopi", "Makanan", "Kopi", "Kopi", "Makanan"],
+    "total": [54, 27, 33, 81, 27, 66],
+})
+
+
+def mini(obj, caption=""):
+    """Render a small DataFrame/Series as a compact HTML table (index shown in bold)."""
+    df = obj.to_frame() if isinstance(obj, pd.Series) else obj
+    idx_name = df.index.name or ""
+    head = "".join(f"<th>{html.escape(str(c))}</th>" for c in df.columns)
+    rows = "".join(
+        "<tr><th>" + html.escape(str(i)) + "</th>" + "".join(f'<td class="num">{html.escape(str(v))}</td>' if isinstance(v, (int, float)) and not isinstance(v, bool)
+                                                              else f"<td>{html.escape(str(v))}</td>" for v in r) + "</tr>"
+        for i, r in zip(df.index, df.itertuples(index=False)))
+    cap = f"<caption>{caption}</caption>" if caption else ""
+    return f'<div class="tbl"><table class="mini">{cap}<thead><tr><th>{html.escape(idx_name)}</th>{head}</tr></thead><tbody>{rows}</tbody></table></div>'
+
+
+def pattern(title, code, before_html, after_obj, after_cap, used_for):
+    code = textwrap.dedent(code).strip("\n")
+    all_snippets.append((title, code))
+    body = (f'<div class="flowpair"><div>{before_html}</div><div class="arrow" aria-hidden="true">→</div>'
+            f'<div>{mini(after_obj, after_cap)}</div></div>'
+            f'<pre><code class="language-python">{html.escape(code)}</code></pre>'
+            f'<p class="note"><b>Dipakai untuk:</b> {used_for}</p>')
+    return {"kind": "html", "title": title, "body": body, "fig": None, "wide": False,
+            "search": title + " " + code + " " + used_for}
+
+
+raw_html = mini(TRX.set_index(pd.RangeIndex(len(TRX))), "data mentah: 1 baris = 1 transaksi (total dalam ribu Rp)")
+raw_small = mini(TRX[["cabang", "total"]], "mentah")
+
+SHAPE_TBL = """
+<div class="tbl"><table class="shape">
+<thead><tr><th>Grafik</th><th>Data yang dimasukkan</th><th>Perlu diringkas?</th><th>Cara menyiapkan</th></tr></thead>
+<tbody>
+<tr><td>Histogram, KDE, boxplot, violin</td><td>mentah: 1 kolom numerik (+ kategori untuk <code>hue</code>/grup)</td><td><span class="dk raw">tidak</span></td><td>langsung <code>data=df, x='kolom'</code></td></tr>
+<tr><td>Count plot</td><td>mentah: 1 kolom kategori</td><td><span class="dk raw">tidak</span></td><td>fungsi menghitung sendiri</td></tr>
+<tr><td>Scatter, regplot, pairplot</td><td>mentah: ≥ 2 kolom numerik, 1 baris = 1 titik</td><td><span class="dk raw">tidak</span></td><td>langsung; filter dulu bila perlu (<code>query</code>)</td></tr>
+<tr><td>Bar chart (jumlah)</td><td>1 baris per kategori + jumlah</td><td><span class="dk agg">ya</span></td><td><code>value_counts()</code> · <code>groupby('kat').size()</code></td></tr>
+<tr><td>Bar chart (total / rata-rata)</td><td>1 baris per kategori + nilai</td><td><span class="dk agg">ya</span></td><td><code>groupby('kat')['nilai'].sum()</code> / <code>.mean()</code></td></tr>
+<tr><td>Pie, donut, waffle</td><td>1 baris per kategori + nilai</td><td><span class="dk agg">ya</span></td><td><code>value_counts()</code> · <code>groupby().sum()</code></td></tr>
+<tr><td>Stacked bar, heatmap 2 kategori</td><td>tabel wide: baris = kategori A, kolom = kategori B</td><td><span class="dk agg">ya</span></td><td><code>pd.crosstab</code> · <code>groupby([a, b]).size().unstack()</code> · <code>pivot_table</code></td></tr>
+<tr><td>Line / area (1 seri)</td><td>1 nilai per tanggal, terurut</td><td><span class="dk agg">ya, jika banyak baris per tanggal</span></td><td><code>groupby('tanggal').sum()</code> · <code>resample('D')</code></td></tr>
+<tr><td>Line (banyak seri)</td><td>wide (<code>df.plot</code>) atau long + kolom seri (<code>hue</code>)</td><td><span class="dk agg">ya</span></td><td><code>pivot_table</code> (→ wide) · <code>melt</code> (→ long)</td></tr>
+<tr><td>Candlestick</td><td>1 baris per periode: Open, High, Low, Close</td><td><span class="dk agg">ya, jika ganti periode</span></td><td><code>resample('W').agg({...})</code></td></tr>
+<tr><td>Heatmap korelasi</td><td>matriks kolom × kolom</td><td><span class="dk agg">ya</span></td><td><code>df.corr(numeric_only=True)</code></td></tr>
+<tr><td>Tree map</td><td>1 baris per daun + kolom tiap level + nilai</td><td><span class="dk raw">tidak wajib</span></td><td>plotly menjumlahkan per <code>path</code></td></tr>
+<tr><td>Sankey</td><td>link: asal, tujuan, nilai</td><td><span class="dk agg">ya</span></td><td><code>groupby(['asal', 'tujuan']).size()</code> + indeks node</td></tr>
+<tr><td>Word cloud</td><td>satu string panjang / dict frekuensi</td><td><span class="dk agg">gabung teks</span></td><td><code>' '.join(df['kolom'])</code></td></tr>
+</tbody></table></div>
+<p class="note"><b>Aturan praktis:</b> grafik yang menggambar <b>sebaran atau tiap titik</b> (histogram, boxplot, scatter) memakai data <b>mentah</b>. Grafik yang menggambar <b>satu nilai per kategori/tanggal</b> (bar, pie, line, stacked) membutuhkan data yang sudah <b>diringkas</b>. Kalau bar chart-mu hanya berisi satu batang setinggi jumlah baris, atau line chart-mu zig-zag tidak karuan, biasanya datanya belum di-<code>groupby</code>.</p>
+"""
+
+section("bentuk", "Bentuk data tiap grafik", "", "Data mentah atau diringkas dulu? Contoh di bawah memakai 6 transaksi yang sama.", [
+    rich("Grafik → bentuk data → cara menyiapkan", SHAPE_TBL),
+    rich("Contoh data mentah", raw_html + '<p class="note">Setiap kartu di bawah mengubah tabel ini menjadi bentuk yang dibutuhkan grafik tertentu.</p>'),
+    pattern("Hitung baris per kategori", """
+        jumlah = df['cabang'].value_counts()
+        # atau: df.groupby('cabang').size()
+        jumlah.plot(kind='bar')
+    """, raw_small, TRX["cabang"].value_counts().rename_axis("cabang"), "<code>value_counts()</code>",
+        "bar chart jumlah, pie, waffle. (<code>sns.countplot</code> tidak perlu langkah ini.)"),
+    pattern("Total / rata-rata per kategori", """
+        ringkas = df.groupby('cabang')['total'].agg(['sum', 'mean'])
+        ringkas['sum'].plot(kind='barh')
+    """, raw_small, TRX.groupby("cabang")["total"].agg(["sum", "mean"]).round(1), "<code>groupby().agg()</code>",
+        "bar chart nilai (total, rata-rata), pie berdasarkan nilai."),
+    pattern("Dua kategori → tabel silang", """
+        tabel = pd.crosstab(df['cabang'], df['kategori'])
+        # sama: df.groupby(['cabang', 'kategori']).size().unstack(fill_value=0)
+        tabel.plot(kind='bar', stacked=True)
+    """, mini(TRX[["cabang", "kategori"]], "mentah"), pd.crosstab(TRX["cabang"], TRX["kategori"]), "<code>crosstab</code> (wide)",
+        "stacked bar, grouped bar, heatmap. Pakai <code>normalize='index'</code> untuk 100% stacked."),
+    pattern("Transaksi → deret waktu", """
+        harian = df.groupby('tanggal')['total'].sum()
+        # kolom datetime: df.set_index('tanggal')['total'].resample('D').sum()
+        harian.plot(marker='o')
+    """, mini(TRX[["tanggal", "total"]], "mentah"), TRX.groupby("tanggal")["total"].sum(), "1 nilai per tanggal",
+        "line chart, area chart, moving average. Tanpa langkah ini, line chart menghubungkan tiap transaksi sehingga zig-zag."),
+    pattern("Long → wide (pivot)", """
+        wide = df.pivot_table(index='tanggal', columns='cabang',
+                              values='total', aggfunc='sum', fill_value=0)
+        wide.plot()                      # satu garis per kolom
+    """, mini(TRX[["tanggal", "cabang", "total"]], "long"),
+        TRX.pivot_table(index="tanggal", columns="cabang", values="total", aggfunc="sum", fill_value=0), "wide",
+        "<code>df.plot()</code> banyak seri, <code>plt.stackplot</code>, heatmap. pandas/matplotlib membaca <b>satu kolom = satu seri</b>."),
+    pattern("Wide → long (melt)", """
+        long = wide.reset_index().melt(id_vars='tanggal', var_name='cabang',
+                                       value_name='total')
+        sns.lineplot(data=long, x='tanggal', y='total', hue='cabang')
+    """, mini(TRX.pivot_table(index="tanggal", columns="cabang", values="total", aggfunc="sum", fill_value=0), "wide"),
+        TRX.pivot_table(index="tanggal", columns="cabang", values="total", aggfunc="sum", fill_value=0).reset_index()
+           .melt(id_vars="tanggal", var_name="cabang", value_name="total").set_index("tanggal"), "long",
+        "seaborn & plotly (<code>hue=</code>, <code>color=</code>): <b>satu kolom berisi nama seri</b>."),
+])
+
 section("prep", "Siapkan data untuk plot", "", "Kebanyakan grafik butuh data yang sudah diringkas. Pola yang paling sering dipakai:", [
     snip("Hitung jumlah per kategori", """
         cnt = df.groupby('province').size().to_frame('count').reset_index()
@@ -794,6 +898,43 @@ FIGMAP = {
 }
 used = set()
 
+# Data shape each chart expects: (raw/aggregated, how to prepare)
+DATAMAP = {
+    "Histogram (numerik)": ("mentah", "1 kolom numerik, 1 baris = 1 observasi. Tidak perlu <code>groupby</code>: fungsi menghitung bin sendiri."),
+    "KDE": ("mentah", "1 kolom numerik (+ kolom kategori untuk <code>hue</code>). Tanpa agregasi."),
+    "Count plot (kategorikal)": ("mentah", "1 kolom kategori. <code>countplot</code> menghitung jumlah sendiri, jadi jangan <code>value_counts()</code> dulu."),
+    "Boxplot": ("mentah", "kolom numerik + (opsional) kolom kategori untuk grup. Butuh semua nilai, bukan rata-rata."),
+    "Violin / strip": ("mentah", "sama seperti boxplot: semua nilai per grup."),
+    "Dot plot (catplot)": ("mentah", "1 baris = 1 observasi: kolom numerik, kolom kategori, kolom <code>hue</code>."),
+    "Bar chart · seaborn": ("agregat", "1 baris per kategori. Siapkan dengan <code>value_counts()</code> (jumlah) atau <code>groupby('kat')['nilai'].sum()</code>. <code>sns.barplot</code> juga menerima data mentah, tetapi otomatis menghitung <b>mean</b>."),
+    "Bar chart · plotly": ("agregat", "1 baris per kategori: kolom label + kolom nilai (hasil <code>groupby().size()</code> / <code>value_counts().reset_index()</code>)."),
+    "Radial / polar bar": ("agregat", "1 baris per (arah, kategori) + nilai. Dari data mentah: <code>groupby(['direction','strength'])['frequency'].sum()</code>."),
+    "Sankey": ("agregat", "daftar link (asal, tujuan, nilai) dari <code>groupby(['asal','tujuan']).size()</code>, lalu nama node diubah ke indeks."),
+    "Word cloud": ("teks", "satu string panjang (<code>' '.join(...)</code>) atau dict <code>{kata: frekuensi}</code> (<code>generate_from_frequencies</code>)."),
+    "Pie / donut": ("agregat", "1 baris per kategori: <code>value_counts()</code> atau <code>groupby().sum()</code>."),
+    "Stacked bar": ("agregat · wide", "tabel 2 kategori: index = kategori utama, kolom = sub-kategori. <code>pd.crosstab</code> / <code>groupby([a, b]).size().unstack()</code>."),
+    "Waffle (square pie)": ("agregat", "dict <code>{label: jumlah}</code> dari <code>value_counts().to_dict()</code>."),
+    "Tree map": ("mentah / agregat", "1 baris per daun (leaf) + kolom tiap level hierarki + kolom nilai. Plotly menjumlahkan sendiri per <code>path</code>."),
+    "Line chart": ("agregat · waktu", "1 nilai per tanggal, terurut. Banyak transaksi per hari → <code>groupby('tanggal').sum()</code> atau <code>resample('D')</code>. Banyak seri: wide (<code>df.plot</code>) atau long (<code>hue</code>)."),
+    "Area & stacked area": ("wide · waktu", "kolom tanggal + 1 kolom per seri. Dari format long: <code>pivot_table(index='tanggal', columns='seri', values='nilai')</code>."),
+    "Candlestick": ("agregat · waktu", "1 baris per periode: Open, High, Low, Close. Ganti periode: <code>resample('W').agg({'Open':'first','High':'max','Low':'min','Close':'last'})</code>."),
+    "Moving average": ("waktu", "Series ber-index tanggal yang <b>lengkap</b> tiap hari (<code>asfreq('D')</code>) agar jendela <code>rolling(n)</code> = n hari."),
+    "Scatter": ("mentah", "1 baris = 1 observasi, 2 kolom numerik (+ kategori untuk <code>hue</code>). Jangan diagregasi: tiap titik adalah satu data."),
+    "Korelasi + heatmap": ("matriks", "<code>df.corr(numeric_only=True)</code>: hasilnya matriks kolom × kolom."),
+    "Heatmap pivot": ("agregat · wide", "matriks 2 kategori: <code>pivot_table(index=a, columns=b, values=v, aggfunc='sum')</code>."),
+    "Bubble": ("mentah", "1 baris per entitas (mis. negara pada satu tahun): x, y, size, color. Filter dulu dengan <code>query('year == 2007')</code>."),
+    "Scatter matrix": ("mentah", "beberapa kolom numerik + 1 kolom kategori untuk warna. Tanpa agregasi."),
+}
+
+
+def datahint(b):
+    h = DATAMAP.get(b["title"])
+    if not h:
+        return ""
+    kind, text = h
+    cls = "raw" if kind.startswith("mentah") else "agg"
+    return f'<p class="datahint"><span class="dk {cls}">data: {kind}</span>{text}</p>'
+
 
 def figure(b):
     name = b.get("fig") or FIGMAP.get(b["title"])
@@ -805,20 +946,29 @@ def figure(b):
 
 def render_block(b):
     if b["kind"] == "html":
-        return (f'<article class="card wide" data-search="{html.escape(b["title"].lower())}">'
+        wide = " wide" if b.get("wide", True) else ""
+        return (f'<article class="card{wide}" data-search="{html.escape(b.get("search", b["title"]).lower())}">'
                 f'<h3>{html.escape(b["title"])}</h3>{figure(b)}{b["body"]}</article>')
     note = f'<p class="note">{b["note"]}</p>' if b["note"] else ""
     return (f'<article class="card" data-search="{html.escape((b["title"] + " " + b["code"]).lower())}">'
             f'<div class="card-h"><h3>{html.escape(b["title"])}</h3>'
             f'<button class="copy" type="button" aria-label="Salin kode {html.escape(b["title"])}">Salin</button></div>'
-            f'{figure(b)}<pre><code class="language-python">{html.escape(b["code"])}</code></pre>{note}</article>')
+            f'{figure(b)}{datahint(b)}<pre><code class="language-python">{html.escape(b["code"])}</code></pre>{note}</article>')
 
 
-TABS = [("visualisasi", "Visualisasi", "viz"), ("cleaning", "Cleaning Data", "clean")]
+# ---- tab 3: prediction questions (prepared by tools/make_prediksi.py) ----
+PRED = json.load(open(TOOLS / "prediksi.json", encoding="utf-8"))
+for s in PRED:
+    sections.append((s["id"], s["title"], s["tag"], s["intro"],
+                     [{"kind": "html", "title": b["title"], "body": b["body"], "search": b["search"], "fig": None}
+                      for b in s["blocks"]], "pred"))
+
+TABS = [("visualisasi", "Visualisasi", "viz"), ("cleaning", "Cleaning Data", "clean"), ("prediksi", "Prediksi Soal", "pred")]
 FLOW = {
     "viz": '<div class="flow"><b>Import</b>→<b>Cek data</b>→<b>Ringkas (groupby/crosstab)</b>→<b>Pilih grafik</b>→<b>Plot + judul/label/legend</b>→<b>Interpretasi</b></div>'
            '<div class="legend"><span><i class="sw c-cat"></i>categorical</span><span><i class="sw c-hie"></i>hierarchical</span><span><i class="sw c-tem"></i>temporal</span><span><i class="sw c-rel"></i>relational</span><span><i class="sw c-spa"></i>spatial</span></div>',
     "clean": '<div class="flow"><b>Diagnosis</b>→<b>Seragamkan</b>→<b>Tipe & NaN</b>→<b>Duplikat</b>→<b>Missing</b>→<b>Outlier</b>→<b>Buang kolom</b>→<b>Encoding/scaling</b>→<b>Validasi</b></div>',
+    "pred": '<div class="flow"><b>Setup dataset</b>→<b>Soal 1 cleaning</b>→<b>Soal 2–6 visualisasi</b>→<b>Soal 7 debugging</b>→<b>Tugas analisis</b>→<b>Teori</b></div>',
 }
 tab_btns, navs, panels = [], [], []
 for tid, tlabel, key in TABS:
@@ -854,8 +1004,11 @@ PAGE = """<!doctype html>
 <script type="module" src="/src/main.js"></script>
 </head>
 <body>
-<div class="top"><div class="wrap">
-  <div class="brand"><h1>Panduan Praktikum IF5100</h1><span>IF5100 · Week 11–12</span></div>
+<header class="masthead"><div class="wrap">
+  <h1>Panduan Praktikum IF5100</h1>
+  <p>Visualisasi data, cleaning data, dan prediksi soal praktikum · Pemrograman untuk Data Analitik, Week 11–12</p>
+</div></header>
+<div class="top"><div class="wrap bar">
   <div class="tabs" role="tablist" aria-label="Topik">__TABS__</div>
   <div class="search">
     <label for="q">Cari snippet</label>
@@ -868,7 +1021,7 @@ PAGE = """<!doctype html>
 
 <main class="wrap">
   __PANELS__
-  <p class="empty" id="empty">Tidak ada snippet yang cocok di tab ini. Coba kata lain, misalnya nama fungsi (<code>histplot</code>, <code>fillna</code>), atau cari di tab satunya.</p>
+  <p class="empty" id="empty">Tidak ada snippet yang cocok di tab ini. Coba kata lain, misalnya nama fungsi (<code>histplot</code>, <code>fillna</code>), atau cari di tab lain.</p>
   <footer>Disusun dari materi IF5100-11 (pre-processing) serta 12a Data Visualization &amp; 12b Independent Study (Andy Kirk 2012; Iliinsky &amp; Steele 2011; Spoerri). Ilustrasi digambar dengan matplotlib dari data contoh. Snippet diuji dengan pandas 3.1, seaborn 0.13, matplotlib 3.11, plotly 7.1.</footer>
 </main>
 </body>

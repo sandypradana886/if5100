@@ -1,6 +1,10 @@
-# Only needed to re-render chart illustrations (tools/make_figs.py)
+# Needed only to regenerate content:
+#   python tools/make_figs.py      (chart illustrations)
+#   python tools/make_prediksi.py  (prediction questions: runs every answer)
+#   python tools/build_page.py     (index.html; needs pandas)
 numpy
 pandas
 matplotlib
 seaborn
 wordcloud
+markdown
