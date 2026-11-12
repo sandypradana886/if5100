@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.vercel/
+tools/_snippets.py
+__pycache__/

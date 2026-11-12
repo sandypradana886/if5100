@@ -1,0 +1,6 @@
+# Only needed to re-render chart illustrations (tools/make_figs.py)
+numpy
+pandas
+matplotlib
+seaborn
+wordcloud
