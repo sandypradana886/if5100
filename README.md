@@ -1,17 +1,26 @@
 # Panduan Praktikum IF5100
 
-Referensi cepat untuk praktikum **IF5100 Pemrograman untuk Data Analitik** (ITB), Week 11–12.
+Referensi cepat untuk praktikum **IF5100 Pemrograman untuk Data Analitik** (ITB), Praktikum 06–09.
 
+- **NumPy (P06)**: membuat array, indexing & boolean mask, agregasi per `axis`, broadcasting, statistik
+  deskriptif (`summarize`, IQR, SEM, confidence interval), simulasi stokastik (Monte Carlo, CLT), error umum.
+- **Pandas (P07)**: baca/cek/simpan, `loc`/`iloc` & filter, kolom baru (`np.where`, `np.select`, `cut`/`qcut`,
+  `.str`), datetime, `groupby`/`pivot_table`/`crosstab`, jenis `merge`, jebakan pandas 3.
+- **Scikit-learn (P09)**: pola `fit`/`predict`/`transform`, `train_test_split` + `stratify`, `ColumnTransformer` +
+  `Pipeline`, metrik regresi & klasifikasi, threshold & ROC-AUC, cross-validation & `GridSearchCV`, KMeans, PCA,
+  overfitting, data leakage, pesan error umum.
 - **Visualisasi**: import data di Colab (mount Drive atau upload), memilih grafik berdasarkan taksonomi
   (categorical, hierarchical, temporal, relational), **bentuk data tiap grafik** (mentah atau perlu
   `groupby` / `crosstab` / `pivot` / `melt`), snippet matplotlib/seaborn/plotly dengan ilustrasi grafik,
-  error umum, cara membaca grafik, dan prinsip desain.
+  error umum, cara membaca grafik, dan prinsip desain. Bagian **Resep Praktikum 08** merangkum pola soal P08
+  (compound plot, subplot vertikal, stacked bar dari pivot, heatmap dengan sel kosong, checklist seaborn).
 - **Cleaning Data**: diagnosis kualitas data, menyeragamkan teks, placeholder & tipe data, duplikat,
   missing values, outlier (IQR / z-score), buang kolom, encoding & scaling, validasi, dan template
   penjelasan keputusan cleaning.
 - **Prediksi Soal**: studi kasus *Kopi Senja* dengan 7 soal kode (cleaning, 5 jenis visualisasi, debugging),
   5 tugas analisis, dan 7 soal teori. Setiap jawaban sudah dijalankan; grafik dan angka di kunci adalah output
-  aslinya. Notebook soal & kunci bisa diunduh dari halaman (`public/notebook/`).
+  aslinya. Ditambah prediksi **Praktikum 09 (scikit-learn)**. Notebook soal & kunci P08 dan P09 bisa diunduh
+  dari halaman (`public/notebook/`).
 - **Materi**: daftar slide kuliah yang menjadi dasar isi web, link dokumentasi pandas/matplotlib/seaborn/plotly,
   Colab I/O, 6 dataset Kaggle dari slide 12b, alat bantu memilih grafik & warna, dan buku rujukan.
 
@@ -25,6 +34,7 @@ src/main.js           tab, pencarian, tombol salin, highlight kode
 src/style.css         tampilan (tema terang & gelap)
 public/favicon.svg
 tools/build_page.py   isi konten: section(...) dan snip(...)
+tools/content_p06_p09.py isi tab NumPy, Pandas, Scikit-learn + Resep P08 (jalankan file ini untuk menguji snippet)
 tools/make_figs.py    menggambar ilustrasi grafik -> tools/figs.json
 tools/make_prediksi.py soal prediksi: menjalankan jawaban -> tools/prediksi.json + public/notebook/*.ipynb
 vercel.json           konfigurasi deploy Vercel

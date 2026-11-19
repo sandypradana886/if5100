@@ -963,6 +963,47 @@ for s in PRED:
                      [{"kind": "html", "title": b["title"], "body": b["body"], "search": b["search"], "fig": None}
                       for b in s["blocks"]], "pred"))
 
+P09_DL = """
+<div class="pq-intro"><p>Prediksi <strong>Praktikum 09: Machine Learning dengan scikit-learn</strong>. Dataset dibuat langsung di notebook
+(tanpa file CSV), 4 soal kode + analisis, dan 8 soal teori.</p>
+<ul>
+<li><b>Soal 1</b> · regresi linier dasar, MAE/RMSE/R², polinomial derajat 1/3/15 (underfitting vs overfitting)</li>
+<li><b>Soal 2</b> · harga rumah: <code>SimpleImputer</code> + <code>StandardScaler</code> + <code>OneHotEncoder</code> dalam <code>ColumnTransformer</code> &amp; <code>Pipeline</code>, LinearRegression vs RandomForest, 5-fold CV</li>
+<li><b>Soal 3</b> · churn: <code>stratify</code>, metrik klasifikasi vs baseline, threshold 0.5 vs 0.3, ROC-AUC, KNN dengan/tanpa scaling, <code>GridSearchCV</code></li>
+<li><b>Soal 4</b> · segmentasi pelanggan: KMeans, elbow, silhouette, profil cluster, PCA 2D</li>
+</ul>
+<div class="dl"><a href="/notebook/Prediksi_Praktikum_09_Soal.ipynb" download>Unduh notebook soal P09 (.ipynb)</a><a href="/notebook/Prediksi_Praktikum_09_Kunci.ipynb" download>Unduh notebook kunci P09 (.ipynb)</a></div>
+<p class="note">Topik disusun dari cakupan umum scikit-learn karena materi Week 13 belum tersedia; soal asli bisa berbeda. Ringkasan snippet ada di tab <a href="#sklearn">Scikit-learn</a>.</p></div>
+"""
+sections.append(("p-p09", "Prediksi Praktikum 09 (scikit-learn)", "", "Notebook soal & kunci untuk latihan machine learning.",
+                 [{"kind": "html", "title": "Ringkasan & unduhan", "body": P09_DL, "fig": None,
+                   "search": "prediksi praktikum 09 p09 scikit-learn sklearn regresi klasifikasi churn kmeans pipeline gridsearchcv"}],
+                 "pred"))
+
+# ---- NumPy (P06), Pandas (P07), Scikit-learn (P09) tabs + "Resep Praktikum 08" (tools/content_p06_p09.py) ----
+from content_p06_p09 import NUMPY, PANDAS, SKLEARN, P08_SECTION
+import re as _re
+
+
+def _blocks(cards):
+    out = []
+    for c in cards:
+        if "code" in c:
+            out.append(snip(c["t"], c["code"], c.get("note", "")))
+        else:
+            search = c["t"] + " " + _re.sub(r"<[^>]+>", " ", c["html"])
+            out.append({"kind": "html", "title": c["t"], "body": c["html"].strip(), "fig": None,
+                        "wide": c.get("wide", False), "search": search})
+    return out
+
+
+_err = next(i for i, s in enumerate(sections) if s[0] == "error")
+sections.insert(_err, (P08_SECTION["id"], P08_SECTION["title"], "", html.escape(P08_SECTION["desc"]),
+                       _blocks(P08_SECTION["cards"]), "viz"))
+for _tab in (NUMPY, PANDAS, SKLEARN):
+    for _s in _tab["sections"]:
+        sections.append((_s["id"], _s["title"], "", html.escape(_s["desc"]), _blocks(_s["cards"]), _tab["id"]))
+
 # ---- tab 4: materi & referensi (all links checked to respond; see notes for the two that did not) ----
 from urllib.parse import urlparse
 
@@ -1063,13 +1104,16 @@ section("m-buku", "Buku rujukan slide", "", "Daftar pustaka slide 12a.", [
     rich("Buku", BOOKS),
 ])
 
-TABS = [("visualisasi", "Visualisasi", "viz"), ("cleaning", "Cleaning Data", "clean"), ("prediksi", "Prediksi Soal", "pred"),
+TABS = [("numpy", "NumPy", "numpy"), ("pandas", "Pandas", "pandas"), ("cleaning", "Cleaning", "clean"),
+        ("visualisasi", "Visualisasi", "viz"), ("sklearn", "Scikit-learn", "sklearn"), ("prediksi", "Prediksi Soal", "pred"),
         ("materi", "Materi", "ref")]
+_flow = lambda steps: '<div class="flow">' + "→".join(f"<b>{html.escape(s)}</b>" for s in steps) + "</div>"
 FLOW = {
+    "numpy": _flow(NUMPY["flow"]), "pandas": _flow(PANDAS["flow"]), "sklearn": _flow(SKLEARN["flow"]),
     "viz": '<div class="flow"><b>Import</b>→<b>Cek data</b>→<b>Ringkas (groupby/crosstab)</b>→<b>Pilih grafik</b>→<b>Plot + judul/label/legend</b>→<b>Interpretasi</b></div>'
            '<div class="legend"><span><i class="sw c-cat"></i>categorical</span><span><i class="sw c-hie"></i>hierarchical</span><span><i class="sw c-tem"></i>temporal</span><span><i class="sw c-rel"></i>relational</span><span><i class="sw c-spa"></i>spatial</span></div>',
     "clean": '<div class="flow"><b>Diagnosis</b>→<b>Seragamkan</b>→<b>Tipe & NaN</b>→<b>Duplikat</b>→<b>Missing</b>→<b>Outlier</b>→<b>Buang kolom</b>→<b>Encoding/scaling</b>→<b>Validasi</b></div>',
-    "pred": '<div class="flow"><b>Setup dataset</b>→<b>Soal 1 cleaning</b>→<b>Soal 2–6 visualisasi</b>→<b>Soal 7 debugging</b>→<b>Tugas analisis</b>→<b>Teori</b></div>',
+    "pred": '<div class="flow"><b>P08: Setup dataset</b>→<b>Soal 1 cleaning</b>→<b>Soal 2–6 visualisasi</b>→<b>Soal 7 debugging</b>→<b>Tugas analisis</b>→<b>Teori</b>→<b>P09: scikit-learn</b></div>',
     "ref": '<div class="flow"><b>Slide kuliah</b>→<b>Dokumentasi</b>→<b>Colab & dataset</b>→<b>Memilih grafik</b>→<b>Buku</b></div>',
 }
 tab_btns, navs, panels = [], [], []
@@ -1097,7 +1141,7 @@ PAGE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Panduan Praktikum IF5100</title>
-<meta name="description" content="Panduan praktikum IF5100: visualisasi data (matplotlib, seaborn, plotly) dan cleaning data dengan pandas.">
+<meta name="description" content="Panduan praktikum IF5100 P06–P09: NumPy, pandas, cleaning data, visualisasi (matplotlib, seaborn, plotly), scikit-learn, dan prediksi soal.">
 <meta name="theme-color" content="#1f77b4">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1108,7 +1152,7 @@ PAGE = """<!doctype html>
 <body>
 <header class="masthead"><div class="wrap">
   <h1>Panduan Praktikum IF5100</h1>
-  <p>Visualisasi data, cleaning data, dan prediksi soal praktikum · Pemrograman untuk Data Analitik, Week 11–12</p>
+  <p>NumPy, pandas, cleaning data, visualisasi, scikit-learn, dan prediksi soal praktikum · Pemrograman untuk Data Analitik, Praktikum 06–09</p>
 </div></header>
 <div class="top"><div class="wrap bar">
   <div class="tabs" role="tablist" aria-label="Topik">__TABS__</div>
@@ -1124,7 +1168,7 @@ PAGE = """<!doctype html>
 <main class="wrap">
   __PANELS__
   <p class="empty" id="empty">Tidak ada snippet yang cocok di tab ini. Coba kata lain, misalnya nama fungsi (<code>histplot</code>, <code>fillna</code>), atau cari di tab lain.</p>
-  <footer>Disusun dari materi IF5100-11 (pre-processing) serta 12a Data Visualization &amp; 12b Independent Study (Andy Kirk 2012; Iliinsky &amp; Steele 2011; Spoerri). Ilustrasi digambar dengan matplotlib dari data contoh. Snippet diuji dengan pandas 3.1, seaborn 0.13, matplotlib 3.11, plotly 7.1.</footer>
+  <footer>Disusun dari materi IF5100-11 (pre-processing) serta 12a Data Visualization &amp; 12b Independent Study (Andy Kirk 2012; Iliinsky &amp; Steele 2011; Spoerri). Tab NumPy, Pandas, dan Scikit-learn serta Resep Praktikum 08 disusun dari pola soal Praktikum 06–09. Ilustrasi digambar dengan matplotlib dari data contoh. Snippet diuji dengan numpy 2.5, pandas 3.1, seaborn 0.13, matplotlib 3.11, plotly 7.1, scikit-learn 1.9.</footer>
 </main>
 </body>
 </html>
