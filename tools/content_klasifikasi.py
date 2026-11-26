@@ -204,6 +204,188 @@ RandomForestClassifier(class_weight='balanced', random_state=RANDOM_STATE)
 </tbody></table></div>
 <p class="note">* <code>HistGradientBoostingClassifier</code> dan RF di scikit-learn ≥ 1.4 bisa menerima NaN langsung, tetapi imputasi eksplisit lebih mudah dijelaskan.</p>"""),
         ]),
+        # ------------------------------------------------------------------ skeleton functions
+        dict(id="k-skeleton", title="Skeleton fungsi preprocessing", desc="Kerangka fungsi yang bisa disalin ke notebook mana pun: ganti bagian KONFIGURASI dan isi TODO, sisanya tetap.", cards=[
+            dict(t="Pembagian tugas tiap fungsi", wide=True, html=r"""
+<div class="tbl"><table><thead><tr><th>Fungsi</th><th>Tugas</th><th>Kapan dijalankan</th><th>Boleh pakai statistik data?</th></tr></thead><tbody>
+<tr><td><code>load_data</code></td><td>baca CSV/URL</td><td>sebelum split</td><td>–</td></tr>
+<tr><td><code>inspect_data</code></td><td>tabel kualitas: tipe, missing, nol, unik, duplikat, distribusi kelas</td><td>sebelum split</td><td>hanya untuk dilihat</td></tr>
+<tr><td><code>clean_data</code></td><td>perbaikan per baris: duplikat, buang kolom, nilai mustahil → NaN, rapikan teks, tipe</td><td>sebelum split</td><td><b>tidak</b> (tanpa mean/median)</td></tr>
+<tr><td><code>add_features</code></td><td>fitur baru dari kolom di baris yang sama</td><td>sebelum split</td><td><b>tidak</b></td></tr>
+<tr><td><code>split_data</code></td><td>X, y, train/test stratified</td><td>–</td><td>–</td></tr>
+<tr><td><code>get_column_types</code></td><td>daftar kolom numerik &amp; kategorikal</td><td>setelah split (dari train)</td><td>–</td></tr>
+<tr><td><code>build_preprocessor</code></td><td>imputasi, scaling, one-hot di <code>ColumnTransformer</code></td><td>di dalam Pipeline</td><td><b>ya</b>, di-fit di train saja</td></tr>
+<tr><td><code>build_pipeline</code></td><td>preprocessor (+ seleksi fitur) + model</td><td>di dalam Pipeline</td><td><b>ya</b>, di-fit di train saja</td></tr>
+</tbody></table></div>
+<p class="note">Aturannya: apa pun yang menghitung angka dari data (median, mean/std, kategori, skor fitur) masuk ke <code>build_preprocessor</code>/<code>build_pipeline</code> agar tidak terjadi leakage.</p>"""),
+            dict(t="Skeleton kosong (untuk diisi sendiri)", wide=True, test=False, code=r"""
+# ===================== KONFIGURASI =====================
+TARGET = '...'            # nama kolom label
+RANDOM_STATE = 42
+TEST_SIZE = 0.2
+DROP_COLS = []            # id, nama, kolom yang membocorkan target
+ZERO_AS_NAN = []          # kolom yang nilai 0-nya mustahil
+
+
+def load_data(path):
+    '''Baca data, cetak shape, kembalikan DataFrame.'''
+    # TODO: pd.read_csv / pd.read_excel
+    pass
+
+
+def inspect_data(df, target=TARGET):
+    '''Kembalikan tabel kualitas per kolom + cetak duplikat & distribusi kelas.'''
+    # TODO: dtype, n_missing, pct_missing, n_zero, n_unique
+    pass
+
+
+def clean_data(df, drop_cols=DROP_COLS, zero_as_nan=ZERO_AS_NAN):
+    '''Perbaikan per baris saja (tanpa statistik data). Selalu kerja di df.copy().'''
+    # TODO: drop_duplicates, drop kolom, 0 → NaN, rapikan teks, perbaiki tipe
+    pass
+
+
+def add_features(df):
+    '''Fitur baru dari kolom pada baris yang sama.'''
+    # TODO
+    pass
+
+
+def split_data(df, target=TARGET, test_size=TEST_SIZE, random_state=RANDOM_STATE):
+    '''Pisah X, y lalu train/test dengan stratify=y.'''
+    # TODO: return X_train, X_test, y_train, y_test
+    pass
+
+
+def get_column_types(X):
+    '''Kembalikan (num_cols, cat_cols).'''
+    # TODO: select_dtypes
+    pass
+
+
+def build_preprocessor(num_cols, cat_cols, scale=True):
+    '''ColumnTransformer: numerik (imputer + scaler), kategorikal (imputer + one-hot).'''
+    # TODO
+    pass
+
+
+def build_pipeline(model, num_cols, cat_cols, scale=True, k_best=None):
+    '''Pipeline: preprocessor → (SelectKBest) → model.'''
+    # TODO
+    pass""", note="Versi terisi ada di empat kartu berikut. Urutan pemanggilan: load → inspect → clean → add_features → split → get_column_types → build_pipeline."),
+            dict(t="Konfigurasi + load & inspect", wide=True, code=r"""
+# ===================== KONFIGURASI (ubah sesuai dataset) =====================
+DATA_PATH = "https://raw.githubusercontent.com/amankharwal/Website-data/master/mobile_prices.csv"
+TARGET = 'price_range'
+RANDOM_STATE = 42
+TEST_SIZE = 0.2
+DROP_COLS = []                       # mis. ['id']
+ZERO_AS_NAN = ['sc_w', 'px_height']  # 0 tidak mungkin untuk lebar layar / tinggi piksel
+
+
+def load_data(path):
+    df = pd.read_csv(path)
+    print('shape:', df.shape)
+    return df
+
+
+def inspect_data(df, target=TARGET):
+    info = pd.DataFrame({
+        'dtype': df.dtypes.astype(str),
+        'n_missing': df.isna().sum(),
+        'pct_missing': (df.isna().mean() * 100).round(1),
+        'n_zero': (df == 0).sum(),
+        'n_unique': df.nunique(),
+    })
+    print('duplikat :', df.duplicated().sum())
+    if target in df:
+        vc = df[target].value_counts()
+        print('kelas    :', vc.sort_index().to_dict(), '| rasio max/min =', round(vc.max() / vc.min(), 2))
+    return info
+
+
+df_raw = load_data(DATA_PATH)
+inspect_data(df_raw).query('n_missing > 0 or n_zero > 0')""",
+                 note="<code>n_zero</code> berguna untuk menemukan 0 yang sebenarnya missing. Untuk fitur biner (0/1), 0 itu wajar, jadi abaikan."),
+            dict(t="clean_data & add_features", wide=True, code=r"""
+def clean_data(df, drop_cols=DROP_COLS, zero_as_nan=ZERO_AS_NAN):
+    df = df.copy()
+    n0 = len(df)
+    df = df.drop_duplicates()
+    df = df.drop(columns=drop_cols, errors='ignore')
+    for col in zero_as_nan:
+        df[col] = df[col].replace(0, np.nan)
+    for col in df.select_dtypes(include=['object', 'string']).columns:
+        df[col] = df[col].str.strip().str.lower().replace({'': np.nan, '-': np.nan, '?': np.nan})
+    # TODO: perbaiki tipe, mis. df['harga'] = pd.to_numeric(df['harga'], errors='coerce')
+    print(f'clean_data: {n0} → {len(df)} baris, NaN = {int(df.isna().sum().sum())}')
+    return df
+
+
+def add_features(df):
+    df = df.copy()
+    # TODO: aktifkan fitur yang bisa dijustifikasi (cek korelasi / skor CV)
+    # df['px_area'] = df['px_height'] * df['px_width']
+    # df['sc_area'] = df['sc_h'] * df['sc_w']
+    # df['batt_per_g'] = df['battery_power'] / df['mobile_wt']
+    return df""",
+                 note="Fungsi ini sengaja tidak memakai median/mean. Pengisian NaN dilakukan <code>SimpleImputer</code> di Pipeline, setelah split."),
+            dict(t="split_data & get_column_types", wide=True, code=r"""
+def split_data(df, target=TARGET, test_size=TEST_SIZE, random_state=RANDOM_STATE):
+    X = df.drop(columns=target)
+    y = df[target]
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, stratify=y, random_state=random_state)
+    print(f'train {X_train.shape} | test {X_test.shape}')
+    return X_train, X_test, y_train, y_test
+
+
+def get_column_types(X):
+    num_cols = X.select_dtypes('number').columns.tolist()
+    cat_cols = X.select_dtypes(exclude='number').columns.tolist()
+    # angka yang sebenarnya kode kategori (mis. kode kota 1/2/3): pindahkan manual ke cat_cols.
+    # fitur biner 0/1 cukup tetap numerik.
+    print(f'{len(num_cols)} numerik, {len(cat_cols)} kategorikal')
+    return num_cols, cat_cols"""),
+            dict(t="build_preprocessor & build_pipeline", wide=True, code=r"""
+def build_preprocessor(num_cols, cat_cols, scale=True, scaler='standard'):
+    num_steps = [('imp', SimpleImputer(strategy='median'))]
+    if scale:
+        num_steps.append(('sc', StandardScaler() if scaler == 'standard' else MinMaxScaler()))
+    cat_steps = [('imp', SimpleImputer(strategy='most_frequent')),
+                 ('ohe', OneHotEncoder(handle_unknown='ignore'))]
+    transformers = [('num', Pipeline(num_steps), num_cols)]
+    if cat_cols:
+        transformers.append(('cat', Pipeline(cat_steps), cat_cols))
+    return ColumnTransformer(transformers, remainder='drop', verbose_feature_names_out=False)
+
+
+def build_pipeline(model, num_cols, cat_cols, scale=True, k_best=None):
+    steps = [('prep', build_preprocessor(num_cols, cat_cols, scale=scale))]
+    if k_best is not None:
+        steps.append(('sel', SelectKBest(f_classif, k=k_best)))
+    steps.append(('model', model))
+    return Pipeline(steps)""",
+                 note="Setiap pemanggilan membuat objek baru, jadi aman dipakai untuk banyak model sekaligus. Saran nilai <code>scale</code>: <code>True</code> untuk LogReg/KNN/ANN, <code>False</code> untuk RF/boosting."),
+            dict(t="Cara pakai: dari file mentah sampai perbandingan model", wide=True, code=r"""
+df_raw = load_data(DATA_PATH)
+df_ready = add_features(clean_data(df_raw))
+X_train, X_test, y_train, y_test = split_data(df_ready)
+num_cols, cat_cols = get_column_types(X_train)
+
+kandidat = {
+    'LogReg': build_pipeline(LogisticRegression(max_iter=1000), num_cols, cat_cols),
+    'KNN':    build_pipeline(KNeighborsClassifier(n_neighbors=15), num_cols, cat_cols, k_best=4),
+    'RF':     build_pipeline(RandomForestClassifier(n_estimators=300, random_state=RANDOM_STATE),
+                             num_cols, cat_cols, scale=False),
+    'ANN':    build_pipeline(MLPClassifier(hidden_layer_sizes=(64, 32), max_iter=1000, early_stopping=True,
+                                           random_state=RANDOM_STATE), num_cols, cat_cols),
+}
+skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)
+ringkas = {n: cross_val_score(p, X_train, y_train, cv=skf).mean() for n, p in kandidat.items()}
+pd.Series(ringkas, name='acc_cv').sort_values(ascending=False).round(3)""",
+                 note="Hasil CV di data ini (parameter default, belum di-tuning): LogReg 0.948, ANN 0.894, KNN 0.883, RF 0.876. Lanjutkan dengan <code>GridSearchCV(kandidat['LogReg'], {'model__C': [...]})</code>, lalu <code>fit(X_train, y_train)</code> dan evaluasi sekali di test (bagian Evaluasi)."),
+        ]),
         # ------------------------------------------------------------------ logistic regression
         dict(id="k-lr", title="Regresi Logistik", desc="Model linier untuk peluang kelas. Baseline yang wajib ada.", cards=[
             dict(t="Konsep", html=r"""
@@ -610,6 +792,8 @@ if __name__ == "__main__":
     import sys
     ns = {}
     n_bad = run_tests(quick=bool(os.environ.get("QUICK")), collect=ns)
+    if "ringkas" in ns:
+        print("ringkas", {k: round(v, 3) for k, v in ns["ringkas"].items()})
     if "hasil_k" in ns:
         print(ns["hasil_k"].round(3).to_string())
     if "hasil" in ns:
