@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Panduan Praktikum IF5100</title>
-<meta name="description" content="Panduan praktikum IF5100 P06–P09: NumPy, pandas, cleaning data, visualisasi (matplotlib, seaborn, plotly), scikit-learn, dan prediksi soal.">
+<meta name="description" content="Panduan praktikum IF5100 P06–P09: NumPy, pandas, cleaning data, visualisasi (matplotlib, seaborn, plotly), scikit-learn, klasifikasi (LogReg, KNN, Random Forest, ANN, ensemble), dan prediksi soal.">
 <meta name="theme-color" content="#1f77b4">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,17 +15,17 @@
 <body>
 <header class="masthead"><div class="wrap">
   <h1>Panduan Praktikum IF5100</h1>
-  <p>NumPy, pandas, cleaning data, visualisasi, scikit-learn, dan prediksi soal praktikum · Pemrograman untuk Data Analitik, Praktikum 06–09</p>
+  <p>NumPy, pandas, cleaning data, visualisasi, scikit-learn, klasifikasi, dan prediksi soal praktikum · Pemrograman untuk Data Analitik, Praktikum 06–09</p>
 </div></header>
 <div class="top"><div class="wrap bar">
-  <div class="tabs" role="tablist" aria-label="Topik"><button type="button" role="tab" class="tab" id="tab-numpy" data-tab="numpy" aria-controls="panel-numpy">NumPy<span>22</span></button><button type="button" role="tab" class="tab" id="tab-pandas" data-tab="pandas" aria-controls="panel-pandas">Pandas<span>22</span></button><button type="button" role="tab" class="tab" id="tab-cleaning" data-tab="cleaning" aria-controls="panel-cleaning">Cleaning<span>35</span></button><button type="button" role="tab" class="tab" id="tab-visualisasi" data-tab="visualisasi" aria-controls="panel-visualisasi">Visualisasi<span>65</span></button><button type="button" role="tab" class="tab" id="tab-sklearn" data-tab="sklearn" aria-controls="panel-sklearn">Scikit-learn<span>27</span></button><button type="button" role="tab" class="tab" id="tab-prediksi" data-tab="prediksi" aria-controls="panel-prediksi">Prediksi Soal<span>14</span></button><button type="button" role="tab" class="tab" id="tab-materi" data-tab="materi" aria-controls="panel-materi">Materi<span>10</span></button></div>
+  <div class="tabs" role="tablist" aria-label="Topik"><button type="button" role="tab" class="tab" id="tab-numpy" data-tab="numpy" aria-controls="panel-numpy">NumPy<span>22</span></button><button type="button" role="tab" class="tab" id="tab-pandas" data-tab="pandas" aria-controls="panel-pandas">Pandas<span>22</span></button><button type="button" role="tab" class="tab" id="tab-cleaning" data-tab="cleaning" aria-controls="panel-cleaning">Cleaning<span>35</span></button><button type="button" role="tab" class="tab" id="tab-visualisasi" data-tab="visualisasi" aria-controls="panel-visualisasi">Visualisasi<span>65</span></button><button type="button" role="tab" class="tab" id="tab-sklearn" data-tab="sklearn" aria-controls="panel-sklearn">Scikit-learn<span>27</span></button><button type="button" role="tab" class="tab" id="tab-klasifikasi" data-tab="klasifikasi" aria-controls="panel-klasifikasi">Klasifikasi<span>51</span></button><button type="button" role="tab" class="tab" id="tab-prediksi" data-tab="prediksi" aria-controls="panel-prediksi">Prediksi Soal<span>14</span></button><button type="button" role="tab" class="tab" id="tab-materi" data-tab="materi" aria-controls="panel-materi">Materi<span>11</span></button></div>
   <div class="search">
     <label for="q">Cari snippet</label>
     <input id="q" type="search" placeholder="Cari di tab ini…" autocomplete="off">
     <kbd>/</kbd><span class="count" id="count"></span>
   </div>
 </div>
-<div class="wrap"><nav class="idx" data-tab="numpy" aria-label="Bagian NumPy"><a href="#n-buat" class="">Membuat array</a><a href="#n-index" class="">Indexing, slicing &amp; boolean mask</a><a href="#n-axis" class="">Agregasi &amp; axis</a><a href="#n-ops" class="">Operasi &amp; broadcasting</a><a href="#n-stat" class="">Statistik deskriptif</a><a href="#n-sim" class="">Simulasi stokastik</a><a href="#n-err" class="">Error umum</a></nav><nav class="idx" data-tab="pandas" aria-label="Bagian Pandas"><a href="#p-io" class="">Baca, cek, simpan</a><a href="#p-select" class="">Pilih &amp; filter</a><a href="#p-col" class="">Kolom baru &amp; transformasi</a><a href="#p-time" class="">Datetime</a><a href="#p-group" class="">Groupby, pivot &amp; crosstab</a><a href="#p-merge" class="">Merge, join &amp; concat</a><a href="#p-miss" class="">Missing value &amp; duplikat (ringkas)</a><a href="#p-err" class="">Error &amp; warning umum</a></nav><nav class="idx" data-tab="cleaning" aria-label="Bagian Cleaning"><a href="#c-alur" class="">Alur cleaning</a><a href="#c-diag" class="">1 · Diagnosis kualitas data</a><a href="#c-teks" class="">2 · Seragamkan kolom &amp; teks</a><a href="#c-tipe" class="">3 · Placeholder &amp; tipe data</a><a href="#c-dup" class="">4 · Duplikat</a><a href="#c-miss" class="">5 · Missing values</a><a href="#c-out" class="">6 · Outlier</a><a href="#c-kolom" class="">7 · Buang kolom tidak berguna</a><a href="#c-enc" class="">8 · Encoding &amp; scaling</a><a href="#c-valid" class="">9 · Validasi &amp; laporan</a><a href="#c-err" class="">Error umum &amp; template penjelasan</a></nav><nav class="idx" data-tab="visualisasi" aria-label="Bagian Visualisasi"><a href="#setup" class="">Setup &amp; import data</a><a href="#pilih" class="">Pilih grafik</a><a href="#bentuk" class="">Bentuk data tiap grafik</a><a href="#prep" class="">Siapkan data untuk plot</a><a href="#anatomi" class="">Anatomi grafik matplotlib</a><a href="#dist" class="c-cat">Distribusi</a><a href="#kategori" class="c-cat">Categorical</a><a href="#hier" class="c-hie">Hierarchical</a><a href="#temporal" class="c-tem">Temporal</a><a href="#relasi" class="c-rel">Relational</a><a href="#p08" class="">Resep Praktikum 08</a><a href="#error" class="">Error umum</a><a href="#baca" class="">Membaca &amp; menulis interpretasi</a><a href="#prinsip" class="">Prinsip desain (12a)</a></nav><nav class="idx" data-tab="sklearn" aria-label="Bagian Scikit-learn"><a href="#s-alur" class="">Konsep &amp; API</a><a href="#s-split" class="">X, y &amp; train-test split</a><a href="#s-prep" class="">Preprocessing, ColumnTransformer &amp; Pipeline</a><a href="#s-reg" class="">Regresi</a><a href="#s-clf" class="">Klasifikasi</a><a href="#s-cv" class="">Cross-validation &amp; tuning</a><a href="#s-cluster" class="">Clustering &amp; PCA</a><a href="#s-teori" class="">Overfitting, leakage &amp; teori</a><a href="#s-err" class="">Error umum</a></nav><nav class="idx" data-tab="prediksi" aria-label="Bagian Prediksi Soal"><a href="#p-intro" class="">Studi kasus: Kopi Senja</a><a href="#p-soal" class="">Soal kode</a><a href="#p-analisis" class="">Tugas analisis</a><a href="#p-teori" class="">Soal teori</a><a href="#p-p09" class="">Prediksi Praktikum 09 (scikit-learn)</a></nav><nav class="idx" data-tab="materi" aria-label="Bagian Materi"><a href="#m-kuliah" class="">Materi kuliah</a><a href="#m-docs" class="">Dokumentasi library</a><a href="#m-colab" class="">Colab &amp; dataset</a><a href="#m-viz" class="">Memilih grafik &amp; warna</a><a href="#m-buku" class="">Buku rujukan slide</a></nav></div>
+<div class="wrap"><nav class="idx" data-tab="numpy" aria-label="Bagian NumPy"><a href="#n-buat" class="">Membuat array</a><a href="#n-index" class="">Indexing, slicing &amp; boolean mask</a><a href="#n-axis" class="">Agregasi &amp; axis</a><a href="#n-ops" class="">Operasi &amp; broadcasting</a><a href="#n-stat" class="">Statistik deskriptif</a><a href="#n-sim" class="">Simulasi stokastik</a><a href="#n-err" class="">Error umum</a></nav><nav class="idx" data-tab="pandas" aria-label="Bagian Pandas"><a href="#p-io" class="">Baca, cek, simpan</a><a href="#p-select" class="">Pilih &amp; filter</a><a href="#p-col" class="">Kolom baru &amp; transformasi</a><a href="#p-time" class="">Datetime</a><a href="#p-group" class="">Groupby, pivot &amp; crosstab</a><a href="#p-merge" class="">Merge, join &amp; concat</a><a href="#p-miss" class="">Missing value &amp; duplikat (ringkas)</a><a href="#p-err" class="">Error &amp; warning umum</a></nav><nav class="idx" data-tab="cleaning" aria-label="Bagian Cleaning"><a href="#c-alur" class="">Alur cleaning</a><a href="#c-diag" class="">1 · Diagnosis kualitas data</a><a href="#c-teks" class="">2 · Seragamkan kolom &amp; teks</a><a href="#c-tipe" class="">3 · Placeholder &amp; tipe data</a><a href="#c-dup" class="">4 · Duplikat</a><a href="#c-miss" class="">5 · Missing values</a><a href="#c-out" class="">6 · Outlier</a><a href="#c-kolom" class="">7 · Buang kolom tidak berguna</a><a href="#c-enc" class="">8 · Encoding &amp; scaling</a><a href="#c-valid" class="">9 · Validasi &amp; laporan</a><a href="#c-err" class="">Error umum &amp; template penjelasan</a></nav><nav class="idx" data-tab="visualisasi" aria-label="Bagian Visualisasi"><a href="#setup" class="">Setup &amp; import data</a><a href="#pilih" class="">Pilih grafik</a><a href="#bentuk" class="">Bentuk data tiap grafik</a><a href="#prep" class="">Siapkan data untuk plot</a><a href="#anatomi" class="">Anatomi grafik matplotlib</a><a href="#dist" class="c-cat">Distribusi</a><a href="#kategori" class="c-cat">Categorical</a><a href="#hier" class="c-hie">Hierarchical</a><a href="#temporal" class="c-tem">Temporal</a><a href="#relasi" class="c-rel">Relational</a><a href="#p08" class="">Resep Praktikum 08</a><a href="#error" class="">Error umum</a><a href="#baca" class="">Membaca &amp; menulis interpretasi</a><a href="#prinsip" class="">Prinsip desain (12a)</a></nav><nav class="idx" data-tab="sklearn" aria-label="Bagian Scikit-learn"><a href="#s-alur" class="">Konsep &amp; API</a><a href="#s-split" class="">X, y &amp; train-test split</a><a href="#s-prep" class="">Preprocessing, ColumnTransformer &amp; Pipeline</a><a href="#s-reg" class="">Regresi</a><a href="#s-clf" class="">Klasifikasi</a><a href="#s-cv" class="">Cross-validation &amp; tuning</a><a href="#s-cluster" class="">Clustering &amp; PCA</a><a href="#s-teori" class="">Overfitting, leakage &amp; teori</a><a href="#s-err" class="">Error umum</a></nav><nav class="idx" data-tab="klasifikasi" aria-label="Bagian Klasifikasi"><a href="#k-alur" class="">Alur kerja &amp; import</a><a href="#k-eda" class="">EDA untuk klasifikasi</a><a href="#k-prep" class="">Preprocessing &amp; feature engineering</a><a href="#k-lr" class="">Regresi Logistik</a><a href="#k-knn" class="">K-Nearest Neighbors</a><a href="#k-rf" class="">Random Forest</a><a href="#k-ann" class="">ANN (Multilayer Perceptron)</a><a href="#k-ens" class="">Ensemble</a><a href="#k-eval" class="">Evaluasi di test set</a><a href="#k-analisis" class="">Analisis &amp; menulis kesimpulan</a><a href="#k-teori" class="">Teori singkat &amp; error umum</a></nav><nav class="idx" data-tab="prediksi" aria-label="Bagian Prediksi Soal"><a href="#p-intro" class="">Studi kasus: Kopi Senja</a><a href="#p-soal" class="">Soal kode</a><a href="#p-analisis" class="">Tugas analisis</a><a href="#p-teori" class="">Soal teori</a><a href="#p-p09" class="">Prediksi Praktikum 09 (scikit-learn)</a></nav><nav class="idx" data-tab="materi" aria-label="Bagian Materi"><a href="#m-kuliah" class="">Materi kuliah</a><a href="#m-docs" class="">Dokumentasi library</a><a href="#m-colab" class="">Colab &amp; dataset</a><a href="#m-viz" class="">Memilih grafik &amp; warna</a><a href="#m-buku" class="">Buku rujukan slide</a></nav></div>
 </div>
 
 <main class="wrap">
@@ -7971,6 +7971,790 @@ plt.xlabel(&#x27;PC1&#x27;); plt.ylabel(&#x27;PC2&#x27;); plt.show()</code></pre
 <tr><td><code>Invalid parameter 'max_depth' for estimator Pipeline</code></td><td>nama param grid salah</td><td><code>'model__max_depth'</code> (nama step + 2 underscore)</td></tr>
 <tr><td><code>X has feature names, but ... was fitted without feature names</code> (warning)</td><td>fit dengan array, predict dengan DataFrame</td><td>konsisten pakai DataFrame</td></tr>
 </tbody></table></div></article></div></section></div>
+<div class="panel" id="panel-klasifikasi" role="tabpanel" aria-labelledby="tab-klasifikasi" data-tab="klasifikasi"><div class="flow"><b>EDA</b>→<b>Preprocessing</b>→<b>Split stratify</b>→<b>Pipeline + model</b>→<b>Tuning (CV di train)</b>→<b>Evaluasi test</b>→<b>Analisis</b></div><section id="k-alur" class="sec"><header class="sec-h"><h2>Alur kerja &amp; import</h2><p>Urutan yang dinilai di tugas klasifikasi: data uji hanya disentuh sekali, di akhir.</p></header><div class="cards"><article class="card wide" data-search="peta alur klasifikasi 
+     #  langkah  isi  output yang ditulis di notebook    
+  1  eda  shape, tipe, missing, duplikat, distribusi kelas, nilai mencurigakan, hubungan fitur–target  1–2 kalimat: kelas seimbang? fitur apa yang paling berpengaruh?  
+  2  preprocessing  nilai tidak masuk akal → nan, imputasi, encoding, scaling, feature engineering/selection  alasan tiap keputusan  
+  3  split   train_test_split(test_size=0.2, stratify=y, random_state=42)   ukuran train/test, proporsi kelas tetap sama  
+  4  model   pipeline([(&#x27;prep&#x27;, ...), (&#x27;model&#x27;, ...)])  untuk logreg, knn, rf, ann, ensemble  hyperparameter yang dipakai  
+  5  tuning   gridsearchcv  /  cross_val_score   di data train   parameter terbaik + skor cv  
+  6  evaluasi  accuracy, confusion matrix, classification report (+ f1 macro, roc-auc)  tabel perbandingan semua model  
+  7  analisis  model terbaik &amp;amp; alasannya, overfitting, kelas yang tertukar, fitur penting  paragraf 3–5 kalimat (markdown)  
+   "><h3>Peta alur klasifikasi</h3><div class="tbl"><table><thead><tr><th>#</th><th>Langkah</th><th>Isi</th><th>Output yang ditulis di notebook</th></tr></thead><tbody>
+<tr><td>1</td><td>EDA</td><td>shape, tipe, missing, duplikat, distribusi kelas, nilai mencurigakan, hubungan fitur–target</td><td>1–2 kalimat: kelas seimbang? fitur apa yang paling berpengaruh?</td></tr>
+<tr><td>2</td><td>Preprocessing</td><td>nilai tidak masuk akal → NaN, imputasi, encoding, scaling, feature engineering/selection</td><td>alasan tiap keputusan</td></tr>
+<tr><td>3</td><td>Split</td><td><code>train_test_split(test_size=0.2, stratify=y, random_state=42)</code></td><td>ukuran train/test, proporsi kelas tetap sama</td></tr>
+<tr><td>4</td><td>Model</td><td><code>Pipeline([('prep', ...), ('model', ...)])</code> untuk LogReg, KNN, RF, ANN, Ensemble</td><td>hyperparameter yang dipakai</td></tr>
+<tr><td>5</td><td>Tuning</td><td><code>GridSearchCV</code> / <code>cross_val_score</code> <b>di data train</b></td><td>parameter terbaik + skor CV</td></tr>
+<tr><td>6</td><td>Evaluasi</td><td>accuracy, confusion matrix, classification report (+ F1 macro, ROC-AUC)</td><td>tabel perbandingan semua model</td></tr>
+<tr><td>7</td><td>Analisis</td><td>model terbaik &amp; alasannya, overfitting, kelas yang tertukar, fitur penting</td><td>paragraf 3–5 kalimat (Markdown)</td></tr>
+</tbody></table></div></article><article class="card" data-search="import lengkap import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import (train_test_split, stratifiedkfold, cross_val_score, cross_validate,
+                                     gridsearchcv, randomizedsearchcv)
+from sklearn.pipeline import pipeline, make_pipeline
+from sklearn.compose import columntransformer
+from sklearn.impute import simpleimputer
+from sklearn.preprocessing import standardscaler, minmaxscaler, onehotencoder
+from sklearn.feature_selection import selectkbest, mutual_info_classif, f_classif
+from sklearn.linear_model import logisticregression
+from sklearn.neighbors import kneighborsclassifier
+from sklearn.tree import decisiontreeclassifier
+from sklearn.ensemble import (randomforestclassifier, votingclassifier, stackingclassifier, baggingclassifier,
+                              adaboostclassifier, gradientboostingclassifier, histgradientboostingclassifier)
+from sklearn.neural_network import mlpclassifier
+from sklearn.inspection import permutation_importance, decisionboundarydisplay
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, roc_auc_score,
+                             confusion_matrix, confusionmatrixdisplay, classification_report, roccurvedisplay)
+
+random_state = 42
+sns.set_theme(style=&#x27;whitegrid&#x27;)"><div class="card-h"><h3>Import lengkap</h3><button class="copy" type="button" aria-label="Salin kode Import lengkap">Salin</button></div><pre><code class="language-python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import (train_test_split, StratifiedKFold, cross_val_score, cross_validate,
+                                     GridSearchCV, RandomizedSearchCV)
+from sklearn.pipeline import Pipeline, make_pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, OneHotEncoder
+from sklearn.feature_selection import SelectKBest, mutual_info_classif, f_classif
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import (RandomForestClassifier, VotingClassifier, StackingClassifier, BaggingClassifier,
+                              AdaBoostClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier)
+from sklearn.neural_network import MLPClassifier
+from sklearn.inspection import permutation_importance, DecisionBoundaryDisplay
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, roc_auc_score,
+                             confusion_matrix, ConfusionMatrixDisplay, classification_report, RocCurveDisplay)
+
+RANDOM_STATE = 42
+sns.set_theme(style=&#x27;whitegrid&#x27;)</code></pre></article><article class="card wide" data-search="lima model sekilas 
+     model  cara kerja  perlu scaling?  kelebihan  kekurangan  hyperparameter utama    
+   regresi logistik   kombinasi linier fitur → sigmoid/softmax → peluang kelas   ya  (konvergensi &amp;amp; regularisasi adil)  cepat, koefisien bisa ditafsirkan, peluang terkalibrasi  batas keputusan linier   c ,  l1_ratio ,  max_iter ,  class_weight   
+   knn   cari k tetangga terdekat, voting mayoritas   wajib  (berbasis jarak)  tanpa asumsi bentuk data, mudah dijelaskan  lambat saat prediksi, sensitif fitur tak relevan &amp;amp; dimensi tinggi   n_neighbors ,  weights ,  p / metric   
+   random forest   banyak decision tree dari bootstrap + subset fitur acak, voting  tidak  non-linier, tahan outlier, ada feature importance, minim tuning  mudah hafal train (acc train ≈ 1), model besar, sulit ditafsirkan   n_estimators ,  max_depth ,  min_samples_leaf ,  max_features   
+   ann (mlp)   lapisan neuron + aktivasi, dilatih backpropagation   wajib   bisa memodelkan pola sangat kompleks  butuh data &amp;amp; tuning, hasil bergantung seed, black box   hidden_layer_sizes ,  alpha ,  learning_rate_init ,  early_stopping   
+   ensemble   gabungkan beberapa model (voting, stacking, bagging, boosting)  ikut model dasarnya  biasanya paling stabil &amp;amp; akurat  lebih lambat, lebih sulit dijelaskan   voting ,  weights ,  final_estimator ,  learning_rate   
+   "><h3>Lima model sekilas</h3><div class="tbl"><table><thead><tr><th>Model</th><th>Cara kerja</th><th>Perlu scaling?</th><th>Kelebihan</th><th>Kekurangan</th><th>Hyperparameter utama</th></tr></thead><tbody>
+<tr><td><b>Regresi Logistik</b></td><td>kombinasi linier fitur → sigmoid/softmax → peluang kelas</td><td><b>Ya</b> (konvergensi &amp; regularisasi adil)</td><td>cepat, koefisien bisa ditafsirkan, peluang terkalibrasi</td><td>batas keputusan linier</td><td><code>C</code>, <code>l1_ratio</code>, <code>max_iter</code>, <code>class_weight</code></td></tr>
+<tr><td><b>KNN</b></td><td>cari k tetangga terdekat, voting mayoritas</td><td><b>Wajib</b> (berbasis jarak)</td><td>tanpa asumsi bentuk data, mudah dijelaskan</td><td>lambat saat prediksi, sensitif fitur tak relevan &amp; dimensi tinggi</td><td><code>n_neighbors</code>, <code>weights</code>, <code>p</code>/<code>metric</code></td></tr>
+<tr><td><b>Random Forest</b></td><td>banyak decision tree dari bootstrap + subset fitur acak, voting</td><td>Tidak</td><td>non-linier, tahan outlier, ada feature importance, minim tuning</td><td>mudah hafal train (acc train ≈ 1), model besar, sulit ditafsirkan</td><td><code>n_estimators</code>, <code>max_depth</code>, <code>min_samples_leaf</code>, <code>max_features</code></td></tr>
+<tr><td><b>ANN (MLP)</b></td><td>lapisan neuron + aktivasi, dilatih backpropagation</td><td><b>Wajib</b></td><td>bisa memodelkan pola sangat kompleks</td><td>butuh data &amp; tuning, hasil bergantung seed, black box</td><td><code>hidden_layer_sizes</code>, <code>alpha</code>, <code>learning_rate_init</code>, <code>early_stopping</code></td></tr>
+<tr><td><b>Ensemble</b></td><td>gabungkan beberapa model (voting, stacking, bagging, boosting)</td><td>ikut model dasarnya</td><td>biasanya paling stabil &amp; akurat</td><td>lebih lambat, lebih sulit dijelaskan</td><td><code>voting</code>, <code>weights</code>, <code>final_estimator</code>, <code>learning_rate</code></td></tr>
+</tbody></table></div></article></div></section><section id="k-eda" class="sec"><header class="sec-h"><h2>EDA untuk klasifikasi</h2><p>Fokus: kualitas data, keseimbangan kelas, dan fitur mana yang membedakan kelas.</p></header><div class="cards"><article class="card" data-search="load &amp; cek awal url = &quot;https://raw.githubusercontent.com/amankharwal/website-data/master/mobile_prices.csv&quot;
+df = pd.read_csv(url)                      # (2000, 21)
+df.shape; df.head(); df.info()
+df.isna().sum().sum()                      # total missing
+df.duplicated().sum()                      # baris duplikat
+df.describe().t                            # min = 0 yang aneh? max ekstrem?
+df.nunique().sort_values()                 # nunique == 2 → fitur biner"><div class="card-h"><h3>Load &amp; cek awal</h3><button class="copy" type="button" aria-label="Salin kode Load &amp; cek awal">Salin</button></div><pre><code class="language-python">url = &quot;https://raw.githubusercontent.com/amankharwal/Website-data/master/mobile_prices.csv&quot;
+df = pd.read_csv(url)                      # (2000, 21)
+df.shape; df.head(); df.info()
+df.isna().sum().sum()                      # total missing
+df.duplicated().sum()                      # baris duplikat
+df.describe().T                            # min = 0 yang aneh? max ekstrem?
+df.nunique().sort_values()                 # nunique == 2 → fitur biner</code></pre></article><article class="card" data-search="distribusi kelas (imbalance?) target = &#x27;price_range&#x27;
+print(df[target].value_counts().sort_index())
+print(df[target].value_counts(normalize=true).round(3))
+rasio = df[target].value_counts().max() / df[target].value_counts().min()
+print(&#x27;rasio mayoritas/minoritas:&#x27;, round(rasio, 2))   # &gt; 1.5 → mulai perhatikan imbalance
+sns.countplot(data=df, x=target); plt.title(&#x27;jumlah per kelas&#x27;); plt.show()"><div class="card-h"><h3>Distribusi kelas (imbalance?)</h3><button class="copy" type="button" aria-label="Salin kode Distribusi kelas (imbalance?)">Salin</button></div><pre><code class="language-python">TARGET = &#x27;price_range&#x27;
+print(df[TARGET].value_counts().sort_index())
+print(df[TARGET].value_counts(normalize=True).round(3))
+rasio = df[TARGET].value_counts().max() / df[TARGET].value_counts().min()
+print(&#x27;rasio mayoritas/minoritas:&#x27;, round(rasio, 2))   # &gt; 1.5 → mulai perhatikan imbalance
+sns.countplot(data=df, x=TARGET); plt.title(&#x27;Jumlah per kelas&#x27;); plt.show()</code></pre><p class="note">Seimbang (di sini 500 per kelas) → accuracy layak dipakai. Tidak seimbang → utamakan F1 macro, recall per kelas, <code>class_weight='balanced'</code>.</p></article><article class="card" data-search="nilai mencurigakan # fitur yang secara fisik tidak mungkin 0
+cek_nol = [&#x27;sc_w&#x27;, &#x27;px_height&#x27;, &#x27;sc_h&#x27;, &#x27;px_width&#x27;, &#x27;mobile_wt&#x27;, &#x27;battery_power&#x27;]
+print((df[cek_nol] == 0).sum())            # sc_w = 0 → 180 baris, px_height = 0 → 2 baris
+# tidak masuk akal secara logika
+print(&#x27;px_height &gt; px_width :&#x27;, (df[&#x27;px_height&#x27;] &gt; df[&#x27;px_width&#x27;]).sum())
+print(&#x27;three_g = 0 tapi four_g = 1 :&#x27;, ((df[&#x27;three_g&#x27;] == 0) &amp; (df[&#x27;four_g&#x27;] == 1)).sum())"><div class="card-h"><h3>Nilai mencurigakan</h3><button class="copy" type="button" aria-label="Salin kode Nilai mencurigakan">Salin</button></div><pre><code class="language-python"># fitur yang secara fisik tidak mungkin 0
+cek_nol = [&#x27;sc_w&#x27;, &#x27;px_height&#x27;, &#x27;sc_h&#x27;, &#x27;px_width&#x27;, &#x27;mobile_wt&#x27;, &#x27;battery_power&#x27;]
+print((df[cek_nol] == 0).sum())            # sc_w = 0 → 180 baris, px_height = 0 → 2 baris
+# tidak masuk akal secara logika
+print(&#x27;px_height &gt; px_width :&#x27;, (df[&#x27;px_height&#x27;] &gt; df[&#x27;px_width&#x27;]).sum())
+print(&#x27;three_g = 0 tapi four_g = 1 :&#x27;, ((df[&#x27;three_g&#x27;] == 0) &amp; (df[&#x27;four_g&#x27;] == 1)).sum())</code></pre></article><article class="card" data-search="fitur vs target fitur = df.drop(columns=target).columns
+kor = df.corr()[target].drop(target).sort_values()
+kor.plot.barh(figsize=(6, 6)); plt.title(&#x27;korelasi fitur dengan price_range&#x27;); plt.show()
+
+fig, ax = plt.subplots(1, 3, figsize=(14, 4))
+for a, col in zip(ax, [&#x27;ram&#x27;, &#x27;battery_power&#x27;, &#x27;px_width&#x27;]):
+    sns.boxplot(data=df, x=target, y=col, ax=a); a.set_title(col)
+plt.tight_layout(); plt.show()
+
+pd.crosstab(df[&#x27;four_g&#x27;], df[target], normalize=&#x27;columns&#x27;).round(2)   # fitur biner vs kelas"><div class="card-h"><h3>Fitur vs target</h3><button class="copy" type="button" aria-label="Salin kode Fitur vs target">Salin</button></div><pre><code class="language-python">fitur = df.drop(columns=TARGET).columns
+kor = df.corr()[TARGET].drop(TARGET).sort_values()
+kor.plot.barh(figsize=(6, 6)); plt.title(&#x27;Korelasi fitur dengan price_range&#x27;); plt.show()
+
+fig, ax = plt.subplots(1, 3, figsize=(14, 4))
+for a, col in zip(ax, [&#x27;ram&#x27;, &#x27;battery_power&#x27;, &#x27;px_width&#x27;]):
+    sns.boxplot(data=df, x=TARGET, y=col, ax=a); a.set_title(col)
+plt.tight_layout(); plt.show()
+
+pd.crosstab(df[&#x27;four_g&#x27;], df[TARGET], normalize=&#x27;columns&#x27;).round(2)   # fitur biner vs kelas</code></pre><p class="note">Di dataset ini <code>ram</code> berkorelasi 0.92 dengan target; <code>battery_power</code>, <code>px_width</code>, <code>px_height</code> menyusul (0.15–0.20). Sisanya hampir 0.</p></article><article class="card" data-search="korelasi antar fitur (multikolinearitas) plt.figure(figsize=(12, 9))
+sns.heatmap(df.corr(), cmap=&#x27;coolwarm&#x27;, center=0, annot=false)
+plt.title(&#x27;matriks korelasi&#x27;); plt.show()
+c = df.drop(columns=target).corr().abs()
+pasangan = c.where(np.triu(np.ones(c.shape, dtype=bool), k=1)).stack().sort_values(ascending=false)
+pasangan.head(5)          # pc–fc, three_g–four_g, px_height–px_width, sc_h–sc_w"><div class="card-h"><h3>Korelasi antar fitur (multikolinearitas)</h3><button class="copy" type="button" aria-label="Salin kode Korelasi antar fitur (multikolinearitas)">Salin</button></div><pre><code class="language-python">plt.figure(figsize=(12, 9))
+sns.heatmap(df.corr(), cmap=&#x27;coolwarm&#x27;, center=0, annot=False)
+plt.title(&#x27;Matriks korelasi&#x27;); plt.show()
+c = df.drop(columns=TARGET).corr().abs()
+pasangan = c.where(np.triu(np.ones(c.shape, dtype=bool), k=1)).stack().sort_values(ascending=False)
+pasangan.head(5)          # pc–fc, three_g–four_g, px_height–px_width, sc_h–sc_w</code></pre><p class="note">Korelasi tinggi antar fitur mengganggu tafsir koefisien regresi logistik, tetapi tidak banyak berpengaruh pada RF/KNN.</p></article><article class="card" data-search="checklist temuan eda 
+ 
+ ukuran data, jumlah fitur numerik / biner / kategorikal 
+ missing &amp;amp; duplikat (jumlah dan keputusan) 
+ distribusi kelas: seimbang atau tidak → metrik yang dipakai 
+ nilai mustahil (0 pada ukuran layar, umur negatif) → jadikan nan 
+ skala fitur sangat berbeda (ram ribuan vs m_dep &amp;lt; 1) → scaling untuk knn, logreg, ann 
+ fitur paling membedakan kelas (korelasi, boxplot per kelas) 
+ pasangan fitur yang sangat berkorelasi 
+ "><h3>Checklist temuan EDA</h3><ul>
+<li>Ukuran data, jumlah fitur numerik / biner / kategorikal</li>
+<li>Missing &amp; duplikat (jumlah dan keputusan)</li>
+<li>Distribusi kelas: seimbang atau tidak → metrik yang dipakai</li>
+<li>Nilai mustahil (0 pada ukuran layar, umur negatif) → jadikan NaN</li>
+<li>Skala fitur sangat berbeda (ram ribuan vs m_dep &lt; 1) → scaling untuk KNN, LogReg, ANN</li>
+<li>Fitur paling membedakan kelas (korelasi, boxplot per kelas)</li>
+<li>Pasangan fitur yang sangat berkorelasi</li>
+</ul></article></div></section><section id="k-prep" class="sec"><header class="sec-h"><h2>Preprocessing &amp; feature engineering</h2><p>Transformasi yang belajar dari data (imputer, scaler, selector) dimasukkan ke Pipeline agar hanya di-fit pada data latih.</p></header><div class="cards"><article class="card" data-search="nilai 0 yang tidak masuk akal → nan df_clean = df.copy()
+for col in [&#x27;sc_w&#x27;, &#x27;px_height&#x27;]:
+    df_clean[col] = df_clean[col].replace(0, np.nan)
+df_clean.isna().sum()[lambda s: s &gt; 0]     # sc_w 180, px_height 2
+# imputasi tidak dilakukan di sini, tapi di pipeline (simpleimputer) setelah split"><div class="card-h"><h3>Nilai 0 yang tidak masuk akal → NaN</h3><button class="copy" type="button" aria-label="Salin kode Nilai 0 yang tidak masuk akal → NaN">Salin</button></div><pre><code class="language-python">df_clean = df.copy()
+for col in [&#x27;sc_w&#x27;, &#x27;px_height&#x27;]:
+    df_clean[col] = df_clean[col].replace(0, np.nan)
+df_clean.isna().sum()[lambda s: s &gt; 0]     # sc_w 180, px_height 2
+# imputasi TIDAK dilakukan di sini, tapi di Pipeline (SimpleImputer) setelah split</code></pre><p class="note">Membuang 180 baris = buang 9% data. Mengganti NaN dengan median <b>di dalam Pipeline</b> lebih aman dari leakage.</p></article><article class="card" data-search="feature engineering df_fe = df_clean.copy()
+df_fe[&#x27;px_area&#x27;]   = df_fe[&#x27;px_height&#x27;] * df_fe[&#x27;px_width&#x27;]          # resolusi total
+df_fe[&#x27;sc_area&#x27;]   = df_fe[&#x27;sc_h&#x27;] * df_fe[&#x27;sc_w&#x27;]                    # luas layar (cm²)
+df_fe[&#x27;batt_per_g&#x27;] = df_fe[&#x27;battery_power&#x27;] / df_fe[&#x27;mobile_wt&#x27;]     # mah per gram
+df_fe[&#x27;n_network&#x27;]  = df_fe[[&#x27;three_g&#x27;, &#x27;four_g&#x27;, &#x27;wifi&#x27;, &#x27;blue&#x27;]].sum(axis=1)
+df_fe[[&#x27;px_area&#x27;, &#x27;sc_area&#x27;, &#x27;batt_per_g&#x27;, &#x27;n_network&#x27;, target]].corr()[target].round(3)"><div class="card-h"><h3>Feature engineering</h3><button class="copy" type="button" aria-label="Salin kode Feature engineering">Salin</button></div><pre><code class="language-python">df_fe = df_clean.copy()
+df_fe[&#x27;px_area&#x27;]   = df_fe[&#x27;px_height&#x27;] * df_fe[&#x27;px_width&#x27;]          # resolusi total
+df_fe[&#x27;sc_area&#x27;]   = df_fe[&#x27;sc_h&#x27;] * df_fe[&#x27;sc_w&#x27;]                    # luas layar (cm²)
+df_fe[&#x27;batt_per_g&#x27;] = df_fe[&#x27;battery_power&#x27;] / df_fe[&#x27;mobile_wt&#x27;]     # mAh per gram
+df_fe[&#x27;n_network&#x27;]  = df_fe[[&#x27;three_g&#x27;, &#x27;four_g&#x27;, &#x27;wifi&#x27;, &#x27;blue&#x27;]].sum(axis=1)
+df_fe[[&#x27;px_area&#x27;, &#x27;sc_area&#x27;, &#x27;batt_per_g&#x27;, &#x27;n_network&#x27;, TARGET]].corr()[TARGET].round(3)</code></pre><p class="note">Fitur baru harus bisa dijustifikasi (makna fisik) dan dibuktikan lewat korelasi atau skor CV. Operasi per baris seperti ini aman dilakukan sebelum split.</p></article><article class="card" data-search="x, y &amp; split stratified x = df_clean.drop(columns=target)
+y = df_clean[target]
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.2, stratify=y, random_state=random_state)
+print(x_train.shape, x_test.shape)                       # (1600, 20) (400, 20)
+print(y_train.value_counts(normalize=true).sort_index())  # proporsi sama dengan data asli
+skf = stratifiedkfold(n_splits=5, shuffle=true, random_state=random_state)"><div class="card-h"><h3>X, y &amp; split stratified</h3><button class="copy" type="button" aria-label="Salin kode X, y &amp; split stratified">Salin</button></div><pre><code class="language-python">X = df_clean.drop(columns=TARGET)
+y = df_clean[TARGET]
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=RANDOM_STATE)
+print(X_train.shape, X_test.shape)                       # (1600, 20) (400, 20)
+print(y_train.value_counts(normalize=True).sort_index())  # proporsi sama dengan data asli
+skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)</code></pre><p class="note"><code>stratify=y</code> menjaga proporsi kelas di train dan test. <code>random_state</code> membuat hasil bisa diulang.</p></article><article class="card" data-search="pipeline preprocessing (fungsi, bukan objek bersama) def prep(scale=true):
+    # buat objek baru setiap dipanggil supaya tiap model punya imputer/scaler sendiri
+    steps = [(&#x27;imp&#x27;, simpleimputer(strategy=&#x27;median&#x27;))]
+    if scale:
+        steps.append((&#x27;sc&#x27;, standardscaler()))
+    return pipeline(steps)
+
+prep().fit_transform(x_train)[:2].round(2)   # cek: tanpa nan, mean≈0, std≈1"><div class="card-h"><h3>Pipeline preprocessing (fungsi, bukan objek bersama)</h3><button class="copy" type="button" aria-label="Salin kode Pipeline preprocessing (fungsi, bukan objek bersama)">Salin</button></div><pre><code class="language-python">def prep(scale=True):
+    # buat objek BARU setiap dipanggil supaya tiap model punya imputer/scaler sendiri
+    steps = [(&#x27;imp&#x27;, SimpleImputer(strategy=&#x27;median&#x27;))]
+    if scale:
+        steps.append((&#x27;sc&#x27;, StandardScaler()))
+    return Pipeline(steps)
+
+prep().fit_transform(X_train)[:2].round(2)   # cek: tanpa NaN, mean≈0, std≈1</code></pre><p class="note">Jangan memakai satu objek <code>prep</code> yang sama di beberapa Pipeline: fit model kedua akan menimpa scaler model pertama.</p></article><article class="card" data-search="template data campuran (numerik + kategorikal + missing) df_mix = pd.dataframe({&#x27;umur&#x27;: [25, np.nan, 40, 35, 52, 28], &#x27;gaji&#x27;: [5, 7, np.nan, 12, 20, 6],
+                       &#x27;kota&#x27;: [&#x27;bdg&#x27;, &#x27;jkt&#x27;, &#x27;jkt&#x27;, np.nan, &#x27;sby&#x27;, &#x27;bdg&#x27;],
+                       &#x27;pendidikan&#x27;: [&#x27;s1&#x27;, &#x27;sma&#x27;, &#x27;s2&#x27;, &#x27;s1&#x27;, &#x27;s2&#x27;, &#x27;sma&#x27;], &#x27;beli&#x27;: [0, 0, 1, 1, 1, 0]})
+xm = df_mix.drop(columns=&#x27;beli&#x27;)
+num_cols = xm.select_dtypes(&#x27;number&#x27;).columns.tolist()
+cat_cols = xm.select_dtypes(exclude=&#x27;number&#x27;).columns.tolist()
+preprocessor = columntransformer([
+    (&#x27;num&#x27;, pipeline([(&#x27;imp&#x27;, simpleimputer(strategy=&#x27;median&#x27;)), (&#x27;sc&#x27;, standardscaler())]), num_cols),
+    (&#x27;cat&#x27;, pipeline([(&#x27;imp&#x27;, simpleimputer(strategy=&#x27;most_frequent&#x27;)),
+                      (&#x27;ohe&#x27;, onehotencoder(handle_unknown=&#x27;ignore&#x27;))]), cat_cols),
+])
+model_mix = pipeline([(&#x27;prep&#x27;, preprocessor), (&#x27;model&#x27;, logisticregression(max_iter=1000))])
+model_mix.fit(xm, df_mix[&#x27;beli&#x27;])
+preprocessor.get_feature_names_out()"><div class="card-h"><h3>Template data campuran (numerik + kategorikal + missing)</h3><button class="copy" type="button" aria-label="Salin kode Template data campuran (numerik + kategorikal + missing)">Salin</button></div><pre><code class="language-python">df_mix = pd.DataFrame({&#x27;umur&#x27;: [25, np.nan, 40, 35, 52, 28], &#x27;gaji&#x27;: [5, 7, np.nan, 12, 20, 6],
+                       &#x27;kota&#x27;: [&#x27;Bdg&#x27;, &#x27;Jkt&#x27;, &#x27;Jkt&#x27;, np.nan, &#x27;Sby&#x27;, &#x27;Bdg&#x27;],
+                       &#x27;pendidikan&#x27;: [&#x27;S1&#x27;, &#x27;SMA&#x27;, &#x27;S2&#x27;, &#x27;S1&#x27;, &#x27;S2&#x27;, &#x27;SMA&#x27;], &#x27;beli&#x27;: [0, 0, 1, 1, 1, 0]})
+Xm = df_mix.drop(columns=&#x27;beli&#x27;)
+num_cols = Xm.select_dtypes(&#x27;number&#x27;).columns.tolist()
+cat_cols = Xm.select_dtypes(exclude=&#x27;number&#x27;).columns.tolist()
+preprocessor = ColumnTransformer([
+    (&#x27;num&#x27;, Pipeline([(&#x27;imp&#x27;, SimpleImputer(strategy=&#x27;median&#x27;)), (&#x27;sc&#x27;, StandardScaler())]), num_cols),
+    (&#x27;cat&#x27;, Pipeline([(&#x27;imp&#x27;, SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                      (&#x27;ohe&#x27;, OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]), cat_cols),
+])
+model_mix = Pipeline([(&#x27;prep&#x27;, preprocessor), (&#x27;model&#x27;, LogisticRegression(max_iter=1000))])
+model_mix.fit(Xm, df_mix[&#x27;beli&#x27;])
+preprocessor.get_feature_names_out()</code></pre><p class="note">Ordinal (S1 &lt; S2) boleh pakai <code>OrdinalEncoder(categories=[['SMA','S1','S2']])</code>. Untuk RF, encoding tetap wajib karena scikit-learn hanya menerima angka.</p></article><article class="card" data-search="seleksi fitur mi = mutual_info_classif(simpleimputer(strategy=&#x27;median&#x27;).fit_transform(x_train), y_train,
+                         random_state=random_state)
+mi = pd.series(mi, index=x_train.columns).sort_values(ascending=false)
+mi.head(8).plot.barh(); plt.gca().invert_yaxis(); plt.title(&#x27;mutual information (train)&#x27;); plt.show()
+top_fitur = mi.head(4).index.tolist()      # [&#x27;ram&#x27;, &#x27;battery_power&#x27;, &#x27;px_width&#x27;, &#x27;px_height&#x27;]
+# di dalam pipeline (k ikut di-tuning lewat cv):
+sel_pipe = pipeline([(&#x27;prep&#x27;, prep()), (&#x27;sel&#x27;, selectkbest(f_classif, k=4)),
+                     (&#x27;model&#x27;, kneighborsclassifier())])"><div class="card-h"><h3>Seleksi fitur</h3><button class="copy" type="button" aria-label="Salin kode Seleksi fitur">Salin</button></div><pre><code class="language-python">mi = mutual_info_classif(SimpleImputer(strategy=&#x27;median&#x27;).fit_transform(X_train), y_train,
+                         random_state=RANDOM_STATE)
+mi = pd.Series(mi, index=X_train.columns).sort_values(ascending=False)
+mi.head(8).plot.barh(); plt.gca().invert_yaxis(); plt.title(&#x27;Mutual information (train)&#x27;); plt.show()
+top_fitur = mi.head(4).index.tolist()      # [&#x27;ram&#x27;, &#x27;battery_power&#x27;, &#x27;px_width&#x27;, &#x27;px_height&#x27;]
+# di dalam pipeline (k ikut di-tuning lewat CV):
+sel_pipe = Pipeline([(&#x27;prep&#x27;, prep()), (&#x27;sel&#x27;, SelectKBest(f_classif, k=4)),
+                     (&#x27;model&#x27;, KNeighborsClassifier())])</code></pre><p class="note">Hitung skor seleksi dari <b>train</b> saja. Seleksi paling berguna untuk KNN, yang semua fiturnya ikut menghitung jarak.</p></article><article class="card" data-search="kelas tidak seimbang logisticregression(class_weight=&#x27;balanced&#x27;, max_iter=1000)
+randomforestclassifier(class_weight=&#x27;balanced&#x27;, random_state=random_state)
+# metrik: f1_score(..., average=&#x27;macro&#x27;), recall per kelas di classification_report
+# oversampling (pip install imbalanced-learn), hanya di train lewat imblearn.pipeline:
+# from imblearn.pipeline import pipeline as imbpipeline
+# from imblearn.over_sampling import smote
+# imbpipeline([(&#x27;prep&#x27;, prep()), (&#x27;smote&#x27;, smote(random_state=42)), (&#x27;model&#x27;, logisticregression())])"><div class="card-h"><h3>Kelas tidak seimbang</h3><button class="copy" type="button" aria-label="Salin kode Kelas tidak seimbang">Salin</button></div><pre><code class="language-python">LogisticRegression(class_weight=&#x27;balanced&#x27;, max_iter=1000)
+RandomForestClassifier(class_weight=&#x27;balanced&#x27;, random_state=RANDOM_STATE)
+# metrik: f1_score(..., average=&#x27;macro&#x27;), recall per kelas di classification_report
+# oversampling (pip install imbalanced-learn), hanya di train lewat imblearn.pipeline:
+# from imblearn.pipeline import Pipeline as ImbPipeline
+# from imblearn.over_sampling import SMOTE
+# ImbPipeline([(&#x27;prep&#x27;, prep()), (&#x27;smote&#x27;, SMOTE(random_state=42)), (&#x27;model&#x27;, LogisticRegression())])</code></pre></article><article class="card wide" data-search="kebutuhan preprocessing per model 
+     langkah  logreg  knn  random forest  ann (mlp)    
+  imputasi missing  wajib  wajib  wajib*  wajib  
+  encoding kategori  one-hot  one-hot  one-hot / ordinal  one-hot  
+  scaling   ya    wajib   tidak perlu   wajib   
+  sensitif outlier  sedang  tinggi  rendah  sedang  
+  fitur tak relevan  diredam regularisasi   sangat merusak   diabaikan otomatis  diredam  alpha   
+  multikolinearitas  koefisien tidak stabil  bobot ganda di jarak  importance terbagi  tidak masalah  
+   
+ *  histgradientboostingclassifier  dan rf di scikit-learn ≥ 1.4 bisa menerima nan langsung, tetapi imputasi eksplisit lebih mudah dijelaskan. "><h3>Kebutuhan preprocessing per model</h3><div class="tbl"><table><thead><tr><th>Langkah</th><th>LogReg</th><th>KNN</th><th>Random Forest</th><th>ANN (MLP)</th></tr></thead><tbody>
+<tr><td>Imputasi missing</td><td>wajib</td><td>wajib</td><td>wajib*</td><td>wajib</td></tr>
+<tr><td>Encoding kategori</td><td>one-hot</td><td>one-hot</td><td>one-hot / ordinal</td><td>one-hot</td></tr>
+<tr><td>Scaling</td><td><b>ya</b></td><td><b>wajib</b></td><td>tidak perlu</td><td><b>wajib</b></td></tr>
+<tr><td>Sensitif outlier</td><td>sedang</td><td>tinggi</td><td>rendah</td><td>sedang</td></tr>
+<tr><td>Fitur tak relevan</td><td>diredam regularisasi</td><td><b>sangat merusak</b></td><td>diabaikan otomatis</td><td>diredam <code>alpha</code></td></tr>
+<tr><td>Multikolinearitas</td><td>koefisien tidak stabil</td><td>bobot ganda di jarak</td><td>importance terbagi</td><td>tidak masalah</td></tr>
+</tbody></table></div>
+<p class="note">* <code>HistGradientBoostingClassifier</code> dan RF di scikit-learn ≥ 1.4 bisa menerima NaN langsung, tetapi imputasi eksplisit lebih mudah dijelaskan.</p></article></div></section><section id="k-lr" class="sec"><header class="sec-h"><h2>Regresi Logistik</h2><p>Model linier untuk peluang kelas. Baseline yang wajib ada.</p></header><div class="cards"><article class="card" data-search="konsep 
+  biner:  z = b₀ + b₁x₁ + … + bₙxₙ, lalu p(y=1) = 1 / (1 + e −z ) (sigmoid). prediksi 1 bila p ≥ 0.5. 
+  multikelas  (4 kelas harga): satu vektor koefisien per kelas, peluang dihitung dengan  softmax  sehingga totalnya 1. 
+  regularisasi:   c  = 1/λ. c kecil → regularisasi kuat (koefisien kecil, cenderung underfit). c besar → lemah (cenderung overfit).  l1_ratio=1  (l1) bisa membuat koefisien tepat 0 = seleksi fitur. 
+  koefisien:  naik 1 satuan fitur (1 std bila di-scale) → log-odds kelas itu naik sebesar b; odds dikali e b . "><h3>Konsep</h3><p><b>Biner:</b> z = b₀ + b₁x₁ + … + bₙxₙ, lalu p(y=1) = 1 / (1 + e<sup>−z</sup>) (sigmoid). Prediksi 1 bila p ≥ 0.5.</p>
+<p><b>Multikelas</b> (4 kelas harga): satu vektor koefisien per kelas, peluang dihitung dengan <b>softmax</b> sehingga totalnya 1.</p>
+<p><b>Regularisasi:</b> <code>C</code> = 1/λ. C kecil → regularisasi kuat (koefisien kecil, cenderung underfit). C besar → lemah (cenderung overfit). <code>l1_ratio=1</code> (L1) bisa membuat koefisien tepat 0 = seleksi fitur.</p>
+<p><b>Koefisien:</b> naik 1 satuan fitur (1 std bila di-scale) → log-odds kelas itu naik sebesar b; odds dikali e<sup>b</sup>.</p></article><article class="card" data-search="model dasar logreg = pipeline([(&#x27;prep&#x27;, prep()), (&#x27;model&#x27;, logisticregression(max_iter=1000))])
+logreg.fit(x_train, y_train)
+print(&#x27;train :&#x27;, round(logreg.score(x_train, y_train), 3))
+print(&#x27;test  :&#x27;, round(logreg.score(x_test, y_test), 3))
+proba = logreg.predict_proba(x_test)          # shape (400, 4), tiap baris berjumlah 1
+pd.dataframe(proba[:5], columns=logreg.classes_).round(3)"><div class="card-h"><h3>Model dasar</h3><button class="copy" type="button" aria-label="Salin kode Model dasar">Salin</button></div><pre><code class="language-python">logreg = Pipeline([(&#x27;prep&#x27;, prep()), (&#x27;model&#x27;, LogisticRegression(max_iter=1000))])
+logreg.fit(X_train, y_train)
+print(&#x27;train :&#x27;, round(logreg.score(X_train, y_train), 3))
+print(&#x27;test  :&#x27;, round(logreg.score(X_test, y_test), 3))
+proba = logreg.predict_proba(X_test)          # shape (400, 4), tiap baris berjumlah 1
+pd.DataFrame(proba[:5], columns=logreg.classes_).round(3)</code></pre></article><article class="card" data-search="tuning c (gridsearchcv) grid_lr = gridsearchcv(
+    pipeline([(&#x27;prep&#x27;, prep()), (&#x27;model&#x27;, logisticregression(solver=&#x27;saga&#x27;, max_iter=5000))]),
+    param_grid={&#x27;model__c&#x27;: [0.01, 0.1, 1, 10, 100, 1000],
+                &#x27;model__l1_ratio&#x27;: [0, 1]},           # 0 = l2, 1 = l1 (l1 butuh solver saga/liblinear)
+    cv=skf, scoring=&#x27;accuracy&#x27;, n_jobs=-1)
+grid_lr.fit(x_train, y_train)
+print(grid_lr.best_params_, round(grid_lr.best_score_, 3))
+logreg_best = grid_lr.best_estimator_"><div class="card-h"><h3>Tuning C (GridSearchCV)</h3><button class="copy" type="button" aria-label="Salin kode Tuning C (GridSearchCV)">Salin</button></div><pre><code class="language-python">grid_lr = GridSearchCV(
+    Pipeline([(&#x27;prep&#x27;, prep()), (&#x27;model&#x27;, LogisticRegression(solver=&#x27;saga&#x27;, max_iter=5000))]),
+    param_grid={&#x27;model__C&#x27;: [0.01, 0.1, 1, 10, 100, 1000],
+                &#x27;model__l1_ratio&#x27;: [0, 1]},           # 0 = L2, 1 = L1 (L1 butuh solver saga/liblinear)
+    cv=skf, scoring=&#x27;accuracy&#x27;, n_jobs=-1)
+grid_lr.fit(X_train, y_train)
+print(grid_lr.best_params_, round(grid_lr.best_score_, 3))
+logreg_best = grid_lr.best_estimator_</code></pre><p class="note">scikit-learn &lt; 1.8 (cek <code>sklearn.__version__</code> di Colab): pakai <code>'model__penalty': ['l1', 'l2']</code> dengan <code>solver='saga'</code>, karena <code>l1_ratio</code> hanya berlaku untuk <code>penalty='elasticnet'</code>.</p></article><article class="card" data-search="interpretasi koefisien lr = logreg.named_steps[&#x27;model&#x27;]
+coef = pd.dataframe(lr.coef_.t, index=x_train.columns,
+                    columns=[f&#x27;kelas_{k}&#x27; for k in lr.classes_])   # (20 fitur × 4 kelas)
+coef.sort_values(&#x27;kelas_3&#x27;, ascending=false).round(2).head(6)
+np.exp(coef[&#x27;kelas_3&#x27;]).sort_values(ascending=false).head(4)       # odds ratio per +1 std
+coef[&#x27;kelas_3&#x27;].sort_values().plot.barh(figsize=(6, 6))
+plt.title(&#x27;koefisien logreg untuk kelas 3 (very high)&#x27;); plt.axvline(0, c=&#x27;k&#x27;, lw=.8); plt.show()"><div class="card-h"><h3>Interpretasi koefisien</h3><button class="copy" type="button" aria-label="Salin kode Interpretasi koefisien">Salin</button></div><pre><code class="language-python">lr = logreg.named_steps[&#x27;model&#x27;]
+coef = pd.DataFrame(lr.coef_.T, index=X_train.columns,
+                    columns=[f&#x27;kelas_{k}&#x27; for k in lr.classes_])   # (20 fitur × 4 kelas)
+coef.sort_values(&#x27;kelas_3&#x27;, ascending=False).round(2).head(6)
+np.exp(coef[&#x27;kelas_3&#x27;]).sort_values(ascending=False).head(4)       # odds ratio per +1 std
+coef[&#x27;kelas_3&#x27;].sort_values().plot.barh(figsize=(6, 6))
+plt.title(&#x27;Koefisien LogReg untuk kelas 3 (very high)&#x27;); plt.axvline(0, c=&#x27;k&#x27;, lw=.8); plt.show()</code></pre><p class="note">Koefisien hanya bisa dibandingkan antar fitur bila fitur sudah di-scale. Tanda + berarti fitur itu menaikkan peluang kelas tersebut.</p></article></div></section><section id="k-knn" class="sec"><header class="sec-h"><h2>K-Nearest Neighbors</h2><p>Klasifikasi berdasarkan k tetangga terdekat. Hasilnya sangat bergantung pada skala dan pilihan fitur.</p></header><div class="cards"><article class="card" data-search="konsep 
+ untuk titik baru: hitung jarak ke semua data latih, ambil  k  terdekat, kelas terbanyak = prediksi ( weights=&#x27;distance&#x27; : tetangga dekat bersuara lebih besar). 
+  jarak:  euclidean ( p=2 ) √σ(xᵢ−yᵢ)², manhattan ( p=1 ) σ|xᵢ−yᵢ|. 
+  lazy learner:   fit  hanya menyimpan data; perhitungan terjadi saat  predict . 
+  k kecil  → batas keputusan bergerigi, overfit (variance tinggi).  k besar  → terlalu halus, underfit (bias tinggi). pilih k ganjil agar voting tidak seri (untuk 2 kelas). 
+  curse of dimensionality:  makin banyak fitur, jarak antar titik makin mirip, sehingga fitur tak relevan menenggelamkan fitur penting. "><h3>Konsep</h3><p>Untuk titik baru: hitung jarak ke semua data latih, ambil <b>k</b> terdekat, kelas terbanyak = prediksi (<code>weights='distance'</code>: tetangga dekat bersuara lebih besar).</p>
+<p><b>Jarak:</b> Euclidean (<code>p=2</code>) √Σ(xᵢ−yᵢ)², Manhattan (<code>p=1</code>) Σ|xᵢ−yᵢ|.</p>
+<p><b>Lazy learner:</b> <code>fit</code> hanya menyimpan data; perhitungan terjadi saat <code>predict</code>.</p>
+<p><b>k kecil</b> → batas keputusan bergerigi, overfit (variance tinggi). <b>k besar</b> → terlalu halus, underfit (bias tinggi). Pilih k ganjil agar voting tidak seri (untuk 2 kelas).</p>
+<p><b>Curse of dimensionality:</b> makin banyak fitur, jarak antar titik makin mirip, sehingga fitur tak relevan menenggelamkan fitur penting.</p></article><article class="card" data-search="coba beberapa k, dengan &amp; tanpa scaling ks = list(range(1, 32, 2))
+skor = {&#x27;tanpa scaling&#x27;: [], &#x27;dengan scaling&#x27;: []}
+for k in ks:
+    for nama, sc in [(&#x27;tanpa scaling&#x27;, false), (&#x27;dengan scaling&#x27;, true)]:
+        m = pipeline([(&#x27;prep&#x27;, prep(scale=sc)), (&#x27;model&#x27;, kneighborsclassifier(n_neighbors=k))])
+        skor[nama].append(cross_val_score(m, x_train, y_train, cv=skf).mean())
+hasil_k = pd.dataframe(skor, index=ks)
+hasil_k.plot(marker=&#x27;o&#x27;); plt.xlabel(&#x27;k&#x27;); plt.ylabel(&#x27;accuracy (5-fold cv)&#x27;)
+plt.title(&#x27;knn: pengaruh k dan scaling&#x27;); plt.show()
+hasil_k.idxmax(), hasil_k.max().round(3)"><div class="card-h"><h3>Coba beberapa k, dengan &amp; tanpa scaling</h3><button class="copy" type="button" aria-label="Salin kode Coba beberapa k, dengan &amp; tanpa scaling">Salin</button></div><pre><code class="language-python">ks = list(range(1, 32, 2))
+skor = {&#x27;tanpa scaling&#x27;: [], &#x27;dengan scaling&#x27;: []}
+for k in ks:
+    for nama, sc in [(&#x27;tanpa scaling&#x27;, False), (&#x27;dengan scaling&#x27;, True)]:
+        m = Pipeline([(&#x27;prep&#x27;, prep(scale=sc)), (&#x27;model&#x27;, KNeighborsClassifier(n_neighbors=k))])
+        skor[nama].append(cross_val_score(m, X_train, y_train, cv=skf).mean())
+hasil_k = pd.DataFrame(skor, index=ks)
+hasil_k.plot(marker=&#x27;o&#x27;); plt.xlabel(&#x27;k&#x27;); plt.ylabel(&#x27;accuracy (5-fold CV)&#x27;)
+plt.title(&#x27;KNN: pengaruh k dan scaling&#x27;); plt.show()
+hasil_k.idxmax(), hasil_k.max().round(3)</code></pre><p class="note">Pada data ini KNN <b>tanpa</b> scaling justru jauh lebih baik (CV terbaik 0.922 vs 0.590). Tanpa scaling, jarak didominasi <code>ram</code> (skala ribuan) yang kebetulan fitur terkuat. Setelah scaling, 16 fitur yang hampir tak berhubungan dengan harga ikut berbobot sama dan menenggelamkan <code>ram</code>. Solusinya scaling + seleksi fitur (kartu berikut).</p></article><article class="card" data-search="knn + seleksi fitur + gridsearchcv knn_pipe = pipeline([(&#x27;prep&#x27;, prep()), (&#x27;sel&#x27;, selectkbest(f_classif)),
+                     (&#x27;model&#x27;, kneighborsclassifier())])
+grid_knn = gridsearchcv(knn_pipe, {
+    &#x27;sel__k&#x27;: [2, 3, 4, 6, 8, &#x27;all&#x27;],
+    &#x27;model__n_neighbors&#x27;: [5, 9, 15, 21, 31],
+    &#x27;model__weights&#x27;: [&#x27;uniform&#x27;, &#x27;distance&#x27;],
+    &#x27;model__p&#x27;: [1, 2]}, cv=skf, scoring=&#x27;accuracy&#x27;, n_jobs=-1)
+grid_knn.fit(x_train, y_train)
+print(grid_knn.best_params_, round(grid_knn.best_score_, 3))
+knn_best = grid_knn.best_estimator_
+x_train.columns[knn_best.named_steps[&#x27;sel&#x27;].get_support()].tolist()   # fitur terpilih"><div class="card-h"><h3>KNN + seleksi fitur + GridSearchCV</h3><button class="copy" type="button" aria-label="Salin kode KNN + seleksi fitur + GridSearchCV">Salin</button></div><pre><code class="language-python">knn_pipe = Pipeline([(&#x27;prep&#x27;, prep()), (&#x27;sel&#x27;, SelectKBest(f_classif)),
+                     (&#x27;model&#x27;, KNeighborsClassifier())])
+grid_knn = GridSearchCV(knn_pipe, {
+    &#x27;sel__k&#x27;: [2, 3, 4, 6, 8, &#x27;all&#x27;],
+    &#x27;model__n_neighbors&#x27;: [5, 9, 15, 21, 31],
+    &#x27;model__weights&#x27;: [&#x27;uniform&#x27;, &#x27;distance&#x27;],
+    &#x27;model__p&#x27;: [1, 2]}, cv=skf, scoring=&#x27;accuracy&#x27;, n_jobs=-1)
+grid_knn.fit(X_train, y_train)
+print(grid_knn.best_params_, round(grid_knn.best_score_, 3))
+knn_best = grid_knn.best_estimator_
+X_train.columns[knn_best.named_steps[&#x27;sel&#x27;].get_support()].tolist()   # fitur terpilih</code></pre></article><article class="card" data-search="decision boundary 2 fitur dua = [&#x27;ram&#x27;, &#x27;battery_power&#x27;]
+knn2 = pipeline([(&#x27;sc&#x27;, standardscaler()), (&#x27;model&#x27;, kneighborsclassifier(n_neighbors=15))])
+knn2.fit(x_train[dua], y_train)
+disp = decisionboundarydisplay.from_estimator(knn2, x_train[dua], response_method=&#x27;predict&#x27;, alpha=.35)
+sns.scatterplot(data=x_train.assign(kelas=y_train), x=dua[0], y=dua[1], hue=&#x27;kelas&#x27;,
+                palette=&#x27;tab10&#x27;, s=12, ax=disp.ax_)
+plt.title(&#x27;decision boundary knn (k=15)&#x27;); plt.show()"><div class="card-h"><h3>Decision boundary 2 fitur</h3><button class="copy" type="button" aria-label="Salin kode Decision boundary 2 fitur">Salin</button></div><pre><code class="language-python">dua = [&#x27;ram&#x27;, &#x27;battery_power&#x27;]
+knn2 = Pipeline([(&#x27;sc&#x27;, StandardScaler()), (&#x27;model&#x27;, KNeighborsClassifier(n_neighbors=15))])
+knn2.fit(X_train[dua], y_train)
+disp = DecisionBoundaryDisplay.from_estimator(knn2, X_train[dua], response_method=&#x27;predict&#x27;, alpha=.35)
+sns.scatterplot(data=X_train.assign(kelas=y_train), x=dua[0], y=dua[1], hue=&#x27;kelas&#x27;,
+                palette=&#x27;tab10&#x27;, s=12, ax=disp.ax_)
+plt.title(&#x27;Decision boundary KNN (k=15)&#x27;); plt.show()</code></pre><p class="note">Ganti <code>n_neighbors</code> menjadi 1 untuk melihat batas yang bergerigi (overfit).</p></article></div></section><section id="k-rf" class="sec"><header class="sec-h"><h2>Random Forest</h2><p>Ensemble bagging dari decision tree. Kuat tanpa banyak preprocessing.</p></header><div class="cards"><article class="card" data-search="konsep 
+  decision tree:  membagi data dengan pertanyaan ya/tidak (mis.  ram &amp;lt;= 2200 ) yang paling menurunkan impurity ( gini  = 1 − σpᵢ², atau entropy). 
+  random forest  = banyak tree, masing-masing dilatih pada  bootstrap sample  (sampling dengan pengembalian) dan hanya melihat  subset fitur acak  di tiap split ( max_features=&#x27;sqrt&#x27; ). prediksi = voting mayoritas. 
+ tree tunggal punya variance tinggi; merata-ratakan banyak tree yang  tidak saling berkorelasi  menurunkan variance tanpa menaikkan bias. 
+  oob score:  tiap tree tidak melihat ±37% data; data itu dipakai sebagai validasi gratis. "><h3>Konsep</h3><p><b>Decision tree:</b> membagi data dengan pertanyaan ya/tidak (mis. <code>ram &lt;= 2200</code>) yang paling menurunkan impurity (<b>Gini</b> = 1 − Σpᵢ², atau entropy).</p>
+<p><b>Random Forest</b> = banyak tree, masing-masing dilatih pada <b>bootstrap sample</b> (sampling dengan pengembalian) dan hanya melihat <b>subset fitur acak</b> di tiap split (<code>max_features='sqrt'</code>). Prediksi = voting mayoritas.</p>
+<p>Tree tunggal punya variance tinggi; merata-ratakan banyak tree yang <b>tidak saling berkorelasi</b> menurunkan variance tanpa menaikkan bias.</p>
+<p><b>OOB score:</b> tiap tree tidak melihat ±37% data; data itu dipakai sebagai validasi gratis.</p></article><article class="card" data-search="model dasar + oob rf = pipeline([(&#x27;prep&#x27;, prep(scale=false)),
+               (&#x27;model&#x27;, randomforestclassifier(n_estimators=300, oob_score=true,
+                                                random_state=random_state, n_jobs=-1))])
+rf.fit(x_train, y_train)
+print(&#x27;train :&#x27;, round(rf.score(x_train, y_train), 3))     # biasanya 1.0
+print(&#x27;oob   :&#x27;, round(rf.named_steps[&#x27;model&#x27;].oob_score_, 3))
+print(&#x27;test  :&#x27;, round(rf.score(x_test, y_test), 3))"><div class="card-h"><h3>Model dasar + OOB</h3><button class="copy" type="button" aria-label="Salin kode Model dasar + OOB">Salin</button></div><pre><code class="language-python">rf = Pipeline([(&#x27;prep&#x27;, prep(scale=False)),
+               (&#x27;model&#x27;, RandomForestClassifier(n_estimators=300, oob_score=True,
+                                                random_state=RANDOM_STATE, n_jobs=-1))])
+rf.fit(X_train, y_train)
+print(&#x27;train :&#x27;, round(rf.score(X_train, y_train), 3))     # biasanya 1.0
+print(&#x27;OOB   :&#x27;, round(rf.named_steps[&#x27;model&#x27;].oob_score_, 3))
+print(&#x27;test  :&#x27;, round(rf.score(X_test, y_test), 3))</code></pre><p class="note">Akurasi train 1.0 wajar untuk RF. Yang penting jarak antara OOB/CV dan test kecil.</p></article><article class="card" data-search="feature importance (mdi vs permutation) imp = pd.series(rf.named_steps[&#x27;model&#x27;].feature_importances_, index=x_train.columns)
+perm = permutation_importance(rf, x_test, y_test, n_repeats=10, random_state=random_state, n_jobs=-1)
+perm = pd.series(perm.importances_mean, index=x_train.columns)
+fig, ax = plt.subplots(1, 2, figsize=(12, 5))
+imp.sort_values().tail(10).plot.barh(ax=ax[0], title=&#x27;mdi (impurity, dari train)&#x27;)
+perm.sort_values().tail(10).plot.barh(ax=ax[1], title=&#x27;permutation (penurunan acc di test)&#x27;)
+plt.tight_layout(); plt.show()"><div class="card-h"><h3>Feature importance (MDI vs permutation)</h3><button class="copy" type="button" aria-label="Salin kode Feature importance (MDI vs permutation)">Salin</button></div><pre><code class="language-python">imp = pd.Series(rf.named_steps[&#x27;model&#x27;].feature_importances_, index=X_train.columns)
+perm = permutation_importance(rf, X_test, y_test, n_repeats=10, random_state=RANDOM_STATE, n_jobs=-1)
+perm = pd.Series(perm.importances_mean, index=X_train.columns)
+fig, ax = plt.subplots(1, 2, figsize=(12, 5))
+imp.sort_values().tail(10).plot.barh(ax=ax[0], title=&#x27;MDI (impurity, dari train)&#x27;)
+perm.sort_values().tail(10).plot.barh(ax=ax[1], title=&#x27;Permutation (penurunan acc di test)&#x27;)
+plt.tight_layout(); plt.show()</code></pre><p class="note">MDI cenderung melebihkan fitur kontinu dengan banyak nilai unik. Permutation importance lebih jujur: seberapa turun accuracy bila kolom itu diacak.</p></article><article class="card" data-search="tuning (randomizedsearchcv) rs_rf = randomizedsearchcv(
+    pipeline([(&#x27;prep&#x27;, prep(scale=false)), (&#x27;model&#x27;, randomforestclassifier(random_state=random_state))]),
+    param_distributions={&#x27;model__n_estimators&#x27;: [200, 300, 500],
+                         &#x27;model__max_depth&#x27;: [none, 8, 12, 20],
+                         &#x27;model__min_samples_leaf&#x27;: [1, 2, 4],
+                         &#x27;model__max_features&#x27;: [&#x27;sqrt&#x27;, 0.5, none]},
+    n_iter=12, cv=skf, scoring=&#x27;accuracy&#x27;, random_state=random_state, n_jobs=-1)
+rs_rf.fit(x_train, y_train)
+print(rs_rf.best_params_, round(rs_rf.best_score_, 3))
+rf_best = rs_rf.best_estimator_"><div class="card-h"><h3>Tuning (RandomizedSearchCV)</h3><button class="copy" type="button" aria-label="Salin kode Tuning (RandomizedSearchCV)">Salin</button></div><pre><code class="language-python">rs_rf = RandomizedSearchCV(
+    Pipeline([(&#x27;prep&#x27;, prep(scale=False)), (&#x27;model&#x27;, RandomForestClassifier(random_state=RANDOM_STATE))]),
+    param_distributions={&#x27;model__n_estimators&#x27;: [200, 300, 500],
+                         &#x27;model__max_depth&#x27;: [None, 8, 12, 20],
+                         &#x27;model__min_samples_leaf&#x27;: [1, 2, 4],
+                         &#x27;model__max_features&#x27;: [&#x27;sqrt&#x27;, 0.5, None]},
+    n_iter=12, cv=skf, scoring=&#x27;accuracy&#x27;, random_state=RANDOM_STATE, n_jobs=-1)
+rs_rf.fit(X_train, y_train)
+print(rs_rf.best_params_, round(rs_rf.best_score_, 3))
+rf_best = rs_rf.best_estimator_</code></pre><p class="note">Di data ini <code>max_features=0.5</code> menang (CV 0.89 vs 0.876 default) karena hanya sedikit fitur yang informatif: dengan <code>'sqrt'</code> (4 dari 20 fitur per split), banyak split tidak sempat melihat <code>ram</code>.</p></article></div></section><section id="k-ann" class="sec"><header class="sec-h"><h2>ANN (Multilayer Perceptron)</h2><p>Jaringan saraf tiruan: MLPClassifier untuk tugas, Keras bila diminta deep learning.</p></header><div class="cards"><article class="card" data-search="konsep 
+  neuron:  a = f(w·x + b).  layer:  input (jumlah fitur) → hidden (mis. 64 → 32) → output (jumlah kelas, aktivasi  softmax ). 
+  aktivasi hidden:   relu  max(0, z) (default),  tanh ,  logistic . 
+  training:  forward pass → loss (cross-entropy) →  backpropagation  menghitung gradien → optimizer ( adam ,  sgd ) memperbarui bobot. satu  epoch  = seluruh data train sekali lewat. 
+  mencegah overfit:   alpha  (regularisasi l2),  early_stopping=true  (berhenti saat skor validasi tidak naik), jaringan lebih kecil. 
+  wajib scaling:  gradien tidak stabil bila skala fitur berbeda jauh. "><h3>Konsep</h3><p><b>Neuron:</b> a = f(w·x + b). <b>Layer:</b> input (jumlah fitur) → hidden (mis. 64 → 32) → output (jumlah kelas, aktivasi <b>softmax</b>).</p>
+<p><b>Aktivasi hidden:</b> <code>relu</code> max(0, z) (default), <code>tanh</code>, <code>logistic</code>.</p>
+<p><b>Training:</b> forward pass → loss (cross-entropy) → <b>backpropagation</b> menghitung gradien → optimizer (<code>adam</code>, <code>sgd</code>) memperbarui bobot. Satu <b>epoch</b> = seluruh data train sekali lewat.</p>
+<p><b>Mencegah overfit:</b> <code>alpha</code> (regularisasi L2), <code>early_stopping=True</code> (berhenti saat skor validasi tidak naik), jaringan lebih kecil.</p>
+<p><b>Wajib scaling:</b> gradien tidak stabil bila skala fitur berbeda jauh.</p></article><article class="card" data-search="mlpclassifier ann = pipeline([(&#x27;prep&#x27;, prep()),
+                (&#x27;model&#x27;, mlpclassifier(hidden_layer_sizes=(64, 32), activation=&#x27;relu&#x27;, solver=&#x27;adam&#x27;,
+                                        alpha=1e-3, learning_rate_init=1e-3, max_iter=1000,
+                                        early_stopping=true, validation_fraction=0.1,
+                                        random_state=random_state))])
+ann.fit(x_train, y_train)
+print(&#x27;train :&#x27;, round(ann.score(x_train, y_train), 3))
+print(&#x27;test  :&#x27;, round(ann.score(x_test, y_test), 3))
+print(&#x27;epoch :&#x27;, ann.named_steps[&#x27;model&#x27;].n_iter_)"><div class="card-h"><h3>MLPClassifier</h3><button class="copy" type="button" aria-label="Salin kode MLPClassifier">Salin</button></div><pre><code class="language-python">ann = Pipeline([(&#x27;prep&#x27;, prep()),
+                (&#x27;model&#x27;, MLPClassifier(hidden_layer_sizes=(64, 32), activation=&#x27;relu&#x27;, solver=&#x27;adam&#x27;,
+                                        alpha=1e-3, learning_rate_init=1e-3, max_iter=1000,
+                                        early_stopping=True, validation_fraction=0.1,
+                                        random_state=RANDOM_STATE))])
+ann.fit(X_train, y_train)
+print(&#x27;train :&#x27;, round(ann.score(X_train, y_train), 3))
+print(&#x27;test  :&#x27;, round(ann.score(X_test, y_test), 3))
+print(&#x27;epoch :&#x27;, ann.named_steps[&#x27;model&#x27;].n_iter_)</code></pre></article><article class="card" data-search="kurva loss &amp; skor validasi mlp = ann.named_steps[&#x27;model&#x27;]
+fig, ax = plt.subplots(1, 2, figsize=(11, 3.5))
+ax[0].plot(mlp.loss_curve_); ax[0].set(title=&#x27;loss train&#x27;, xlabel=&#x27;epoch&#x27;)
+ax[1].plot(mlp.validation_scores_); ax[1].set(title=&#x27;accuracy validasi&#x27;, xlabel=&#x27;epoch&#x27;)
+plt.tight_layout(); plt.show()"><div class="card-h"><h3>Kurva loss &amp; skor validasi</h3><button class="copy" type="button" aria-label="Salin kode Kurva loss &amp; skor validasi">Salin</button></div><pre><code class="language-python">mlp = ann.named_steps[&#x27;model&#x27;]
+fig, ax = plt.subplots(1, 2, figsize=(11, 3.5))
+ax[0].plot(mlp.loss_curve_); ax[0].set(title=&#x27;Loss train&#x27;, xlabel=&#x27;epoch&#x27;)
+ax[1].plot(mlp.validation_scores_); ax[1].set(title=&#x27;Accuracy validasi&#x27;, xlabel=&#x27;epoch&#x27;)
+plt.tight_layout(); plt.show()</code></pre><p class="note">Loss train terus turun tetapi skor validasi datar/turun → overfit. Keduanya masih naik di epoch terakhir → tambah <code>max_iter</code>.</p></article><article class="card" data-search="tuning mlp grid_ann = gridsearchcv(
+    pipeline([(&#x27;prep&#x27;, prep()), (&#x27;model&#x27;, mlpclassifier(max_iter=2000, early_stopping=true,
+                                                        random_state=random_state))]),
+    {&#x27;model__hidden_layer_sizes&#x27;: [(32,), (64,), (64, 32)],
+     &#x27;model__alpha&#x27;: [1e-4, 1e-2, 1],
+     &#x27;model__learning_rate_init&#x27;: [1e-3, 1e-2]},
+    cv=skf, scoring=&#x27;accuracy&#x27;, n_jobs=-1)
+grid_ann.fit(x_train, y_train)
+print(grid_ann.best_params_, round(grid_ann.best_score_, 3))
+ann_best = grid_ann.best_estimator_"><div class="card-h"><h3>Tuning MLP</h3><button class="copy" type="button" aria-label="Salin kode Tuning MLP">Salin</button></div><pre><code class="language-python">grid_ann = GridSearchCV(
+    Pipeline([(&#x27;prep&#x27;, prep()), (&#x27;model&#x27;, MLPClassifier(max_iter=2000, early_stopping=True,
+                                                        random_state=RANDOM_STATE))]),
+    {&#x27;model__hidden_layer_sizes&#x27;: [(32,), (64,), (64, 32)],
+     &#x27;model__alpha&#x27;: [1e-4, 1e-2, 1],
+     &#x27;model__learning_rate_init&#x27;: [1e-3, 1e-2]},
+    cv=skf, scoring=&#x27;accuracy&#x27;, n_jobs=-1)
+grid_ann.fit(X_train, y_train)
+print(grid_ann.best_params_, round(grid_ann.best_score_, 3))
+ann_best = grid_ann.best_estimator_</code></pre></article><article class="card" data-search="versi keras (opsional) import tensorflow as tf
+from tensorflow import keras
+tf.random.set_seed(random_state)
+pre = prep().fit(x_train)                          # fit scaler di train saja
+xtr_s, xte_s = pre.transform(x_train), pre.transform(x_test)
+net = keras.sequential([
+    keras.input(shape=(xtr_s.shape[1],)),
+    keras.layers.dense(64, activation=&#x27;relu&#x27;),
+    keras.layers.dropout(0.2),
+    keras.layers.dense(32, activation=&#x27;relu&#x27;),
+    keras.layers.dense(4, activation=&#x27;softmax&#x27;),   # 4 kelas
+])
+net.compile(optimizer=&#x27;adam&#x27;, loss=&#x27;sparse_categorical_crossentropy&#x27;, metrics=[&#x27;accuracy&#x27;])
+hist = net.fit(xtr_s, y_train, validation_split=0.1, epochs=100, batch_size=32, verbose=0,
+               callbacks=[keras.callbacks.earlystopping(patience=10, restore_best_weights=true)])
+pd.dataframe(hist.history)[[&#x27;accuracy&#x27;, &#x27;val_accuracy&#x27;]].plot(); plt.xlabel(&#x27;epoch&#x27;); plt.show()
+pred_keras = net.predict(xte_s, verbose=0).argmax(axis=1)
+accuracy_score(y_test, pred_keras)"><div class="card-h"><h3>Versi Keras (opsional)</h3><button class="copy" type="button" aria-label="Salin kode Versi Keras (opsional)">Salin</button></div><pre><code class="language-python">import tensorflow as tf
+from tensorflow import keras
+tf.random.set_seed(RANDOM_STATE)
+pre = prep().fit(X_train)                          # fit scaler di train saja
+Xtr_s, Xte_s = pre.transform(X_train), pre.transform(X_test)
+net = keras.Sequential([
+    keras.Input(shape=(Xtr_s.shape[1],)),
+    keras.layers.Dense(64, activation=&#x27;relu&#x27;),
+    keras.layers.Dropout(0.2),
+    keras.layers.Dense(32, activation=&#x27;relu&#x27;),
+    keras.layers.Dense(4, activation=&#x27;softmax&#x27;),   # 4 kelas
+])
+net.compile(optimizer=&#x27;adam&#x27;, loss=&#x27;sparse_categorical_crossentropy&#x27;, metrics=[&#x27;accuracy&#x27;])
+hist = net.fit(Xtr_s, y_train, validation_split=0.1, epochs=100, batch_size=32, verbose=0,
+               callbacks=[keras.callbacks.EarlyStopping(patience=10, restore_best_weights=True)])
+pd.DataFrame(hist.history)[[&#x27;accuracy&#x27;, &#x27;val_accuracy&#x27;]].plot(); plt.xlabel(&#x27;epoch&#x27;); plt.show()
+pred_keras = net.predict(Xte_s, verbose=0).argmax(axis=1)
+accuracy_score(y_test, pred_keras)</code></pre><p class="note">Label integer 0..3 → <code>sparse_categorical_crossentropy</code>. Label one-hot → <code>categorical_crossentropy</code>. Klasifikasi biner → 1 neuron <code>sigmoid</code> + <code>binary_crossentropy</code>.</p></article></div></section><section id="k-ens" class="sec"><header class="sec-h"><h2>Ensemble</h2><p>Menggabungkan beberapa model agar kesalahannya saling menutupi.</p></header><div class="cards"><article class="card wide" data-search="jenis ensemble 
+     jenis  ide  menurunkan  kelas scikit-learn    
+   voting hard   tiap model memilih label, mayoritas menang  variance   votingclassifier(voting=&#x27;hard&#x27;)   
+   voting soft   rata-rata  predict_proba , kelas dengan peluang tertinggi menang (biasanya lebih baik dari hard)  variance   votingclassifier(voting=&#x27;soft&#x27;)   
+   stacking   prediksi model dasar (dari cv) jadi fitur untuk  meta-model   bias &amp;amp; variance   stackingclassifier   
+   bagging   model yang sama dilatih di banyak bootstrap sample, lalu voting (rf = bagging tree + fitur acak)  variance   baggingclassifier ,  randomforestclassifier   
+   boosting   model lemah dilatih berurutan, tiap model fokus pada kesalahan sebelumnya  bias   adaboostclassifier ,  gradientboostingclassifier ,  histgradientboostingclassifier   
+   
+ ensemble menguntungkan bila model dasarnya  cukup baik dan beragam  (kesalahannya tidak sama). menggabungkan model yang sangat lemah tidak menolong. "><h3>Jenis ensemble</h3><div class="tbl"><table><thead><tr><th>Jenis</th><th>Ide</th><th>Menurunkan</th><th>Kelas scikit-learn</th></tr></thead><tbody>
+<tr><td><b>Voting hard</b></td><td>tiap model memilih label, mayoritas menang</td><td>variance</td><td><code>VotingClassifier(voting='hard')</code></td></tr>
+<tr><td><b>Voting soft</b></td><td>rata-rata <code>predict_proba</code>, kelas dengan peluang tertinggi menang (biasanya lebih baik dari hard)</td><td>variance</td><td><code>VotingClassifier(voting='soft')</code></td></tr>
+<tr><td><b>Stacking</b></td><td>prediksi model dasar (dari CV) jadi fitur untuk <i>meta-model</i></td><td>bias &amp; variance</td><td><code>StackingClassifier</code></td></tr>
+<tr><td><b>Bagging</b></td><td>model yang sama dilatih di banyak bootstrap sample, lalu voting (RF = bagging tree + fitur acak)</td><td>variance</td><td><code>BaggingClassifier</code>, <code>RandomForestClassifier</code></td></tr>
+<tr><td><b>Boosting</b></td><td>model lemah dilatih berurutan, tiap model fokus pada kesalahan sebelumnya</td><td>bias</td><td><code>AdaBoostClassifier</code>, <code>GradientBoostingClassifier</code>, <code>HistGradientBoostingClassifier</code></td></tr>
+</tbody></table></div>
+<p class="note">Ensemble menguntungkan bila model dasarnya <b>cukup baik dan beragam</b> (kesalahannya tidak sama). Menggabungkan model yang sangat lemah tidak menolong.</p></article><article class="card" data-search="votingclassifier (hard vs soft) base = [(&#x27;lr&#x27;, pipeline([(&#x27;prep&#x27;, prep()), (&#x27;m&#x27;, logisticregression(max_iter=1000))])),
+        (&#x27;knn&#x27;, pipeline([(&#x27;prep&#x27;, prep()), (&#x27;sel&#x27;, selectkbest(f_classif, k=4)),
+                          (&#x27;m&#x27;, kneighborsclassifier(n_neighbors=15))])),
+        (&#x27;rf&#x27;, pipeline([(&#x27;prep&#x27;, prep(scale=false)),
+                         (&#x27;m&#x27;, randomforestclassifier(n_estimators=300, random_state=random_state))]))]
+vote_hard = votingclassifier(base, voting=&#x27;hard&#x27;).fit(x_train, y_train)
+vote_soft = votingclassifier(base, voting=&#x27;soft&#x27;).fit(x_train, y_train)   # bisa diberi weights=[2, 1, 1]
+print(&#x27;hard :&#x27;, round(vote_hard.score(x_test, y_test), 3))
+print(&#x27;soft :&#x27;, round(vote_soft.score(x_test, y_test), 3))"><div class="card-h"><h3>VotingClassifier (hard vs soft)</h3><button class="copy" type="button" aria-label="Salin kode VotingClassifier (hard vs soft)">Salin</button></div><pre><code class="language-python">base = [(&#x27;lr&#x27;, Pipeline([(&#x27;prep&#x27;, prep()), (&#x27;m&#x27;, LogisticRegression(max_iter=1000))])),
+        (&#x27;knn&#x27;, Pipeline([(&#x27;prep&#x27;, prep()), (&#x27;sel&#x27;, SelectKBest(f_classif, k=4)),
+                          (&#x27;m&#x27;, KNeighborsClassifier(n_neighbors=15))])),
+        (&#x27;rf&#x27;, Pipeline([(&#x27;prep&#x27;, prep(scale=False)),
+                         (&#x27;m&#x27;, RandomForestClassifier(n_estimators=300, random_state=RANDOM_STATE))]))]
+vote_hard = VotingClassifier(base, voting=&#x27;hard&#x27;).fit(X_train, y_train)
+vote_soft = VotingClassifier(base, voting=&#x27;soft&#x27;).fit(X_train, y_train)   # bisa diberi weights=[2, 1, 1]
+print(&#x27;hard :&#x27;, round(vote_hard.score(X_test, y_test), 3))
+print(&#x27;soft :&#x27;, round(vote_soft.score(X_test, y_test), 3))</code></pre><p class="note"><code>voting='soft'</code> butuh semua model punya <code>predict_proba</code>. Model di dalam ensemble di-<i>clone</i>, jadi objek <code>base</code> boleh dipakai ulang.</p></article><article class="card" data-search="stackingclassifier stack = stackingclassifier(
+    estimators=base,
+    final_estimator=logisticregression(max_iter=1000),
+    cv=5, n_jobs=-1)                      # meta-model dilatih dari prediksi out-of-fold
+stack.fit(x_train, y_train)
+print(&#x27;stacking :&#x27;, round(stack.score(x_test, y_test), 3))"><div class="card-h"><h3>StackingClassifier</h3><button class="copy" type="button" aria-label="Salin kode StackingClassifier">Salin</button></div><pre><code class="language-python">stack = StackingClassifier(
+    estimators=base,
+    final_estimator=LogisticRegression(max_iter=1000),
+    cv=5, n_jobs=-1)                      # meta-model dilatih dari prediksi out-of-fold
+stack.fit(X_train, y_train)
+print(&#x27;stacking :&#x27;, round(stack.score(X_test, y_test), 3))</code></pre></article><article class="card" data-search="bagging &amp; boosting bag = baggingclassifier(decisiontreeclassifier(), n_estimators=300,     # bagging tree tanpa fitur acak
+                        random_state=random_state, n_jobs=-1)
+ada = adaboostclassifier(decisiontreeclassifier(max_depth=3), n_estimators=200,
+                         learning_rate=0.5, random_state=random_state)
+gb  = gradientboostingclassifier(n_estimators=200, learning_rate=0.1, max_depth=3,
+                                 random_state=random_state)
+hgb = histgradientboostingclassifier(learning_rate=0.1, random_state=random_state)  # cepat, terima nan
+for nama, m in [(&#x27;bagging tree&#x27;, bag), (&#x27;adaboost&#x27;, ada), (&#x27;gradboost&#x27;, gb), (&#x27;histgb&#x27;, hgb)]:
+    m.fit(x_train.fillna(x_train.median()), y_train)
+    print(f&#x27;{nama:12s}&#x27;, round(m.score(x_test.fillna(x_train.median()), y_test), 3))"><div class="card-h"><h3>Bagging &amp; Boosting</h3><button class="copy" type="button" aria-label="Salin kode Bagging &amp; Boosting">Salin</button></div><pre><code class="language-python">bag = BaggingClassifier(DecisionTreeClassifier(), n_estimators=300,     # bagging tree tanpa fitur acak
+                        random_state=RANDOM_STATE, n_jobs=-1)
+ada = AdaBoostClassifier(DecisionTreeClassifier(max_depth=3), n_estimators=200,
+                         learning_rate=0.5, random_state=RANDOM_STATE)
+gb  = GradientBoostingClassifier(n_estimators=200, learning_rate=0.1, max_depth=3,
+                                 random_state=RANDOM_STATE)
+hgb = HistGradientBoostingClassifier(learning_rate=0.1, random_state=RANDOM_STATE)  # cepat, terima NaN
+for nama, m in [(&#x27;Bagging tree&#x27;, bag), (&#x27;AdaBoost&#x27;, ada), (&#x27;GradBoost&#x27;, gb), (&#x27;HistGB&#x27;, hgb)]:
+    m.fit(X_train.fillna(X_train.median()), y_train)
+    print(f&#x27;{nama:12s}&#x27;, round(m.score(X_test.fillna(X_train.median()), y_test), 3))</code></pre><p class="note">AdaBoost dengan stump bawaan (<code>max_depth=1</code>) hanya 0.49 di data 4 kelas ini; dengan tree <code>max_depth=3</code> naik ke 0.943. GradientBoosting 0.927, HistGB 0.925, Bagging tree 0.89. Learning rate kecil + estimator banyak = lebih stabil tapi lambat.</p></article></div></section><section id="k-eval" class="sec"><header class="sec-h"><h2>Evaluasi di test set</h2><p>Bandingkan semua model dengan metrik dan data uji yang sama.</p></header><div class="cards"><article class="card" data-search="evaluasi satu model def evaluasi(nama, model, tampil=true):
+    pred = model.predict(x_test)
+    if tampil:
+        print(f&#x27;=== {nama} ===  accuracy = {accuracy_score(y_test, pred):.3f}&#x27;)
+        print(classification_report(y_test, pred, digits=3,
+                                    target_names=[&#x27;low&#x27;, &#x27;medium&#x27;, &#x27;high&#x27;, &#x27;very high&#x27;]))
+        confusionmatrixdisplay.from_predictions(y_test, pred, cmap=&#x27;blues&#x27;, colorbar=false)
+        plt.title(nama); plt.grid(false); plt.show()
+    return {&#x27;model&#x27;: nama,
+            &#x27;acc_train&#x27;: model.score(x_train, y_train),
+            &#x27;acc_test&#x27;: accuracy_score(y_test, pred),
+            &#x27;precision_macro&#x27;: precision_score(y_test, pred, average=&#x27;macro&#x27;),
+            &#x27;recall_macro&#x27;: recall_score(y_test, pred, average=&#x27;macro&#x27;),
+            &#x27;f1_macro&#x27;: f1_score(y_test, pred, average=&#x27;macro&#x27;)}
+
+evaluasi(&#x27;logistic regression&#x27;, logreg)"><div class="card-h"><h3>Evaluasi satu model</h3><button class="copy" type="button" aria-label="Salin kode Evaluasi satu model">Salin</button></div><pre><code class="language-python">def evaluasi(nama, model, tampil=True):
+    pred = model.predict(X_test)
+    if tampil:
+        print(f&#x27;=== {nama} ===  accuracy = {accuracy_score(y_test, pred):.3f}&#x27;)
+        print(classification_report(y_test, pred, digits=3,
+                                    target_names=[&#x27;low&#x27;, &#x27;medium&#x27;, &#x27;high&#x27;, &#x27;very high&#x27;]))
+        ConfusionMatrixDisplay.from_predictions(y_test, pred, cmap=&#x27;Blues&#x27;, colorbar=False)
+        plt.title(nama); plt.grid(False); plt.show()
+    return {&#x27;model&#x27;: nama,
+            &#x27;acc_train&#x27;: model.score(X_train, y_train),
+            &#x27;acc_test&#x27;: accuracy_score(y_test, pred),
+            &#x27;precision_macro&#x27;: precision_score(y_test, pred, average=&#x27;macro&#x27;),
+            &#x27;recall_macro&#x27;: recall_score(y_test, pred, average=&#x27;macro&#x27;),
+            &#x27;f1_macro&#x27;: f1_score(y_test, pred, average=&#x27;macro&#x27;)}
+
+evaluasi(&#x27;Logistic Regression&#x27;, logreg)</code></pre></article><article class="card" data-search="tabel perbandingan semua model models = {&#x27;logistic regression&#x27;: logreg_best, &#x27;knn (scaled + selectkbest)&#x27;: knn_best,
+          &#x27;random forest&#x27;: rf, &#x27;ann (mlp)&#x27;: ann,
+          &#x27;voting soft&#x27;: vote_soft, &#x27;voting hard&#x27;: vote_hard}
+hasil = pd.dataframe([evaluasi(n, m, tampil=false) for n, m in models.items()]).set_index(&#x27;model&#x27;)
+hasil[&#x27;gap&#x27;] = hasil[&#x27;acc_train&#x27;] - hasil[&#x27;acc_test&#x27;]          # besar → overfit
+hasil = hasil.sort_values(&#x27;acc_test&#x27;, ascending=false).round(3)
+display(hasil)
+hasil[&#x27;acc_test&#x27;].plot.barh(xlim=(0.5, 1)); plt.gca().invert_yaxis()
+plt.title(&#x27;accuracy test per model&#x27;); plt.xlabel(&#x27;accuracy&#x27;); plt.show()"><div class="card-h"><h3>Tabel perbandingan semua model</h3><button class="copy" type="button" aria-label="Salin kode Tabel perbandingan semua model">Salin</button></div><pre><code class="language-python">models = {&#x27;Logistic Regression&#x27;: logreg_best, &#x27;KNN (scaled + SelectKBest)&#x27;: knn_best,
+          &#x27;Random Forest&#x27;: rf, &#x27;ANN (MLP)&#x27;: ann,
+          &#x27;Voting soft&#x27;: vote_soft, &#x27;Voting hard&#x27;: vote_hard}
+hasil = pd.DataFrame([evaluasi(n, m, tampil=False) for n, m in models.items()]).set_index(&#x27;model&#x27;)
+hasil[&#x27;gap&#x27;] = hasil[&#x27;acc_train&#x27;] - hasil[&#x27;acc_test&#x27;]          # besar → overfit
+hasil = hasil.sort_values(&#x27;acc_test&#x27;, ascending=False).round(3)
+display(hasil)
+hasil[&#x27;acc_test&#x27;].plot.barh(xlim=(0.5, 1)); plt.gca().invert_yaxis()
+plt.title(&#x27;Accuracy test per model&#x27;); plt.xlabel(&#x27;accuracy&#x27;); plt.show()</code></pre><p class="note">Model yang sudah di-fit (atau <code>best_estimator_</code> dari GridSearchCV) tidak perlu di-fit ulang. <code>display</code> tersedia di Jupyter/Colab; di skrip biasa pakai <code>print</code>.</p></article><article class="card" data-search="confusion matrix berdampingan fig, axes = plt.subplots(1, len(models), figsize=(4 * len(models), 3.8))
+for ax, (nama, m) in zip(axes, models.items()):
+    confusionmatrixdisplay.from_estimator(m, x_test, y_test, cmap=&#x27;blues&#x27;, colorbar=false, ax=ax)
+    ax.set_title(f&#x27;{nama}\nacc={m.score(x_test, y_test):.3f}&#x27;, fontsize=9); ax.grid(false)
+plt.tight_layout(); plt.show()"><div class="card-h"><h3>Confusion matrix berdampingan</h3><button class="copy" type="button" aria-label="Salin kode Confusion matrix berdampingan">Salin</button></div><pre><code class="language-python">fig, axes = plt.subplots(1, len(models), figsize=(4 * len(models), 3.8))
+for ax, (nama, m) in zip(axes, models.items()):
+    ConfusionMatrixDisplay.from_estimator(m, X_test, y_test, cmap=&#x27;Blues&#x27;, colorbar=False, ax=ax)
+    ax.set_title(f&#x27;{nama}\nacc={m.score(X_test, y_test):.3f}&#x27;, fontsize=9); ax.grid(False)
+plt.tight_layout(); plt.show()</code></pre></article><article class="card" data-search="roc-auc multikelas (one-vs-rest) proba = logreg_best.predict_proba(x_test)
+print(&#x27;auc macro ovr:&#x27;, round(roc_auc_score(y_test, proba, multi_class=&#x27;ovr&#x27;, average=&#x27;macro&#x27;), 4))
+fig, ax = plt.subplots(figsize=(5, 5))
+for i, kelas in enumerate(logreg_best.classes_):
+    roccurvedisplay.from_predictions(y_test == kelas, proba[:, i], name=f&#x27;kelas {kelas}&#x27;, ax=ax)
+ax.plot([0, 1], [0, 1], &#x27;k--&#x27;); ax.set_title(&#x27;roc per kelas (logreg)&#x27;); plt.show()"><div class="card-h"><h3>ROC-AUC multikelas (one-vs-rest)</h3><button class="copy" type="button" aria-label="Salin kode ROC-AUC multikelas (one-vs-rest)">Salin</button></div><pre><code class="language-python">proba = logreg_best.predict_proba(X_test)
+print(&#x27;AUC macro OvR:&#x27;, round(roc_auc_score(y_test, proba, multi_class=&#x27;ovr&#x27;, average=&#x27;macro&#x27;), 4))
+fig, ax = plt.subplots(figsize=(5, 5))
+for i, kelas in enumerate(logreg_best.classes_):
+    RocCurveDisplay.from_predictions(y_test == kelas, proba[:, i], name=f&#x27;kelas {kelas}&#x27;, ax=ax)
+ax.plot([0, 1], [0, 1], &#x27;k--&#x27;); ax.set_title(&#x27;ROC per kelas (LogReg)&#x27;); plt.show()</code></pre><p class="note">AUC dihitung dari <b>peluang</b>, bukan label. Model tanpa <code>predict_proba</code> (Voting hard) tidak bisa dihitung AUC-nya.</p></article><article class="card" data-search="cross-validation semua model (lebih stabil) cv_rows = []
+for nama, m in models.items():
+    s = cross_validate(m, x_train, y_train, cv=skf, scoring=[&#x27;accuracy&#x27;, &#x27;f1_macro&#x27;], n_jobs=-1)
+    cv_rows.append({&#x27;model&#x27;: nama, &#x27;acc_cv_mean&#x27;: s[&#x27;test_accuracy&#x27;].mean(),
+                    &#x27;acc_cv_std&#x27;: s[&#x27;test_accuracy&#x27;].std(), &#x27;f1_cv_mean&#x27;: s[&#x27;test_f1_macro&#x27;].mean()})
+pd.dataframe(cv_rows).set_index(&#x27;model&#x27;).sort_values(&#x27;acc_cv_mean&#x27;, ascending=false).round(3)"><div class="card-h"><h3>Cross-validation semua model (lebih stabil)</h3><button class="copy" type="button" aria-label="Salin kode Cross-validation semua model (lebih stabil)">Salin</button></div><pre><code class="language-python">cv_rows = []
+for nama, m in models.items():
+    s = cross_validate(m, X_train, y_train, cv=skf, scoring=[&#x27;accuracy&#x27;, &#x27;f1_macro&#x27;], n_jobs=-1)
+    cv_rows.append({&#x27;model&#x27;: nama, &#x27;acc_cv_mean&#x27;: s[&#x27;test_accuracy&#x27;].mean(),
+                    &#x27;acc_cv_std&#x27;: s[&#x27;test_accuracy&#x27;].std(), &#x27;f1_cv_mean&#x27;: s[&#x27;test_f1_macro&#x27;].mean()})
+pd.DataFrame(cv_rows).set_index(&#x27;model&#x27;).sort_values(&#x27;acc_cv_mean&#x27;, ascending=False).round(3)</code></pre><p class="note">Skor test dari 400 baris bisa berubah ±1–2% hanya karena split. Rata-rata ± std dari CV menunjukkan apakah selisih antar model benar-benar berarti.</p></article><article class="card wide" data-search="membaca metrik multikelas 
+     istilah  arti  kapan dipakai    
+   precision kelas k   dari yang diprediksi kelas k, berapa persen benar  salah tebak sebagai k itu mahal  
+   recall kelas k   dari yang sebenarnya kelas k, berapa persen tertangkap  kelewatan kelas k itu mahal  
+   f1   2·p·r / (p+r)  satu angka yang menyeimbangkan p dan r  
+   macro avg   rata-rata biasa antar kelas (semua kelas setara)  kelas tidak seimbang, peduli kelas minoritas  
+   weighted avg   rata-rata dibobot jumlah data per kelas ( support )  ingin mencerminkan distribusi data  
+   confusion matrix   baris = label asli, kolom = prediksi; diagonal = benar  melihat kelas mana yang tertukar  
+   
+ kelas harga bersifat  ordinal : kesalahan yang sehat ada di kelas tetangga (1↔2). kesalahan 0↔3 menandakan model bermasalah. "><h3>Membaca metrik multikelas</h3><div class="tbl"><table><thead><tr><th>Istilah</th><th>Arti</th><th>Kapan dipakai</th></tr></thead><tbody>
+<tr><td><b>Precision kelas k</b></td><td>dari yang diprediksi kelas k, berapa persen benar</td><td>salah tebak sebagai k itu mahal</td></tr>
+<tr><td><b>Recall kelas k</b></td><td>dari yang sebenarnya kelas k, berapa persen tertangkap</td><td>kelewatan kelas k itu mahal</td></tr>
+<tr><td><b>F1</b></td><td>2·P·R / (P+R)</td><td>satu angka yang menyeimbangkan P dan R</td></tr>
+<tr><td><b>macro avg</b></td><td>rata-rata biasa antar kelas (semua kelas setara)</td><td>kelas tidak seimbang, peduli kelas minoritas</td></tr>
+<tr><td><b>weighted avg</b></td><td>rata-rata dibobot jumlah data per kelas (<i>support</i>)</td><td>ingin mencerminkan distribusi data</td></tr>
+<tr><td><b>Confusion matrix</b></td><td>baris = label asli, kolom = prediksi; diagonal = benar</td><td>melihat kelas mana yang tertukar</td></tr>
+</tbody></table></div>
+<p class="note">Kelas harga bersifat <b>ordinal</b>: kesalahan yang sehat ada di kelas tetangga (1↔2). Kesalahan 0↔3 menandakan model bermasalah.</p></article></div></section><section id="k-analisis" class="sec"><header class="sec-h"><h2>Analisis &amp; menulis kesimpulan</h2><p>Bagian yang membedakan nilai: menjelaskan mengapa, bukan hanya angka.</p></header><div class="cards"><article class="card wide" data-search="contoh hasil pada mobile_prices 
+     model  hyperparameter  acc train  acc cv (5-fold)  acc test  f1 macro test    
+   logistic regression   scaled,  c=1 , l1 ( l1_ratio=1 )  0.983  0.966 ± 0.004   0.980    0.980   
+  stacking (lr + knn + rf → lr)   cv=5   –  –  0.970  –  
+  voting soft (lr + knn + rf)  bobot sama  0.996  0.938 ± 0.019  0.962  0.962  
+  voting hard (lr + knn + rf)  bobot sama  0.991  0.927 ± 0.023  0.952  0.952  
+  adaboost  tree  max_depth=3 , 200 estimator  –  –  0.943  –  
+  ann (mlp)  (64, 32),  alpha=1e-3 , early stopping  0.983  0.894 ± 0.020  0.925  0.925  
+  knn  scaled + selectkbest(k=4),  k=15 ,  p=1 , distance  1.000  0.904 ± 0.013  0.908  0.908  
+  random forest  300 tree, default  1.000  0.876 ± 0.030  0.880  0.879  
+  knn tanpa scaling   k=17 , semua fitur  –  0.922  –  –  
+  knn scaling, semua fitur   k=29   –  0.590  –  –  
+   
+ hasil menjalankan semua kartu di tab ini (split 80/20,  stratify=y ,  random_state=42 , scikit-learn 1.9). roc-auc macro logreg = 0.999. kesalahan logreg hanya 8 dari 400, semuanya ke kelas tetangga (1→2: 3, 2→3: 2, 3→2: 2, 1→0: 1). angka bisa sedikit berbeda di versi library lain. "><h3>Contoh hasil pada mobile_prices</h3><div class="tbl"><table><thead><tr><th>Model</th><th>Hyperparameter</th><th>Acc train</th><th>Acc CV (5-fold)</th><th>Acc test</th><th>F1 macro test</th></tr></thead><tbody>
+<tr><td><b>Logistic Regression</b></td><td>scaled, <code>C=1</code>, L1 (<code>l1_ratio=1</code>)</td><td>0.983</td><td>0.966 ± 0.004</td><td><b>0.980</b></td><td><b>0.980</b></td></tr>
+<tr><td>Stacking (LR + KNN + RF → LR)</td><td><code>cv=5</code></td><td>–</td><td>–</td><td>0.970</td><td>–</td></tr>
+<tr><td>Voting soft (LR + KNN + RF)</td><td>bobot sama</td><td>0.996</td><td>0.938 ± 0.019</td><td>0.962</td><td>0.962</td></tr>
+<tr><td>Voting hard (LR + KNN + RF)</td><td>bobot sama</td><td>0.991</td><td>0.927 ± 0.023</td><td>0.952</td><td>0.952</td></tr>
+<tr><td>AdaBoost</td><td>tree <code>max_depth=3</code>, 200 estimator</td><td>–</td><td>–</td><td>0.943</td><td>–</td></tr>
+<tr><td>ANN (MLP)</td><td>(64, 32), <code>alpha=1e-3</code>, early stopping</td><td>0.983</td><td>0.894 ± 0.020</td><td>0.925</td><td>0.925</td></tr>
+<tr><td>KNN</td><td>scaled + SelectKBest(k=4), <code>k=15</code>, <code>p=1</code>, distance</td><td>1.000</td><td>0.904 ± 0.013</td><td>0.908</td><td>0.908</td></tr>
+<tr><td>Random Forest</td><td>300 tree, default</td><td>1.000</td><td>0.876 ± 0.030</td><td>0.880</td><td>0.879</td></tr>
+<tr><td>KNN tanpa scaling</td><td><code>k=17</code>, semua fitur</td><td>–</td><td>0.922</td><td>–</td><td>–</td></tr>
+<tr><td>KNN scaling, semua fitur</td><td><code>k=29</code></td><td>–</td><td>0.590</td><td>–</td><td>–</td></tr>
+</tbody></table></div>
+<p class="note">Hasil menjalankan semua kartu di tab ini (split 80/20, <code>stratify=y</code>, <code>random_state=42</code>, scikit-learn 1.9). ROC-AUC macro LogReg = 0.999. Kesalahan LogReg hanya 8 dari 400, semuanya ke kelas tetangga (1→2: 3, 2→3: 2, 3→2: 2, 1→0: 1). Angka bisa sedikit berbeda di versi library lain.</p></article><article class="card" data-search="kelas mana yang tertukar? best_name = hasil.index[0]
+best = models[best_name]
+pred_best = best.predict(x_test)
+cm = pd.dataframe(confusion_matrix(y_test, pred_best),
+                  index=[f&#x27;asli {k}&#x27; for k in range(4)], columns=[f&#x27;pred {k}&#x27; for k in range(4)])
+salah = cm.stack()[lambda s: s &gt; 0]
+salah = salah[[a.split()[1] != b.split()[1] for a, b in salah.index]].sort_values(ascending=false)
+print(best_name); print(salah.head())               # pasangan kesalahan terbanyak
+# baris yang salah diprediksi: apa yang membuatnya sulit?
+x_err = x_test.assign(asli=y_test, pred=pred_best)[pred_best != y_test]
+x_err[[&#x27;ram&#x27;, &#x27;battery_power&#x27;, &#x27;px_width&#x27;, &#x27;asli&#x27;, &#x27;pred&#x27;]].head()"><div class="card-h"><h3>Kelas mana yang tertukar?</h3><button class="copy" type="button" aria-label="Salin kode Kelas mana yang tertukar?">Salin</button></div><pre><code class="language-python">best_name = hasil.index[0]
+best = models[best_name]
+pred_best = best.predict(X_test)
+cm = pd.DataFrame(confusion_matrix(y_test, pred_best),
+                  index=[f&#x27;asli {k}&#x27; for k in range(4)], columns=[f&#x27;pred {k}&#x27; for k in range(4)])
+salah = cm.stack()[lambda s: s &gt; 0]
+salah = salah[[a.split()[1] != b.split()[1] for a, b in salah.index]].sort_values(ascending=False)
+print(best_name); print(salah.head())               # pasangan kesalahan terbanyak
+# baris yang salah diprediksi: apa yang membuatnya sulit?
+X_err = X_test.assign(asli=y_test, pred=pred_best)[pred_best != y_test]
+X_err[[&#x27;ram&#x27;, &#x27;battery_power&#x27;, &#x27;px_width&#x27;, &#x27;asli&#x27;, &#x27;pred&#x27;]].head()</code></pre></article><article class="card" data-search="overfitting: train vs cv vs test cv_df = pd.dataframe(cv_rows).set_index(&#x27;model&#x27;)
+ov = hasil[[&#x27;acc_train&#x27;, &#x27;acc_test&#x27;]].join(cv_df[&#x27;acc_cv_mean&#x27;])
+ov.plot.bar(figsize=(9, 4), ylim=(0.5, 1.02), rot=20)
+plt.title(&#x27;train vs cv vs test&#x27;); plt.ylabel(&#x27;accuracy&#x27;); plt.tight_layout(); plt.show()"><div class="card-h"><h3>Overfitting: train vs CV vs test</h3><button class="copy" type="button" aria-label="Salin kode Overfitting: train vs CV vs test">Salin</button></div><pre><code class="language-python">cv_df = pd.DataFrame(cv_rows).set_index(&#x27;model&#x27;)
+ov = hasil[[&#x27;acc_train&#x27;, &#x27;acc_test&#x27;]].join(cv_df[&#x27;acc_cv_mean&#x27;])
+ov.plot.bar(figsize=(9, 4), ylim=(0.5, 1.02), rot=20)
+plt.title(&#x27;Train vs CV vs Test&#x27;); plt.ylabel(&#x27;accuracy&#x27;); plt.tight_layout(); plt.show()</code></pre><p class="note">Train ≫ test → overfit (RF, tree tanpa batas). Train ≈ test tapi keduanya rendah → underfit (k terlalu besar, C terlalu kecil). CV ≈ test → estimasi bisa dipercaya.</p></article><article class="card wide" data-search="pola menjawab &quot;model mana yang lebih baik dan mengapa&quot; 
+ 
+  angka:  sebut model terbaik dan metriknya di test set (accuracy, f1 macro), bandingkan dengan model lain dan dengan cv. 
+  mengapa (sifat data × sifat model):  hubungkan dengan temuan eda, misalnya hubungan fitur–target yang linier/monoton, jumlah fitur tak relevan, skala fitur. 
+  pengaruh preprocessing:  scaling, seleksi fitur, imputasi: apa efeknya pada tiap model. 
+  overfitting / stabilitas:  selisih train–test, std cv. 
+  pola kesalahan &amp;amp; batasan:  kelas mana yang tertukar, dan saran perbaikan. 
+ 
+ contoh (angka dari kartu sebelumnya): 
+ regresi logistik adalah model terbaik dengan accuracy test 0.980 dan f1 macro 0.980, di atas stacking (0.970), voting soft (0.962), ann (0.925), knn (0.908), dan random forest (0.880); urutan yang sama terlihat pada 5-fold cv (0.966 ± 0.004), jadi keunggulannya bukan kebetulan split. dari eda,  price_range  hampir ditentukan secara monoton oleh  ram  (korelasi 0.92) ditambah  battery_power  dan resolusi layar, sehingga batas antar kelas mendekati linier, cocok dengan asumsi regresi logistik, dan regularisasi l1 menekan fitur yang tidak relevan. knn sangat bergantung pada preprocessing: dengan scaling pada 20 fitur accuracy cv-nya hanya 0.59 karena 16 fitur yang tidak berhubungan dengan harga ikut menentukan jarak, dan naik ke 0.90 setelah dipilih 4 fitur teratas. random forest mencapai accuracy train 1.000 tetapi test 0.880 (overfit), karena dengan  max_features=&#x27;sqrt&#x27;  banyak split tidak melihat  ram . semua 8 kesalahan regresi logistik terjadi antar kelas bertetangga (mis. medium→high), sehingga model sudah menangkap urutan harga dengan baik. "><h3>Pola menjawab &quot;model mana yang lebih baik dan mengapa&quot;</h3><ol>
+<li><b>Angka:</b> sebut model terbaik dan metriknya di test set (accuracy, F1 macro), bandingkan dengan model lain dan dengan CV.</li>
+<li><b>Mengapa (sifat data × sifat model):</b> hubungkan dengan temuan EDA, misalnya hubungan fitur–target yang linier/monoton, jumlah fitur tak relevan, skala fitur.</li>
+<li><b>Pengaruh preprocessing:</b> scaling, seleksi fitur, imputasi: apa efeknya pada tiap model.</li>
+<li><b>Overfitting / stabilitas:</b> selisih train–test, std CV.</li>
+<li><b>Pola kesalahan &amp; batasan:</b> kelas mana yang tertukar, dan saran perbaikan.</li>
+</ol>
+<p class="lead-s">Contoh (angka dari kartu sebelumnya):</p>
+<blockquote>Regresi Logistik adalah model terbaik dengan accuracy test 0.980 dan F1 macro 0.980, di atas Stacking (0.970), Voting soft (0.962), ANN (0.925), KNN (0.908), dan Random Forest (0.880); urutan yang sama terlihat pada 5-fold CV (0.966 ± 0.004), jadi keunggulannya bukan kebetulan split. Dari EDA, <code>price_range</code> hampir ditentukan secara monoton oleh <code>ram</code> (korelasi 0.92) ditambah <code>battery_power</code> dan resolusi layar, sehingga batas antar kelas mendekati linier, cocok dengan asumsi regresi logistik, dan regularisasi L1 menekan fitur yang tidak relevan. KNN sangat bergantung pada preprocessing: dengan scaling pada 20 fitur accuracy CV-nya hanya 0.59 karena 16 fitur yang tidak berhubungan dengan harga ikut menentukan jarak, dan naik ke 0.90 setelah dipilih 4 fitur teratas. Random Forest mencapai accuracy train 1.000 tetapi test 0.880 (overfit), karena dengan <code>max_features='sqrt'</code> banyak split tidak melihat <code>ram</code>. Semua 8 kesalahan Regresi Logistik terjadi antar kelas bertetangga (mis. medium→high), sehingga model sudah menangkap urutan harga dengan baik.</blockquote></article><article class="card" data-search="checklist sebelum submit 
+ 
+ sel pertama: nama &amp;amp; nim anggota 
+  random_state  tetap di split, cv, dan model 
+ split  sebelum  imputasi/scaling/seleksi; semua transformasi di dalam pipeline 
+ tuning hanya pakai cv di train; test dipakai sekali di akhir 
+ untuk tiap model: accuracy, confusion matrix, classification report 
+ tabel perbandingan + paragraf kesimpulan 3–5 kalimat 
+ restart &amp;amp; run all, pastikan output tampil, lalu unduh  .ipynb  
+ "><h3>Checklist sebelum submit</h3><ul>
+<li>Sel pertama: nama &amp; NIM anggota</li>
+<li><code>random_state</code> tetap di split, CV, dan model</li>
+<li>Split <b>sebelum</b> imputasi/scaling/seleksi; semua transformasi di dalam Pipeline</li>
+<li>Tuning hanya pakai CV di train; test dipakai sekali di akhir</li>
+<li>Untuk tiap model: accuracy, confusion matrix, classification report</li>
+<li>Tabel perbandingan + paragraf kesimpulan 3–5 kalimat</li>
+<li>Restart &amp; Run all, pastikan output tampil, lalu unduh <code>.ipynb</code></li>
+</ul></article></div></section><section id="k-teori" class="sec"><header class="sec-h"><h2>Teori singkat &amp; error umum</h2><p>Bahan soal teori dan cara keluar dari error yang paling sering muncul.</p></header><div class="cards"><article class="card wide" data-search="jawaban singkat yang sering ditanya 
+     pertanyaan  jawaban inti    
+  mengapa  stratify=y ?  proporsi kelas di train dan test sama dengan data asli, sehingga evaluasi adil (penting bila kelas tidak seimbang).  
+  mengapa scaler di-fit di train saja?  mean/std dari test adalah informasi masa depan; memakainya =  data leakage  → skor terlalu optimis.  
+  mengapa knn/logreg/ann butuh scaling, rf tidak?  knn memakai jarak, logreg/ann memakai gradien &amp;amp; regularisasi yang sensitif skala. tree hanya membandingkan ambang per fitur, urutan nilai tidak berubah oleh scaling.  
+  pengaruh k pada knn?  k kecil → variance tinggi (overfit); k besar → bias tinggi (underfit). pilih lewat cv.  
+  arti  c  di logreg?  kebalikan kekuatan regularisasi. c kecil = koefisien ditekan (lebih sederhana).  
+  bagging vs boosting?  bagging: paralel, data bootstrap, menurunkan variance (rf). boosting: berurutan, fokus pada kesalahan, menurunkan bias (adaboost, gb).  
+  hard vs soft voting?  hard: mayoritas label. soft: rata-rata peluang; memanfaatkan keyakinan model, biasanya lebih akurat.  
+  mengapa rf acc train = 1.0?  tree tumbuh penuh hingga daun murni sehingga menghafal train; generalisasi dinilai dari oob/cv/test.  
+  mengapa ann hasilnya berubah tiap run?  bobot awal acak dan urutan batch; tetapkan  random_state .  
+  accuracy vs f1 macro?  accuracy cukup bila kelas seimbang; f1 macro memberi bobot sama ke tiap kelas sehingga kelas minoritas terlihat.  
+  mengapa tuning tidak memakai test set?  test yang dipakai memilih model ikut &quot;dilatih&quot;; skornya tidak lagi menggambarkan data baru.  
+   "><h3>Jawaban singkat yang sering ditanya</h3><div class="tbl"><table><thead><tr><th>Pertanyaan</th><th>Jawaban inti</th></tr></thead><tbody>
+<tr><td>Mengapa <code>stratify=y</code>?</td><td>Proporsi kelas di train dan test sama dengan data asli, sehingga evaluasi adil (penting bila kelas tidak seimbang).</td></tr>
+<tr><td>Mengapa scaler di-fit di train saja?</td><td>Mean/std dari test adalah informasi masa depan; memakainya = <b>data leakage</b> → skor terlalu optimis.</td></tr>
+<tr><td>Mengapa KNN/LogReg/ANN butuh scaling, RF tidak?</td><td>KNN memakai jarak, LogReg/ANN memakai gradien &amp; regularisasi yang sensitif skala. Tree hanya membandingkan ambang per fitur, urutan nilai tidak berubah oleh scaling.</td></tr>
+<tr><td>Pengaruh k pada KNN?</td><td>k kecil → variance tinggi (overfit); k besar → bias tinggi (underfit). Pilih lewat CV.</td></tr>
+<tr><td>Arti <code>C</code> di LogReg?</td><td>Kebalikan kekuatan regularisasi. C kecil = koefisien ditekan (lebih sederhana).</td></tr>
+<tr><td>Bagging vs boosting?</td><td>Bagging: paralel, data bootstrap, menurunkan variance (RF). Boosting: berurutan, fokus pada kesalahan, menurunkan bias (AdaBoost, GB).</td></tr>
+<tr><td>Hard vs soft voting?</td><td>Hard: mayoritas label. Soft: rata-rata peluang; memanfaatkan keyakinan model, biasanya lebih akurat.</td></tr>
+<tr><td>Mengapa RF acc train = 1.0?</td><td>Tree tumbuh penuh hingga daun murni sehingga menghafal train; generalisasi dinilai dari OOB/CV/test.</td></tr>
+<tr><td>Mengapa ANN hasilnya berubah tiap run?</td><td>Bobot awal acak dan urutan batch; tetapkan <code>random_state</code>.</td></tr>
+<tr><td>Accuracy vs F1 macro?</td><td>Accuracy cukup bila kelas seimbang; F1 macro memberi bobot sama ke tiap kelas sehingga kelas minoritas terlihat.</td></tr>
+<tr><td>Mengapa tuning tidak memakai test set?</td><td>Test yang dipakai memilih model ikut "dilatih"; skornya tidak lagi menggambarkan data baru.</td></tr>
+</tbody></table></div></article><article class="card wide" data-search="pesan error &amp; warning 
+     pesan  penyebab  perbaikan    
+   convergencewarning: lbfgs failed to converge   logreg/mlp belum konvergen  scaling fitur,  max_iter=1000  atau lebih  
+   valueerror: input x contains nan   ada missing, model tidak menerima nan   simpleimputer  di pipeline  
+   valueerror: could not convert string to float   kolom teks masuk ke model   onehotencoder  lewat  columntransformer   
+   invalid parameter &#x27;c&#x27; for estimator pipeline   nama parameter grid tanpa prefix langkah   &#x27;model__c&#x27;  (nama langkah + dua garis bawah)  
+   attributeerror: predict_proba is not available when voting=&#x27;hard&#x27;   hard voting tidak punya peluang   voting=&#x27;soft&#x27;   
+   futurewarning: &#x27;penalty&#x27; was deprecated in version 1.8   scikit-learn baru  pakai  l1_ratio  (0 = l2, 1 = l1) dan  c   
+   the least populated class in y has only 1 members    stratify /stratifiedkfold dengan kelas sangat kecil  gabungkan kelas langka atau kurangi  n_splits   
+   x has 4 features, but ... is expecting 20 features   kolom saat predict berbeda dengan saat fit  pakai daftar kolom yang sama ( x_test[cols] )  
+  accuracy 1.0 di test  target bocor ke fitur, atau test = train  cek  x.columns  tidak berisi target / turunannya  
+   "><h3>Pesan error &amp; warning</h3><div class="tbl"><table><thead><tr><th>Pesan</th><th>Penyebab</th><th>Perbaikan</th></tr></thead><tbody>
+<tr><td><code>ConvergenceWarning: lbfgs failed to converge</code></td><td>LogReg/MLP belum konvergen</td><td>scaling fitur, <code>max_iter=1000</code> atau lebih</td></tr>
+<tr><td><code>ValueError: Input X contains NaN</code></td><td>ada missing, model tidak menerima NaN</td><td><code>SimpleImputer</code> di Pipeline</td></tr>
+<tr><td><code>ValueError: could not convert string to float</code></td><td>kolom teks masuk ke model</td><td><code>OneHotEncoder</code> lewat <code>ColumnTransformer</code></td></tr>
+<tr><td><code>Invalid parameter 'C' for estimator Pipeline</code></td><td>nama parameter grid tanpa prefix langkah</td><td><code>'model__C'</code> (nama langkah + dua garis bawah)</td></tr>
+<tr><td><code>AttributeError: predict_proba is not available when voting='hard'</code></td><td>hard voting tidak punya peluang</td><td><code>voting='soft'</code></td></tr>
+<tr><td><code>FutureWarning: 'penalty' was deprecated in version 1.8</code></td><td>scikit-learn baru</td><td>pakai <code>l1_ratio</code> (0 = L2, 1 = L1) dan <code>C</code></td></tr>
+<tr><td><code>The least populated class in y has only 1 members</code></td><td><code>stratify</code>/StratifiedKFold dengan kelas sangat kecil</td><td>gabungkan kelas langka atau kurangi <code>n_splits</code></td></tr>
+<tr><td><code>X has 4 features, but ... is expecting 20 features</code></td><td>kolom saat predict berbeda dengan saat fit</td><td>pakai daftar kolom yang sama (<code>X_test[cols]</code>)</td></tr>
+<tr><td>Accuracy 1.0 di test</td><td>target bocor ke fitur, atau test = train</td><td>cek <code>X.columns</code> tidak berisi target / turunannya</td></tr>
+</tbody></table></div></article></div></section></div>
 <div class="panel" id="panel-prediksi" role="tabpanel" aria-labelledby="tab-prediksi" data-tab="prediksi"><div class="flow"><b>P08: Setup dataset</b>→<b>Soal 1 cleaning</b>→<b>Soal 2–6 visualisasi</b>→<b>Soal 7 debugging</b>→<b>Tugas analisis</b>→<b>Teori</b>→<b>P09: scikit-learn</b></div><section id="p-intro" class="sec"><header class="sec-h"><h2>Studi kasus: Kopi Senja</h2><p>Prediksi Praktikum 08 · visualisasi & cleaning data</p></header><div class="cards"><article class="card wide" data-search="skenario kopi senja"><h3>Skenario</h3><div class="pq-intro"><p>Kamu adalah analis data di jaringan kedai <strong>Kopi Senja</strong> yang punya 4 cabang: Bandung, Jakarta, Surabaya, dan Yogyakarta.
 Manajer memberikan data transaksi <strong>September–Oktober 2026</strong>. Data ini diambil dari 4 sistem kasir yang berbeda,
 sehingga <strong>kotor</strong>: penulisan nama cabang tidak seragam, harga tersimpan sebagai teks (<code>"Rp 27.000"</code>, <code>"?"</code>),
@@ -9655,9 +10439,10 @@ z
 <li><b>IF5100-11</b> Data Processing Pipeline, EDA, Data Pre-processing, Feature Engineering<span>dasar tab Cleaning Data</span></li>
 <li><b>IF5100-12a</b> Data Visualization: tujuan visualisasi, teknik visual analitik, visual encoding, Python (pandas, matplotlib, seaborn)<span>dasar tab Visualisasi</span></li>
 <li><b>IF5100-12b</b> Independent Study Dataviz 2: 17 contoh grafik berdasarkan taksonomi Andy Kirk<span>dasar snippet & ilustrasi grafik</span></li>
+<li><b>IF5100-14b</b> Classification Classroom Study: dataset mobile_prices, KNN &amp; Logistic Regression, evaluasi dan perbandingan<span>dasar tab Klasifikasi</span></li>
 </ul>
 <p class="note">File slide hanya dibagikan lewat Teams kelas, jadi tidak diunggah ke web publik ini.</p>
-</article></div></section><section id="m-docs" class="sec"><header class="sec-h"><h2>Dokumentasi library</h2><p>Rujukan resmi untuk setiap fungsi yang dipakai di web ini.</p></header><div class="cards"><article class="card" data-search="pandas user guide https://pandas.pydata.org/docs/user_guide/index.html panduan lengkap pandas. group by: split-apply-combine https://pandas.pydata.org/docs/user_guide/groupby.html &lt;code&gt;groupby&lt;/code&gt;, &lt;code&gt;agg&lt;/code&gt;, &lt;code&gt;transform&lt;/code&gt;. reshaping &amp; pivot tables https://pandas.pydata.org/docs/user_guide/reshaping.html &lt;code&gt;pivot_table&lt;/code&gt;, &lt;code&gt;melt&lt;/code&gt;, &lt;code&gt;stack/unstack&lt;/code&gt;, &lt;code&gt;crosstab&lt;/code&gt;. working with missing data https://pandas.pydata.org/docs/user_guide/missing_data.html &lt;code&gt;isna&lt;/code&gt;, &lt;code&gt;fillna&lt;/code&gt;, &lt;code&gt;dropna&lt;/code&gt;, &lt;code&gt;interpolate&lt;/code&gt;. working with text data https://pandas.pydata.org/docs/user_guide/text.html &lt;code&gt;.str.strip/.lower/.replace/.extract&lt;/code&gt;. time series https://pandas.pydata.org/docs/user_guide/timeseries.html &lt;code&gt;to_datetime&lt;/code&gt;, &lt;code&gt;resample&lt;/code&gt;, &lt;code&gt;rolling&lt;/code&gt;. chart visualization https://pandas.pydata.org/docs/user_guide/visualization.html &lt;code&gt;df.plot(kind=...)&lt;/code&gt;."><h3>pandas</h3><ul class="links"><li><a href="https://pandas.pydata.org/docs/user_guide/index.html" target="_blank" rel="noopener">User Guide</a><span class="dom">pandas.pydata.org</span><p>Panduan lengkap pandas.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/groupby.html" target="_blank" rel="noopener">Group by: split-apply-combine</a><span class="dom">pandas.pydata.org</span><p><code>groupby</code>, <code>agg</code>, <code>transform</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/reshaping.html" target="_blank" rel="noopener">Reshaping &amp; pivot tables</a><span class="dom">pandas.pydata.org</span><p><code>pivot_table</code>, <code>melt</code>, <code>stack/unstack</code>, <code>crosstab</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/missing_data.html" target="_blank" rel="noopener">Working with missing data</a><span class="dom">pandas.pydata.org</span><p><code>isna</code>, <code>fillna</code>, <code>dropna</code>, <code>interpolate</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/text.html" target="_blank" rel="noopener">Working with text data</a><span class="dom">pandas.pydata.org</span><p><code>.str.strip/.lower/.replace/.extract</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/timeseries.html" target="_blank" rel="noopener">Time series</a><span class="dom">pandas.pydata.org</span><p><code>to_datetime</code>, <code>resample</code>, <code>rolling</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/visualization.html" target="_blank" rel="noopener">Chart visualization</a><span class="dom">pandas.pydata.org</span><p><code>df.plot(kind=...)</code>.</p></li></ul></article><article class="card" data-search="matplotlib users guide https://matplotlib.org/stable/users/index.html konsep figure, axes, dan styling. examples gallery https://matplotlib.org/stable/gallery/index.html contoh kode untuk hampir semua jenis grafik. choosing colormaps https://matplotlib.org/stable/users/explain/colors/colormaps.html sequential, diverging, dan qualitative."><h3>matplotlib</h3><ul class="links"><li><a href="https://matplotlib.org/stable/users/index.html" target="_blank" rel="noopener">Users guide</a><span class="dom">matplotlib.org</span><p>Konsep figure, axes, dan styling.</p></li><li><a href="https://matplotlib.org/stable/gallery/index.html" target="_blank" rel="noopener">Examples gallery</a><span class="dom">matplotlib.org</span><p>Contoh kode untuk hampir semua jenis grafik.</p></li><li><a href="https://matplotlib.org/stable/users/explain/colors/colormaps.html" target="_blank" rel="noopener">Choosing colormaps</a><span class="dom">matplotlib.org</span><p>Sequential, diverging, dan qualitative.</p></li></ul></article><article class="card" data-search="seaborn tutorial https://seaborn.pydata.org/tutorial.html distribusi, kategori, relasi, dan tema. api reference https://seaborn.pydata.org/api.html daftar fungsi dan parameternya. example gallery https://seaborn.pydata.org/examples/index.html contoh grafik beserta kodenya."><h3>seaborn</h3><ul class="links"><li><a href="https://seaborn.pydata.org/tutorial.html" target="_blank" rel="noopener">Tutorial</a><span class="dom">seaborn.pydata.org</span><p>Distribusi, kategori, relasi, dan tema.</p></li><li><a href="https://seaborn.pydata.org/api.html" target="_blank" rel="noopener">API reference</a><span class="dom">seaborn.pydata.org</span><p>Daftar fungsi dan parameternya.</p></li><li><a href="https://seaborn.pydata.org/examples/index.html" target="_blank" rel="noopener">Example gallery</a><span class="dom">seaborn.pydata.org</span><p>Contoh grafik beserta kodenya.</p></li></ul></article><article class="card" data-search="plotly &amp; lainnya plotly express https://plotly.com/python/plotly-express/ &lt;code&gt;px.bar&lt;/code&gt;, &lt;code&gt;px.scatter&lt;/code&gt;, &lt;code&gt;px.treemap&lt;/code&gt;, dll. sankey diagram https://plotly.com/python/sankey-diagram/ &lt;code&gt;go.sankey&lt;/code&gt;. treemap https://plotly.com/python/treemaps/ &lt;code&gt;px.treemap&lt;/code&gt; dan &lt;code&gt;path&lt;/code&gt;. candlestick https://plotly.com/python/candlestick-charts/ &lt;code&gt;go.candlestick&lt;/code&gt;. scatter matrix (splom) https://plotly.com/python/splom/ &lt;code&gt;go.splom&lt;/code&gt;. pywaffle https://github.com/gyli/pywaffle waffle / square pie chart. wordcloud https://amueller.github.io/word_cloud/ &lt;code&gt;wordcloud&lt;/code&gt;, stopwords. scikit-learn: preprocessing https://scikit-learn.org/stable/modules/preprocessing.html &lt;code&gt;minmaxscaler&lt;/code&gt;, &lt;code&gt;standardscaler&lt;/code&gt;, encoder."><h3>plotly &amp; lainnya</h3><ul class="links"><li><a href="https://plotly.com/python/plotly-express/" target="_blank" rel="noopener">Plotly Express</a><span class="dom">plotly.com</span><p><code>px.bar</code>, <code>px.scatter</code>, <code>px.treemap</code>, dll.</p></li><li><a href="https://plotly.com/python/sankey-diagram/" target="_blank" rel="noopener">Sankey diagram</a><span class="dom">plotly.com</span><p><code>go.Sankey</code>.</p></li><li><a href="https://plotly.com/python/treemaps/" target="_blank" rel="noopener">Treemap</a><span class="dom">plotly.com</span><p><code>px.treemap</code> dan <code>path</code>.</p></li><li><a href="https://plotly.com/python/candlestick-charts/" target="_blank" rel="noopener">Candlestick</a><span class="dom">plotly.com</span><p><code>go.Candlestick</code>.</p></li><li><a href="https://plotly.com/python/splom/" target="_blank" rel="noopener">Scatter matrix (SPLOM)</a><span class="dom">plotly.com</span><p><code>go.Splom</code>.</p></li><li><a href="https://github.com/gyli/PyWaffle" target="_blank" rel="noopener">PyWaffle</a><span class="dom">github.com</span><p>Waffle / square pie chart.</p></li><li><a href="https://amueller.github.io/word_cloud/" target="_blank" rel="noopener">wordcloud</a><span class="dom">amueller.github.io</span><p><code>WordCloud</code>, stopwords.</p></li><li><a href="https://scikit-learn.org/stable/modules/preprocessing.html" target="_blank" rel="noopener">scikit-learn: preprocessing</a><span class="dom">scikit-learn.org</span><p><code>MinMaxScaler</code>, <code>StandardScaler</code>, encoder.</p></li></ul></article></div></section><section id="m-colab" class="sec"><header class="sec-h"><h2>Colab &amp; dataset</h2><p>Import data dan dataset yang dipakai di slide 12b.</p></header><div class="cards"><article class="card" data-search="google colab external data: drive, upload, url https://colab.research.google.com/notebooks/io.ipynb cara resmi mount google drive dan upload file di colab. pandas cookbook (independent study sebelumnya) https://tutswiki.com/pandas-cookbook/ tutorial pandas chapter 1–8."><h3>Google Colab</h3><ul class="links"><li><a href="https://colab.research.google.com/notebooks/io.ipynb" target="_blank" rel="noopener">External data: Drive, upload, URL</a><span class="dom">colab.research.google.com</span><p>Cara resmi mount Google Drive dan upload file di Colab.</p></li><li><a href="https://tutswiki.com/pandas-cookbook/" target="_blank" rel="noopener">Pandas Cookbook (independent study sebelumnya)</a><span class="dom">tutswiki.com</span><p>Tutorial pandas Chapter 1–8.</p></li></ul></article><article class="card" data-search="dataset kaggle dari slide indonesia coronavirus cases https://www.kaggle.com/datasets/ardisragen/indonesia-coronavirus-cases &lt;code&gt;patient.csv&lt;/code&gt;, &lt;code&gt;cases.csv&lt;/code&gt;: dot plot, bar, histogram, pie, stacked, line, area. vehicle dataset from cardekho https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho &lt;code&gt;cardata.csv&lt;/code&gt;: waffle chart. data for datavis https://www.kaggle.com/datasets/alexisbcook/data-for-datavis &lt;code&gt;insurance.csv&lt;/code&gt;: scatter plot. word cloud with python (kickstarter) https://www.kaggle.com/code/adiljadoon/word-cloud-with-python &lt;code&gt;most_backed.csv&lt;/code&gt;: word cloud. pima indians diabetes database https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database &lt;code&gt;diabetes.csv&lt;/code&gt;: scatter matrix. apple stock prices 2010–2017 https://www.kaggle.com/datasets/fayomi/apple-stock-prices-from-20102017 &lt;code&gt;apple.csv&lt;/code&gt;: candlestick."><h3>Dataset Kaggle dari slide</h3><ul class="links"><li><a href="https://www.kaggle.com/datasets/ardisragen/indonesia-coronavirus-cases" target="_blank" rel="noopener">Indonesia Coronavirus Cases</a><span class="dom">kaggle.com</span><p><code>patient.csv</code>, <code>cases.csv</code>: dot plot, bar, histogram, pie, stacked, line, area.</p></li><li><a href="https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho" target="_blank" rel="noopener">Vehicle dataset from CarDekho</a><span class="dom">kaggle.com</span><p><code>cardata.csv</code>: waffle chart.</p></li><li><a href="https://www.kaggle.com/datasets/alexisbcook/data-for-datavis" target="_blank" rel="noopener">Data for Datavis</a><span class="dom">kaggle.com</span><p><code>insurance.csv</code>: scatter plot.</p></li><li><a href="https://www.kaggle.com/code/adiljadoon/word-cloud-with-python" target="_blank" rel="noopener">Word cloud with Python (Kickstarter)</a><span class="dom">kaggle.com</span><p><code>most_backed.csv</code>: word cloud.</p></li><li><a href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database" target="_blank" rel="noopener">Pima Indians Diabetes Database</a><span class="dom">kaggle.com</span><p><code>diabetes.csv</code>: scatter matrix.</p></li><li><a href="https://www.kaggle.com/datasets/fayomi/apple-stock-prices-from-20102017" target="_blank" rel="noopener">Apple Stock Prices 2010–2017</a><span class="dom">kaggle.com</span><p><code>apple.csv</code>: candlestick.</p></li></ul><p class="note">Dua link terakhir tidak merespons saat dicek otomatis. Kalau tidak bisa dibuka, cari judul datasetnya di Kaggle.</p></article></div></section><section id="m-viz" class="sec"><header class="sec-h"><h2>Memilih grafik &amp; warna</h2><p>Bantuan memilih bentuk grafik dan palet.</p></header><div class="cards"><article class="card" data-search="memilih grafik from data to viz https://www.data-to-viz.com/ pohon keputusan: tipe data → grafik yang cocok. python graph gallery https://python-graph-gallery.com/ ratusan contoh grafik matplotlib/seaborn/plotly. ft visual vocabulary https://github.com/financial-times/chart-doctor/tree/main/visual-vocabulary grafik dikelompokkan berdasarkan tujuan (deviation, ranking, part-to-whole, …)."><h3>Memilih grafik</h3><ul class="links"><li><a href="https://www.data-to-viz.com/" target="_blank" rel="noopener">From Data to Viz</a><span class="dom">data-to-viz.com</span><p>Pohon keputusan: tipe data → grafik yang cocok.</p></li><li><a href="https://python-graph-gallery.com/" target="_blank" rel="noopener">Python Graph Gallery</a><span class="dom">python-graph-gallery.com</span><p>Ratusan contoh grafik matplotlib/seaborn/plotly.</p></li><li><a href="https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary" target="_blank" rel="noopener">FT Visual Vocabulary</a><span class="dom">github.com</span><p>Grafik dikelompokkan berdasarkan tujuan (deviation, ranking, part-to-whole, …).</p></li></ul></article><article class="card" data-search="warna &amp; persepsi colorbrewer https://colorbrewer2.org/ palet sequential, diverging, qualitative yang aman buta warna. anscombe&#x27;s quartet https://en.wikipedia.org/wiki/anscombe%27s_quartet kenapa data harus divisualisasikan, bukan hanya diringkas."><h3>Warna &amp; persepsi</h3><ul class="links"><li><a href="https://colorbrewer2.org/" target="_blank" rel="noopener">ColorBrewer</a><span class="dom">colorbrewer2.org</span><p>Palet sequential, diverging, qualitative yang aman buta warna.</p></li><li><a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet" target="_blank" rel="noopener">Anscombe&#x27;s quartet</a><span class="dom">en.wikipedia.org</span><p>Kenapa data harus divisualisasikan, bukan hanya diringkas.</p></li></ul></article></div></section><section id="m-buku" class="sec"><header class="sec-h"><h2>Buku rujukan slide</h2><p>Daftar pustaka slide 12a.</p></header><div class="cards"><article class="card wide" data-search="buku"><h3>Buku</h3>
+</article></div></section><section id="m-docs" class="sec"><header class="sec-h"><h2>Dokumentasi library</h2><p>Rujukan resmi untuk setiap fungsi yang dipakai di web ini.</p></header><div class="cards"><article class="card" data-search="pandas user guide https://pandas.pydata.org/docs/user_guide/index.html panduan lengkap pandas. group by: split-apply-combine https://pandas.pydata.org/docs/user_guide/groupby.html &lt;code&gt;groupby&lt;/code&gt;, &lt;code&gt;agg&lt;/code&gt;, &lt;code&gt;transform&lt;/code&gt;. reshaping &amp; pivot tables https://pandas.pydata.org/docs/user_guide/reshaping.html &lt;code&gt;pivot_table&lt;/code&gt;, &lt;code&gt;melt&lt;/code&gt;, &lt;code&gt;stack/unstack&lt;/code&gt;, &lt;code&gt;crosstab&lt;/code&gt;. working with missing data https://pandas.pydata.org/docs/user_guide/missing_data.html &lt;code&gt;isna&lt;/code&gt;, &lt;code&gt;fillna&lt;/code&gt;, &lt;code&gt;dropna&lt;/code&gt;, &lt;code&gt;interpolate&lt;/code&gt;. working with text data https://pandas.pydata.org/docs/user_guide/text.html &lt;code&gt;.str.strip/.lower/.replace/.extract&lt;/code&gt;. time series https://pandas.pydata.org/docs/user_guide/timeseries.html &lt;code&gt;to_datetime&lt;/code&gt;, &lt;code&gt;resample&lt;/code&gt;, &lt;code&gt;rolling&lt;/code&gt;. chart visualization https://pandas.pydata.org/docs/user_guide/visualization.html &lt;code&gt;df.plot(kind=...)&lt;/code&gt;."><h3>pandas</h3><ul class="links"><li><a href="https://pandas.pydata.org/docs/user_guide/index.html" target="_blank" rel="noopener">User Guide</a><span class="dom">pandas.pydata.org</span><p>Panduan lengkap pandas.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/groupby.html" target="_blank" rel="noopener">Group by: split-apply-combine</a><span class="dom">pandas.pydata.org</span><p><code>groupby</code>, <code>agg</code>, <code>transform</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/reshaping.html" target="_blank" rel="noopener">Reshaping &amp; pivot tables</a><span class="dom">pandas.pydata.org</span><p><code>pivot_table</code>, <code>melt</code>, <code>stack/unstack</code>, <code>crosstab</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/missing_data.html" target="_blank" rel="noopener">Working with missing data</a><span class="dom">pandas.pydata.org</span><p><code>isna</code>, <code>fillna</code>, <code>dropna</code>, <code>interpolate</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/text.html" target="_blank" rel="noopener">Working with text data</a><span class="dom">pandas.pydata.org</span><p><code>.str.strip/.lower/.replace/.extract</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/timeseries.html" target="_blank" rel="noopener">Time series</a><span class="dom">pandas.pydata.org</span><p><code>to_datetime</code>, <code>resample</code>, <code>rolling</code>.</p></li><li><a href="https://pandas.pydata.org/docs/user_guide/visualization.html" target="_blank" rel="noopener">Chart visualization</a><span class="dom">pandas.pydata.org</span><p><code>df.plot(kind=...)</code>.</p></li></ul></article><article class="card" data-search="matplotlib users guide https://matplotlib.org/stable/users/index.html konsep figure, axes, dan styling. examples gallery https://matplotlib.org/stable/gallery/index.html contoh kode untuk hampir semua jenis grafik. choosing colormaps https://matplotlib.org/stable/users/explain/colors/colormaps.html sequential, diverging, dan qualitative."><h3>matplotlib</h3><ul class="links"><li><a href="https://matplotlib.org/stable/users/index.html" target="_blank" rel="noopener">Users guide</a><span class="dom">matplotlib.org</span><p>Konsep figure, axes, dan styling.</p></li><li><a href="https://matplotlib.org/stable/gallery/index.html" target="_blank" rel="noopener">Examples gallery</a><span class="dom">matplotlib.org</span><p>Contoh kode untuk hampir semua jenis grafik.</p></li><li><a href="https://matplotlib.org/stable/users/explain/colors/colormaps.html" target="_blank" rel="noopener">Choosing colormaps</a><span class="dom">matplotlib.org</span><p>Sequential, diverging, dan qualitative.</p></li></ul></article><article class="card" data-search="seaborn tutorial https://seaborn.pydata.org/tutorial.html distribusi, kategori, relasi, dan tema. api reference https://seaborn.pydata.org/api.html daftar fungsi dan parameternya. example gallery https://seaborn.pydata.org/examples/index.html contoh grafik beserta kodenya."><h3>seaborn</h3><ul class="links"><li><a href="https://seaborn.pydata.org/tutorial.html" target="_blank" rel="noopener">Tutorial</a><span class="dom">seaborn.pydata.org</span><p>Distribusi, kategori, relasi, dan tema.</p></li><li><a href="https://seaborn.pydata.org/api.html" target="_blank" rel="noopener">API reference</a><span class="dom">seaborn.pydata.org</span><p>Daftar fungsi dan parameternya.</p></li><li><a href="https://seaborn.pydata.org/examples/index.html" target="_blank" rel="noopener">Example gallery</a><span class="dom">seaborn.pydata.org</span><p>Contoh grafik beserta kodenya.</p></li></ul></article><article class="card" data-search="plotly &amp; lainnya plotly express https://plotly.com/python/plotly-express/ &lt;code&gt;px.bar&lt;/code&gt;, &lt;code&gt;px.scatter&lt;/code&gt;, &lt;code&gt;px.treemap&lt;/code&gt;, dll. sankey diagram https://plotly.com/python/sankey-diagram/ &lt;code&gt;go.sankey&lt;/code&gt;. treemap https://plotly.com/python/treemaps/ &lt;code&gt;px.treemap&lt;/code&gt; dan &lt;code&gt;path&lt;/code&gt;. candlestick https://plotly.com/python/candlestick-charts/ &lt;code&gt;go.candlestick&lt;/code&gt;. scatter matrix (splom) https://plotly.com/python/splom/ &lt;code&gt;go.splom&lt;/code&gt;. pywaffle https://github.com/gyli/pywaffle waffle / square pie chart. wordcloud https://amueller.github.io/word_cloud/ &lt;code&gt;wordcloud&lt;/code&gt;, stopwords. scikit-learn: preprocessing https://scikit-learn.org/stable/modules/preprocessing.html &lt;code&gt;minmaxscaler&lt;/code&gt;, &lt;code&gt;standardscaler&lt;/code&gt;, encoder."><h3>plotly &amp; lainnya</h3><ul class="links"><li><a href="https://plotly.com/python/plotly-express/" target="_blank" rel="noopener">Plotly Express</a><span class="dom">plotly.com</span><p><code>px.bar</code>, <code>px.scatter</code>, <code>px.treemap</code>, dll.</p></li><li><a href="https://plotly.com/python/sankey-diagram/" target="_blank" rel="noopener">Sankey diagram</a><span class="dom">plotly.com</span><p><code>go.Sankey</code>.</p></li><li><a href="https://plotly.com/python/treemaps/" target="_blank" rel="noopener">Treemap</a><span class="dom">plotly.com</span><p><code>px.treemap</code> dan <code>path</code>.</p></li><li><a href="https://plotly.com/python/candlestick-charts/" target="_blank" rel="noopener">Candlestick</a><span class="dom">plotly.com</span><p><code>go.Candlestick</code>.</p></li><li><a href="https://plotly.com/python/splom/" target="_blank" rel="noopener">Scatter matrix (SPLOM)</a><span class="dom">plotly.com</span><p><code>go.Splom</code>.</p></li><li><a href="https://github.com/gyli/PyWaffle" target="_blank" rel="noopener">PyWaffle</a><span class="dom">github.com</span><p>Waffle / square pie chart.</p></li><li><a href="https://amueller.github.io/word_cloud/" target="_blank" rel="noopener">wordcloud</a><span class="dom">amueller.github.io</span><p><code>WordCloud</code>, stopwords.</p></li><li><a href="https://scikit-learn.org/stable/modules/preprocessing.html" target="_blank" rel="noopener">scikit-learn: preprocessing</a><span class="dom">scikit-learn.org</span><p><code>MinMaxScaler</code>, <code>StandardScaler</code>, encoder.</p></li></ul></article><article class="card" data-search="scikit-learn: klasifikasi nearest neighbors https://scikit-learn.org/stable/modules/neighbors.html &lt;code&gt;kneighborsclassifier&lt;/code&gt;, metrik jarak, &lt;code&gt;weights&lt;/code&gt;. logistic regression https://scikit-learn.org/stable/modules/linear_model.html bagian logistic regression: solver, regularisasi, multikelas. ensembles https://scikit-learn.org/stable/modules/ensemble.html random forest, bagging, adaboost, gradient boosting, voting, stacking. neural network (mlp) https://scikit-learn.org/stable/modules/neural_networks_supervised.html &lt;code&gt;mlpclassifier&lt;/code&gt;, scaling, tips praktis. model evaluation https://scikit-learn.org/stable/modules/model_evaluation.html accuracy, precision/recall/f1, confusion matrix, roc-auc multikelas. keras sequential model https://keras.io/guides/sequential_model/ ann dengan tensorflow/keras. kaggle: mobile price classification https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification deskripsi kolom dataset tugas klasifikasi."><h3>scikit-learn: klasifikasi</h3><ul class="links"><li><a href="https://scikit-learn.org/stable/modules/neighbors.html" target="_blank" rel="noopener">Nearest Neighbors</a><span class="dom">scikit-learn.org</span><p><code>KNeighborsClassifier</code>, metrik jarak, <code>weights</code>.</p></li><li><a href="https://scikit-learn.org/stable/modules/linear_model.html" target="_blank" rel="noopener">Logistic Regression</a><span class="dom">scikit-learn.org</span><p>Bagian Logistic regression: solver, regularisasi, multikelas.</p></li><li><a href="https://scikit-learn.org/stable/modules/ensemble.html" target="_blank" rel="noopener">Ensembles</a><span class="dom">scikit-learn.org</span><p>Random Forest, Bagging, AdaBoost, Gradient Boosting, Voting, Stacking.</p></li><li><a href="https://scikit-learn.org/stable/modules/neural_networks_supervised.html" target="_blank" rel="noopener">Neural network (MLP)</a><span class="dom">scikit-learn.org</span><p><code>MLPClassifier</code>, scaling, tips praktis.</p></li><li><a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener">Model evaluation</a><span class="dom">scikit-learn.org</span><p>accuracy, precision/recall/F1, confusion matrix, ROC-AUC multikelas.</p></li><li><a href="https://keras.io/guides/sequential_model/" target="_blank" rel="noopener">Keras Sequential model</a><span class="dom">keras.io</span><p>ANN dengan TensorFlow/Keras.</p></li><li><a href="https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification" target="_blank" rel="noopener">Kaggle: Mobile Price Classification</a><span class="dom">kaggle.com</span><p>Deskripsi kolom dataset tugas klasifikasi.</p></li></ul></article></div></section><section id="m-colab" class="sec"><header class="sec-h"><h2>Colab &amp; dataset</h2><p>Import data dan dataset yang dipakai di slide 12b.</p></header><div class="cards"><article class="card" data-search="google colab external data: drive, upload, url https://colab.research.google.com/notebooks/io.ipynb cara resmi mount google drive dan upload file di colab. pandas cookbook (independent study sebelumnya) https://tutswiki.com/pandas-cookbook/ tutorial pandas chapter 1–8."><h3>Google Colab</h3><ul class="links"><li><a href="https://colab.research.google.com/notebooks/io.ipynb" target="_blank" rel="noopener">External data: Drive, upload, URL</a><span class="dom">colab.research.google.com</span><p>Cara resmi mount Google Drive dan upload file di Colab.</p></li><li><a href="https://tutswiki.com/pandas-cookbook/" target="_blank" rel="noopener">Pandas Cookbook (independent study sebelumnya)</a><span class="dom">tutswiki.com</span><p>Tutorial pandas Chapter 1–8.</p></li></ul></article><article class="card" data-search="dataset kaggle dari slide indonesia coronavirus cases https://www.kaggle.com/datasets/ardisragen/indonesia-coronavirus-cases &lt;code&gt;patient.csv&lt;/code&gt;, &lt;code&gt;cases.csv&lt;/code&gt;: dot plot, bar, histogram, pie, stacked, line, area. vehicle dataset from cardekho https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho &lt;code&gt;cardata.csv&lt;/code&gt;: waffle chart. data for datavis https://www.kaggle.com/datasets/alexisbcook/data-for-datavis &lt;code&gt;insurance.csv&lt;/code&gt;: scatter plot. word cloud with python (kickstarter) https://www.kaggle.com/code/adiljadoon/word-cloud-with-python &lt;code&gt;most_backed.csv&lt;/code&gt;: word cloud. pima indians diabetes database https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database &lt;code&gt;diabetes.csv&lt;/code&gt;: scatter matrix. apple stock prices 2010–2017 https://www.kaggle.com/datasets/fayomi/apple-stock-prices-from-20102017 &lt;code&gt;apple.csv&lt;/code&gt;: candlestick."><h3>Dataset Kaggle dari slide</h3><ul class="links"><li><a href="https://www.kaggle.com/datasets/ardisragen/indonesia-coronavirus-cases" target="_blank" rel="noopener">Indonesia Coronavirus Cases</a><span class="dom">kaggle.com</span><p><code>patient.csv</code>, <code>cases.csv</code>: dot plot, bar, histogram, pie, stacked, line, area.</p></li><li><a href="https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho" target="_blank" rel="noopener">Vehicle dataset from CarDekho</a><span class="dom">kaggle.com</span><p><code>cardata.csv</code>: waffle chart.</p></li><li><a href="https://www.kaggle.com/datasets/alexisbcook/data-for-datavis" target="_blank" rel="noopener">Data for Datavis</a><span class="dom">kaggle.com</span><p><code>insurance.csv</code>: scatter plot.</p></li><li><a href="https://www.kaggle.com/code/adiljadoon/word-cloud-with-python" target="_blank" rel="noopener">Word cloud with Python (Kickstarter)</a><span class="dom">kaggle.com</span><p><code>most_backed.csv</code>: word cloud.</p></li><li><a href="https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database" target="_blank" rel="noopener">Pima Indians Diabetes Database</a><span class="dom">kaggle.com</span><p><code>diabetes.csv</code>: scatter matrix.</p></li><li><a href="https://www.kaggle.com/datasets/fayomi/apple-stock-prices-from-20102017" target="_blank" rel="noopener">Apple Stock Prices 2010–2017</a><span class="dom">kaggle.com</span><p><code>apple.csv</code>: candlestick.</p></li></ul><p class="note">Dua link terakhir tidak merespons saat dicek otomatis. Kalau tidak bisa dibuka, cari judul datasetnya di Kaggle.</p></article></div></section><section id="m-viz" class="sec"><header class="sec-h"><h2>Memilih grafik &amp; warna</h2><p>Bantuan memilih bentuk grafik dan palet.</p></header><div class="cards"><article class="card" data-search="memilih grafik from data to viz https://www.data-to-viz.com/ pohon keputusan: tipe data → grafik yang cocok. python graph gallery https://python-graph-gallery.com/ ratusan contoh grafik matplotlib/seaborn/plotly. ft visual vocabulary https://github.com/financial-times/chart-doctor/tree/main/visual-vocabulary grafik dikelompokkan berdasarkan tujuan (deviation, ranking, part-to-whole, …)."><h3>Memilih grafik</h3><ul class="links"><li><a href="https://www.data-to-viz.com/" target="_blank" rel="noopener">From Data to Viz</a><span class="dom">data-to-viz.com</span><p>Pohon keputusan: tipe data → grafik yang cocok.</p></li><li><a href="https://python-graph-gallery.com/" target="_blank" rel="noopener">Python Graph Gallery</a><span class="dom">python-graph-gallery.com</span><p>Ratusan contoh grafik matplotlib/seaborn/plotly.</p></li><li><a href="https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary" target="_blank" rel="noopener">FT Visual Vocabulary</a><span class="dom">github.com</span><p>Grafik dikelompokkan berdasarkan tujuan (deviation, ranking, part-to-whole, …).</p></li></ul></article><article class="card" data-search="warna &amp; persepsi colorbrewer https://colorbrewer2.org/ palet sequential, diverging, qualitative yang aman buta warna. anscombe&#x27;s quartet https://en.wikipedia.org/wiki/anscombe%27s_quartet kenapa data harus divisualisasikan, bukan hanya diringkas."><h3>Warna &amp; persepsi</h3><ul class="links"><li><a href="https://colorbrewer2.org/" target="_blank" rel="noopener">ColorBrewer</a><span class="dom">colorbrewer2.org</span><p>Palet sequential, diverging, qualitative yang aman buta warna.</p></li><li><a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet" target="_blank" rel="noopener">Anscombe&#x27;s quartet</a><span class="dom">en.wikipedia.org</span><p>Kenapa data harus divisualisasikan, bukan hanya diringkas.</p></li></ul></article></div></section><section id="m-buku" class="sec"><header class="sec-h"><h2>Buku rujukan slide</h2><p>Daftar pustaka slide 12a.</p></header><div class="cards"><article class="card wide" data-search="buku"><h3>Buku</h3>
 <ul class="slides">
 <li><b>Andy Kirk (2012).</b> <i>Data Visualization: A Successful Design Process.</i> Packt Publishing.<span>taksonomi categorical/hierarchical/relational/temporal/spatial</span></li>
 <li><b>Noah Iliinsky &amp; Julie Steele (2011).</b> <i>Designing Data Visualizations.</i> O'Reilly.<span>visual encoding, kompatibilitas dengan realitas, konsistensi</span></li>
@@ -9666,7 +10451,7 @@ z
 </ul>
 </article></div></section></div>
   <p class="empty" id="empty">Tidak ada snippet yang cocok di tab ini. Coba kata lain, misalnya nama fungsi (<code>histplot</code>, <code>fillna</code>), atau cari di tab lain.</p>
-  <footer>Disusun dari materi IF5100-11 (pre-processing) serta 12a Data Visualization &amp; 12b Independent Study (Andy Kirk 2012; Iliinsky &amp; Steele 2011; Spoerri). Tab NumPy, Pandas, dan Scikit-learn serta Resep Praktikum 08 disusun dari pola soal Praktikum 06–09. Ilustrasi digambar dengan matplotlib dari data contoh. Snippet diuji dengan numpy 2.5, pandas 3.1, seaborn 0.13, matplotlib 3.11, plotly 7.1, scikit-learn 1.9.</footer>
+  <footer>Disusun dari materi IF5100-11 (pre-processing) serta 12a Data Visualization &amp; 12b Independent Study (Andy Kirk 2012; Iliinsky &amp; Steele 2011; Spoerri). Tab NumPy, Pandas, dan Scikit-learn serta Resep Praktikum 08 disusun dari pola soal Praktikum 06–09. Tab Klasifikasi disusun dari tugas IF5100-14b (dataset mobile_prices); angka di tab itu adalah output asli snippet. Ilustrasi digambar dengan matplotlib dari data contoh. Snippet diuji dengan numpy 2.5, pandas 3.1, seaborn 0.13, matplotlib 3.11, plotly 7.1, scikit-learn 1.9, tensorflow (Keras).</footer>
 </main>
 </body>
 </html>

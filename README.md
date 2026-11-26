@@ -1,6 +1,6 @@
 # Panduan Praktikum IF5100
 
-Referensi cepat untuk praktikum **IF5100 Pemrograman untuk Data Analitik** (ITB), Praktikum 06–09.
+Referensi cepat untuk praktikum **IF5100 Pemrograman untuk Data Analitik** (ITB), Praktikum 06–09 dan tugas klasifikasi.
 
 - **NumPy (P06)**: membuat array, indexing & boolean mask, agregasi per `axis`, broadcasting, statistik
   deskriptif (`summarize`, IQR, SEM, confidence interval), simulasi stokastik (Monte Carlo, CLT), error umum.
@@ -9,6 +9,11 @@ Referensi cepat untuk praktikum **IF5100 Pemrograman untuk Data Analitik** (ITB)
 - **Scikit-learn (P09)**: pola `fit`/`predict`/`transform`, `train_test_split` + `stratify`, `ColumnTransformer` +
   `Pipeline`, metrik regresi & klasifikasi, threshold & ROC-AUC, cross-validation & `GridSearchCV`, KMeans, PCA,
   overfitting, data leakage, pesan error umum.
+- **Klasifikasi**: alur lengkap tugas klasifikasi (dataset `mobile_prices`): EDA untuk klasifikasi, nilai
+  mencurigakan, feature engineering & seleksi fitur, split `stratify`, `Pipeline`, lalu **Regresi Logistik, KNN,
+  Random Forest, ANN (MLPClassifier + Keras), dan Ensemble** (voting, stacking, bagging, boosting), tuning dengan
+  `GridSearchCV`, evaluasi multikelas, tabel perbandingan, analisis error, contoh paragraf kesimpulan, teori dan
+  error umum. Semua angka di tab ini adalah output asli snippet.
 - **Visualisasi**: import data di Colab (mount Drive atau upload), memilih grafik berdasarkan taksonomi
   (categorical, hierarchical, temporal, relational), **bentuk data tiap grafik** (mentah atau perlu
   `groupby` / `crosstab` / `pivot` / `melt`), snippet matplotlib/seaborn/plotly dengan ilustrasi grafik,
@@ -35,6 +40,7 @@ src/style.css         tampilan (tema terang & gelap)
 public/favicon.svg
 tools/build_page.py   isi konten: section(...) dan snip(...)
 tools/content_p06_p09.py isi tab NumPy, Pandas, Scikit-learn + Resep P08 (jalankan file ini untuk menguji snippet)
+tools/content_klasifikasi.py isi tab Klasifikasi (jalankan untuk menguji; QUICK=1 melewati kartu lambat)
 tools/make_figs.py    menggambar ilustrasi grafik -> tools/figs.json
 tools/make_prediksi.py soal prediksi: menjalankan jawaban -> tools/prediksi.json + public/notebook/*.ipynb
 vercel.json           konfigurasi deploy Vercel

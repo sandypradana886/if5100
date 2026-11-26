@@ -45,7 +45,8 @@ function setTab(name) {
   tabs.forEach(function (t) { var on = t.dataset.tab === name; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
   q.placeholder = { cleaning: 'Cari: fillna, outlier, duplikat, to_numeric…', prediksi: 'Cari: soal 3, crosstab, korelasi…', materi: 'Cari: seaborn, kaggle, groupby…',
     numpy: 'Cari: axis, linspace, broadcasting, percentile…', pandas: 'Cari: merge, groupby, loc, to_datetime…',
-    sklearn: 'Cari: Pipeline, f1, GridSearchCV, KMeans…' }[name]
+    sklearn: 'Cari: Pipeline, f1, GridSearchCV, KMeans…',
+    klasifikasi: 'Cari: KNN, scaling, Voting, MLP, confusion…' }[name]
     || 'Cari: boxplot, groupby, crosstab, heatmap…';
   try { localStorage.setItem('cheat-tab', name); } catch (e) {}
   filter();

@@ -1004,6 +1004,11 @@ for _tab in (NUMPY, PANDAS, SKLEARN):
     for _s in _tab["sections"]:
         sections.append((_s["id"], _s["title"], "", html.escape(_s["desc"]), _blocks(_s["cards"]), _tab["id"]))
 
+# ---- Klasifikasi tab: preprocessing → LogReg, KNN, RF, ANN, Ensemble → evaluasi → analisis (tools/content_klasifikasi.py) ----
+from content_klasifikasi import KLASIFIKASI
+for _s in KLASIFIKASI["sections"]:
+    sections.append((_s["id"], _s["title"], "", html.escape(_s["desc"]), _blocks(_s["cards"]), "klas"))
+
 # ---- tab 4: materi & referensi (all links checked to respond; see notes for the two that did not) ----
 from urllib.parse import urlparse
 
@@ -1028,6 +1033,7 @@ SLIDES = """
 <li><b>IF5100-11</b> Data Processing Pipeline, EDA, Data Pre-processing, Feature Engineering<span>dasar tab Cleaning Data</span></li>
 <li><b>IF5100-12a</b> Data Visualization: tujuan visualisasi, teknik visual analitik, visual encoding, Python (pandas, matplotlib, seaborn)<span>dasar tab Visualisasi</span></li>
 <li><b>IF5100-12b</b> Independent Study Dataviz 2: 17 contoh grafik berdasarkan taksonomi Andy Kirk<span>dasar snippet & ilustrasi grafik</span></li>
+<li><b>IF5100-14b</b> Classification Classroom Study: dataset mobile_prices, KNN &amp; Logistic Regression, evaluasi dan perbandingan<span>dasar tab Klasifikasi</span></li>
 </ul>
 <p class="note">File slide hanya dibagikan lewat Teams kelas, jadi tidak diunggah ke web publik ini.</p>
 """
@@ -1065,6 +1071,15 @@ section("m-docs", "Dokumentasi library", "", "Rujukan resmi untuk setiap fungsi 
         ("PyWaffle", "https://github.com/gyli/PyWaffle", "Waffle / square pie chart."),
         ("wordcloud", "https://amueller.github.io/word_cloud/", "<code>WordCloud</code>, stopwords."),
         ("scikit-learn: preprocessing", "https://scikit-learn.org/stable/modules/preprocessing.html", "<code>MinMaxScaler</code>, <code>StandardScaler</code>, encoder."),
+    ]),
+    linkcard("scikit-learn: klasifikasi", [
+        ("Nearest Neighbors", "https://scikit-learn.org/stable/modules/neighbors.html", "<code>KNeighborsClassifier</code>, metrik jarak, <code>weights</code>."),
+        ("Logistic Regression", "https://scikit-learn.org/stable/modules/linear_model.html", "Bagian Logistic regression: solver, regularisasi, multikelas."),
+        ("Ensembles", "https://scikit-learn.org/stable/modules/ensemble.html", "Random Forest, Bagging, AdaBoost, Gradient Boosting, Voting, Stacking."),
+        ("Neural network (MLP)", "https://scikit-learn.org/stable/modules/neural_networks_supervised.html", "<code>MLPClassifier</code>, scaling, tips praktis."),
+        ("Model evaluation", "https://scikit-learn.org/stable/modules/model_evaluation.html", "accuracy, precision/recall/F1, confusion matrix, ROC-AUC multikelas."),
+        ("Keras Sequential model", "https://keras.io/guides/sequential_model/", "ANN dengan TensorFlow/Keras."),
+        ("Kaggle: Mobile Price Classification", "https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification", "Deskripsi kolom dataset tugas klasifikasi."),
     ]),
 ])
 section("m-colab", "Colab & dataset", "", "Import data dan dataset yang dipakai di slide 12b.", [
@@ -1105,11 +1120,13 @@ section("m-buku", "Buku rujukan slide", "", "Daftar pustaka slide 12a.", [
 ])
 
 TABS = [("numpy", "NumPy", "numpy"), ("pandas", "Pandas", "pandas"), ("cleaning", "Cleaning", "clean"),
-        ("visualisasi", "Visualisasi", "viz"), ("sklearn", "Scikit-learn", "sklearn"), ("prediksi", "Prediksi Soal", "pred"),
+        ("visualisasi", "Visualisasi", "viz"), ("sklearn", "Scikit-learn", "sklearn"), ("klasifikasi", "Klasifikasi", "klas"),
+        ("prediksi", "Prediksi Soal", "pred"),
         ("materi", "Materi", "ref")]
 _flow = lambda steps: '<div class="flow">' + "→".join(f"<b>{html.escape(s)}</b>" for s in steps) + "</div>"
 FLOW = {
     "numpy": _flow(NUMPY["flow"]), "pandas": _flow(PANDAS["flow"]), "sklearn": _flow(SKLEARN["flow"]),
+    "klas": _flow(KLASIFIKASI["flow"]),
     "viz": '<div class="flow"><b>Import</b>→<b>Cek data</b>→<b>Ringkas (groupby/crosstab)</b>→<b>Pilih grafik</b>→<b>Plot + judul/label/legend</b>→<b>Interpretasi</b></div>'
            '<div class="legend"><span><i class="sw c-cat"></i>categorical</span><span><i class="sw c-hie"></i>hierarchical</span><span><i class="sw c-tem"></i>temporal</span><span><i class="sw c-rel"></i>relational</span><span><i class="sw c-spa"></i>spatial</span></div>',
     "clean": '<div class="flow"><b>Diagnosis</b>→<b>Seragamkan</b>→<b>Tipe & NaN</b>→<b>Duplikat</b>→<b>Missing</b>→<b>Outlier</b>→<b>Buang kolom</b>→<b>Encoding/scaling</b>→<b>Validasi</b></div>',
@@ -1141,7 +1158,7 @@ PAGE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Panduan Praktikum IF5100</title>
-<meta name="description" content="Panduan praktikum IF5100 P06–P09: NumPy, pandas, cleaning data, visualisasi (matplotlib, seaborn, plotly), scikit-learn, dan prediksi soal.">
+<meta name="description" content="Panduan praktikum IF5100 P06–P09: NumPy, pandas, cleaning data, visualisasi (matplotlib, seaborn, plotly), scikit-learn, klasifikasi (LogReg, KNN, Random Forest, ANN, ensemble), dan prediksi soal.">
 <meta name="theme-color" content="#1f77b4">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1152,7 +1169,7 @@ PAGE = """<!doctype html>
 <body>
 <header class="masthead"><div class="wrap">
   <h1>Panduan Praktikum IF5100</h1>
-  <p>NumPy, pandas, cleaning data, visualisasi, scikit-learn, dan prediksi soal praktikum · Pemrograman untuk Data Analitik, Praktikum 06–09</p>
+  <p>NumPy, pandas, cleaning data, visualisasi, scikit-learn, klasifikasi, dan prediksi soal praktikum · Pemrograman untuk Data Analitik, Praktikum 06–09</p>
 </div></header>
 <div class="top"><div class="wrap bar">
   <div class="tabs" role="tablist" aria-label="Topik">__TABS__</div>
@@ -1168,7 +1185,7 @@ PAGE = """<!doctype html>
 <main class="wrap">
   __PANELS__
   <p class="empty" id="empty">Tidak ada snippet yang cocok di tab ini. Coba kata lain, misalnya nama fungsi (<code>histplot</code>, <code>fillna</code>), atau cari di tab lain.</p>
-  <footer>Disusun dari materi IF5100-11 (pre-processing) serta 12a Data Visualization &amp; 12b Independent Study (Andy Kirk 2012; Iliinsky &amp; Steele 2011; Spoerri). Tab NumPy, Pandas, dan Scikit-learn serta Resep Praktikum 08 disusun dari pola soal Praktikum 06–09. Ilustrasi digambar dengan matplotlib dari data contoh. Snippet diuji dengan numpy 2.5, pandas 3.1, seaborn 0.13, matplotlib 3.11, plotly 7.1, scikit-learn 1.9.</footer>
+  <footer>Disusun dari materi IF5100-11 (pre-processing) serta 12a Data Visualization &amp; 12b Independent Study (Andy Kirk 2012; Iliinsky &amp; Steele 2011; Spoerri). Tab NumPy, Pandas, dan Scikit-learn serta Resep Praktikum 08 disusun dari pola soal Praktikum 06–09. Tab Klasifikasi disusun dari tugas IF5100-14b (dataset mobile_prices); angka di tab itu adalah output asli snippet. Ilustrasi digambar dengan matplotlib dari data contoh. Snippet diuji dengan numpy 2.5, pandas 3.1, seaborn 0.13, matplotlib 3.11, plotly 7.1, scikit-learn 1.9, tensorflow (Keras).</footer>
 </main>
 </body>
 </html>
