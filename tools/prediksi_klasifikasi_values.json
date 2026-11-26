@@ -1,0 +1,310 @@
+{
+ "n_raw": 3030,
+ "churn_n": 767,
+ "churn_pct": 25.313531353135314,
+ "baseline": 74.6864686468647,
+ "dup": 30,
+ "umur_salah": 8,
+ "n1": 3000,
+ "na_umur": 33,
+ "na_biaya": 40,
+ "na_metode": 30,
+ "rate_bulanan": 39.2998678996037,
+ "rate_tahunan": 13.340935005701255,
+ "rate_2th": 7.717569786535304,
+ "kor_lama": -0.29500853813916983,
+ "kor_komplain": 0.19907938178087148,
+ "kor_gangguan": 0.1823437677132922,
+ "rate_auto": 19.596541786743515,
+ "rate_bayar_max": 28.29614604462475,
+ "bayar_max": "Transfer",
+ "hasil_1": [
+  {
+   "model": "Logistic Regression",
+   "accuracy": 0.7883,
+   "precision": 0.6582,
+   "recall": 0.3421,
+   "f1": 0.4502,
+   "roc_auc": 0.8039
+  },
+  {
+   "model": "KNN (k=15)",
+   "accuracy": 0.775,
+   "precision": 0.6604,
+   "recall": 0.2303,
+   "f1": 0.3415,
+   "roc_auc": 0.7491
+  },
+  {
+   "model": "Random Forest",
+   "accuracy": 0.765,
+   "precision": 0.5696,
+   "recall": 0.2961,
+   "f1": 0.3896,
+   "roc_auc": 0.7755
+  }
+ ],
+ "tp": 52,
+ "fn": 100,
+ "fp": 27,
+ "pos_test": 152,
+ "rec05": 0.3421,
+ "rec03": 0.625,
+ "prec05": 0.6582,
+ "prec03": 0.5135,
+ "f105": 0.4502,
+ "f103": 0.5638,
+ "flag05": 79,
+ "flag03": 185,
+ "top_koef": {
+  "kontrak_Bulanan": 0.9505083306083746,
+  "kontrak_2 Tahun": -0.7731722561482471,
+  "lama_berlangganan": -0.592841329906378,
+  "biaya_bulanan": 0.5113483296033822,
+  "tiket_komplain": 0.46298950475118716
+ },
+ "top_imp": {
+  "lama_berlangganan": 0.18823910259273322,
+  "biaya_bulanan": 0.17598615100766635,
+  "umur": 0.15193606854675362,
+  "tiket_komplain": 0.08322104122423248,
+  "gangguan_per_bulan": 0.08019542121992947
+ },
+ "bal_rec0": 0.3421,
+ "bal_rec1": 0.7434,
+ "bal_prec0": 0.6582,
+ "bal_prec1": 0.4809,
+ "bal_f10": 0.4502,
+ "bal_f11": 0.584,
+ "pro_min": 278.0,
+ "pro_max": 1680.0,
+ "pro_std": 314.9074742768491,
+ "fit_kecil": "nonflavanoid_phenols",
+ "kecil_std": 0.12445334029667937,
+ "acc_knn_raw": 0.7777777777777778,
+ "acc_knn_sc": 0.9333333333333333,
+ "best_k": 23,
+ "cv_best": 0.9777777777777779,
+ "cv_k1": 0.9777777777777779,
+ "acc_knn_best": 1.0,
+ "acc_ann_train": 1.0,
+ "acc_ann_test": 0.9555555555555556,
+ "ann_epoch": 284,
+ "ann_params": "{'mlp__alpha': 1, 'mlp__hidden_layer_sizes': (32, 16), 'mlp__learning_rate_init': 0.001}",
+ "ann_cv": 0.9925925925925926,
+ "acc_ann_best": 0.9777777777777777,
+ "hasil_2": {
+  "KNN scaling (k=23)": 1.0,
+  "ANN GridSearch": 0.9778,
+  "ANN (32, 16)": 0.9556,
+  "KNN scaling (k=5)": 0.9333,
+  "KNN tanpa scaling": 0.7778
+ },
+ "bc_test_n": 114,
+ "bc_test_pos": 42,
+ "bc_poin": 2.380952380952381,
+ "wine_train_n": 133,
+ "wine_test_n": 45,
+ "bc_ganas": 212,
+ "bc_jinak": 357,
+ "bc_ganas_pct": 37.258347978910365,
+ "cv_base": {
+  "lr": {
+   "test_accuracy": 0.9736,
+   "test_recall": 0.9529
+  },
+  "knn": {
+   "test_accuracy": 0.9692,
+   "test_recall": 0.9294
+  },
+  "tree": {
+   "test_accuracy": 0.9209,
+   "test_recall": 0.8647
+  }
+ },
+ "hasil_vote": {
+  "lr": {
+   "accuracy": 0.9649,
+   "precision": 0.975,
+   "recall": 0.9286,
+   "f1": 0.9512
+  },
+  "knn": {
+   "accuracy": 0.9561,
+   "precision": 0.9744,
+   "recall": 0.9048,
+   "f1": 0.9383
+  },
+  "tree": {
+   "accuracy": 0.9123,
+   "precision": 0.9444,
+   "recall": 0.8095,
+   "f1": 0.8718
+  },
+  "Voting hard": {
+   "accuracy": 0.9649,
+   "precision": 1.0,
+   "recall": 0.9048,
+   "f1": 0.95
+  },
+  "Voting soft": {
+   "accuracy": 0.9649,
+   "precision": 1.0,
+   "recall": 0.9048,
+   "f1": 0.95
+  }
+ },
+ "hasil_tree": {
+  "Decision Tree": {
+   "acc_train": 1.0,
+   "accuracy": 0.9298,
+   "precision": 0.9048,
+   "recall": 0.9048,
+   "f1": 0.9048
+  },
+  "Bagging": {
+   "acc_train": 1.0,
+   "accuracy": 0.9737,
+   "precision": 1.0,
+   "recall": 0.9286,
+   "f1": 0.963
+  },
+  "Random Forest": {
+   "acc_train": 1.0,
+   "accuracy": 0.9737,
+   "precision": 1.0,
+   "recall": 0.9286,
+   "f1": 0.963
+  },
+  "AdaBoost": {
+   "acc_train": 1.0,
+   "accuracy": 0.9737,
+   "precision": 1.0,
+   "recall": 0.9286,
+   "f1": 0.963
+  },
+  "Gradient Boosting": {
+   "acc_train": 1.0,
+   "accuracy": 0.9649,
+   "precision": 1.0,
+   "recall": 0.9048,
+   "f1": 0.95
+  }
+ },
+ "hasil_stack": {
+  "accuracy": 0.9825,
+  "precision": 1.0,
+  "recall": 0.9524,
+  "f1": 0.9756
+ },
+ "hasil_3": {
+  "Stacking": {
+   "accuracy": 0.9825,
+   "precision": 1.0,
+   "recall": 0.9524,
+   "f1": 0.9756
+  },
+  "Bagging": {
+   "accuracy": 0.9737,
+   "precision": 1.0,
+   "recall": 0.9286,
+   "f1": 0.963
+  },
+  "Random Forest": {
+   "accuracy": 0.9737,
+   "precision": 1.0,
+   "recall": 0.9286,
+   "f1": 0.963
+  },
+  "AdaBoost": {
+   "accuracy": 0.9737,
+   "precision": 1.0,
+   "recall": 0.9286,
+   "f1": 0.963
+  },
+  "lr": {
+   "accuracy": 0.9649,
+   "precision": 0.975,
+   "recall": 0.9286,
+   "f1": 0.9512
+  },
+  "Voting hard": {
+   "accuracy": 0.9649,
+   "precision": 1.0,
+   "recall": 0.9048,
+   "f1": 0.95
+  },
+  "Voting soft": {
+   "accuracy": 0.9649,
+   "precision": 1.0,
+   "recall": 0.9048,
+   "f1": 0.95
+  },
+  "Gradient Boosting": {
+   "accuracy": 0.9649,
+   "precision": 1.0,
+   "recall": 0.9048,
+   "f1": 0.95
+  },
+  "knn": {
+   "accuracy": 0.9561,
+   "precision": 0.9744,
+   "recall": 0.9048,
+   "f1": 0.9383
+  },
+  "Decision Tree": {
+   "accuracy": 0.9298,
+   "precision": 0.9048,
+   "recall": 0.9048,
+   "f1": 0.9048
+  },
+  "tree": {
+   "accuracy": 0.9123,
+   "precision": 0.9444,
+   "recall": 0.8095,
+   "f1": 0.8718
+  }
+ },
+ "hasil_3_order": [
+  "Stacking",
+  "Bagging",
+  "Random Forest",
+  "AdaBoost",
+  "lr",
+  "Voting hard",
+  "Voting soft",
+  "Gradient Boosting",
+  "knn",
+  "Decision Tree",
+  "tree"
+ ],
+ "mdi_top": "`worst perimeter`, `worst area`, `worst concave points`",
+ "perm_top": "`worst texture`, `worst area`, `worst concave points`",
+ "best1_text": "Hasil test — Logistic Regression: accuracy 0.7883, recall 0.3421, F1 0.4502, AUC 0.8039; KNN (k=15): accuracy 0.7750, recall 0.2303, F1 0.3415, AUC 0.7491; Random Forest: accuracy 0.7650, recall 0.2961, F1 0.3896, AUC 0.7755. **Logistic Regression** memiliki F1 tertinggi sekaligus ROC-AUC tertinggi. Saya memilih **Logistic Regression**: selain skornya terbaik, koefisiennya bisa dijelaskan ke tim bisnis dan peluang churn-nya bisa dipakai untuk mengatur threshold. Hubungan fitur dengan churn pada data ini cenderung monoton (makin lama berlangganan makin kecil peluang churn, makin banyak komplain makin besar), sehingga model linier sudah cukup; Random Forest dan KNN tidak mendapat keuntungan dari fleksibilitasnya.",
+ "thr_saran": "Karena biaya kehilangan pelanggan biasanya jauh lebih besar daripada biaya menghubungi pelanggan yang sebenarnya setia, threshold **0.3** lebih cocok untuk tim retensi (F1 0.450 → 0.564).",
+ "koef_text": "`kontrak_Bulanan` (+0.951), `kontrak_2 Tahun` (-0.773), `lama_berlangganan` (-0.593), `biaya_bulanan` (+0.511), `tiket_komplain` (+0.463)",
+ "koef1": "kontrak_Bulanan",
+ "koef1_val": 0.9505083306083746,
+ "koef1_arti": "pelanggan berkontrak bulanan jauh lebih berisiko churn dibanding kontrak lain",
+ "imp_text": "`lama_berlangganan`, `biaya_bulanan`, `umur`, `tiket_komplain`, `gangguan_per_bulan`",
+ "sepakat": "`lama_berlangganan`, `biaya_bulanan`, `tiket_komplain` termasuk fitur terpenting",
+ "umur_text": "Contohnya `umur`: masuk 5 besar importance RF, padahal tidak masuk 5 besar koefisien Regresi Logistik dan tingkat churn hampir sama di semua umur. Ini bias MDI terhadap fitur kontinu, bukan bukti bahwa umur memengaruhi churn.",
+ "k_text": "Skor *k* = 1 sama tinggi (0.9778), tetapi *k* = 1 hanya mengandalkan satu tetangga sehingga sangat sensitif terhadap noise (variance tinggi); karena itu saat seri dipilih *k* yang lebih besar. *k* yang terlalu besar membuat batas keputusan terlalu halus (bias tinggi).",
+ "wine_text": "Accuracy test: KNN scaling (k=23) 1.0000, ANN GridSearch 0.9778, ANN (32, 16) 0.9556, KNN scaling (k=5) 0.9333, KNN tanpa scaling 0.7778. Model terbaik **KNN scaling (k=23)**. KNN tanpa scaling jauh tertinggal (0.7778). Namun selisih KNN scaling (k=23) dengan ANN GridSearch hanya 1 dari 45 data test, jadi keduanya praktis setara; skor CV di data train lebih bisa dipegang untuk membandingkan keduanya.",
+ "vh_acc": 0.9649,
+ "vh_rec": 0.9048,
+ "vs_acc": 0.9649,
+ "vs_rec": 0.9048,
+ "base_best": "lr",
+ "base_best_acc": 0.9649,
+ "dt_train": 1.0,
+ "dt_test": 0.9298,
+ "bag_test": 0.9737,
+ "rf_test": 0.9737,
+ "ada_test": 0.9737,
+ "gb_test": 0.9649,
+ "st_acc": 0.9825,
+ "st_rec": 0.9524,
+ "st_f1": 0.9756,
+ "rekom_text": "Urutan teratas berdasarkan recall: Stacking (recall 0.9524, F1 0.9756), Bagging (recall 0.9286, F1 0.9630), Random Forest (recall 0.9286, F1 0.9630), AdaBoost (recall 0.9286, F1 0.9630). Saya merekomendasikan **Stacking** karena recall kelas ganasnya paling tinggi (hanya 2 dari 42 pasien ganas di data test yang terlewat) dengan precision 1.0000 yang tetap tinggi."
+}

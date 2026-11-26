@@ -24,7 +24,7 @@ Referensi cepat untuk praktikum **IF5100 Pemrograman untuk Data Analitik** (ITB)
   penjelasan keputusan cleaning.
 - **Prediksi Soal**: studi kasus *Kopi Senja* dengan 7 soal kode (cleaning, 5 jenis visualisasi, debugging),
   5 tugas analisis, dan 7 soal teori. Setiap jawaban sudah dijalankan; grafik dan angka di kunci adalah output
-  aslinya. Ditambah prediksi **Praktikum 09 (scikit-learn)**. Notebook soal & kunci P08 dan P09 bisa diunduh
+  aslinya. Ditambah prediksi **Praktikum 09 (scikit-learn)** dan **Praktikum Klasifikasi** (churn, wine, kanker payudara: LogReg, KNN, RF, ANN, ensemble). Notebook soal & kunci P08, P09, dan klasifikasi bisa diunduh
   dari halaman (`public/notebook/`).
 - **Materi**: daftar slide kuliah yang menjadi dasar isi web, link dokumentasi pandas/matplotlib/seaborn/plotly,
   Colab I/O, 6 dataset Kaggle dari slide 12b, alat bantu memilih grafik & warna, dan buku rujukan.
@@ -43,6 +43,7 @@ tools/content_p06_p09.py isi tab NumPy, Pandas, Scikit-learn + Resep P08 (jalank
 tools/content_klasifikasi.py isi tab Klasifikasi (jalankan untuk menguji; QUICK=1 melewati kartu lambat)
 tools/make_figs.py    menggambar ilustrasi grafik -> tools/figs.json
 tools/make_prediksi.py soal prediksi: menjalankan jawaban -> tools/prediksi.json + public/notebook/*.ipynb
+tools/make_prediksi_klasifikasi.py prediksi praktikum klasifikasi: mengeksekusi kunci (nbclient) -> public/notebook/Prediksi_Praktikum_Klasifikasi_*.ipynb
 vercel.json           konfigurasi deploy Vercel
 ```
 

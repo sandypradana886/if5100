@@ -980,6 +980,24 @@ sections.append(("p-p09", "Prediksi Praktikum 09 (scikit-learn)", "", "Notebook 
                    "search": "prediksi praktikum 09 p09 scikit-learn sklearn regresi klasifikasi churn kmeans pipeline gridsearchcv"}],
                  "pred"))
 
+KLAS_DL = """
+<div class="pq-intro"><p>Prediksi <strong>Praktikum Klasifikasi: Random Forest, KNN, Regresi Logistik, ANN, dan Ensemble</strong>.
+Dataset dibuat atau di-<i>load</i> langsung di notebook (tanpa file CSV), 3 soal kode bergaya Praktikum 09 (bagian a–h, bilingual) dan 10 soal teori.
+Kunci sudah dijalankan; angka di pembahasan adalah output aslinya.</p>
+<ul>
+<li><b>Soal 1 (40)</b> · churn pelanggan internet: cleaning data kotor, <code>Pipeline</code> + <code>ColumnTransformer</code>, Regresi Logistik vs KNN vs Random Forest, metrik untuk kelas tidak seimbang, threshold 0.5 vs 0.3, koefisien &amp; feature importance, <code>class_weight</code></li>
+<li><b>Soal 2 (25)</b> · wine: KNN dengan/tanpa scaling, memilih <i>k</i> dengan <code>StratifiedKFold</code>, ANN <code>MLPClassifier</code> + kurva loss, <code>GridSearchCV</code>, decision boundary</li>
+<li><b>Soal 3 (25)</b> · kanker payudara: Voting hard/soft, Bagging, Random Forest, AdaBoost, Gradient Boosting, Stacking, recall kelas ganas, permutation importance</li>
+<li><b>Soal 4 (10)</b> · teori: bagging vs boosting, leakage, stratify, <i>k</i>, scaling, precision vs recall, MLP, voting, OOB</li>
+</ul>
+<div class="dl"><a href="/notebook/Prediksi_Praktikum_Klasifikasi_Soal.ipynb" download>Unduh notebook soal klasifikasi (.ipynb)</a><a href="/notebook/Prediksi_Praktikum_Klasifikasi_Kunci.ipynb" download>Unduh notebook kunci klasifikasi (.ipynb)</a></div>
+<p class="note">Disusun dari pola soal Praktikum 09 dan tugas IF5100-14b; soal asli bisa berbeda. Ringkasan snippet ada di tab <a href="#klasifikasi">Klasifikasi</a>.</p></div>
+"""
+sections.append(("p-klas", "Prediksi Praktikum Klasifikasi", "", "Notebook soal & kunci: Random Forest, KNN, Regresi Logistik, ANN, dan Ensemble.",
+                 [{"kind": "html", "title": "Ringkasan & unduhan", "body": KLAS_DL, "fig": None,
+                   "search": "prediksi praktikum klasifikasi churn wine breast cancer kanker knn logistic regression random forest ann mlp ensemble voting stacking bagging boosting"}],
+                 "pred"))
+
 # ---- NumPy (P06), Pandas (P07), Scikit-learn (P09) tabs + "Resep Praktikum 08" (tools/content_p06_p09.py) ----
 from content_p06_p09 import NUMPY, PANDAS, SKLEARN, P08_SECTION
 import re as _re
@@ -1130,7 +1148,7 @@ FLOW = {
     "viz": '<div class="flow"><b>Import</b>→<b>Cek data</b>→<b>Ringkas (groupby/crosstab)</b>→<b>Pilih grafik</b>→<b>Plot + judul/label/legend</b>→<b>Interpretasi</b></div>'
            '<div class="legend"><span><i class="sw c-cat"></i>categorical</span><span><i class="sw c-hie"></i>hierarchical</span><span><i class="sw c-tem"></i>temporal</span><span><i class="sw c-rel"></i>relational</span><span><i class="sw c-spa"></i>spatial</span></div>',
     "clean": '<div class="flow"><b>Diagnosis</b>→<b>Seragamkan</b>→<b>Tipe & NaN</b>→<b>Duplikat</b>→<b>Missing</b>→<b>Outlier</b>→<b>Buang kolom</b>→<b>Encoding/scaling</b>→<b>Validasi</b></div>',
-    "pred": '<div class="flow"><b>P08: Setup dataset</b>→<b>Soal 1 cleaning</b>→<b>Soal 2–6 visualisasi</b>→<b>Soal 7 debugging</b>→<b>Tugas analisis</b>→<b>Teori</b>→<b>P09: scikit-learn</b></div>',
+    "pred": '<div class="flow"><b>P08: Setup dataset</b>→<b>Soal 1 cleaning</b>→<b>Soal 2–6 visualisasi</b>→<b>Soal 7 debugging</b>→<b>Tugas analisis</b>→<b>Teori</b>→<b>P09: scikit-learn</b>→<b>Klasifikasi</b></div>',
     "ref": '<div class="flow"><b>Slide kuliah</b>→<b>Dokumentasi</b>→<b>Colab & dataset</b>→<b>Memilih grafik</b>→<b>Buku</b></div>',
 }
 tab_btns, navs, panels = [], [], []
