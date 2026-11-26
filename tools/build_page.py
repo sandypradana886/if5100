@@ -1153,7 +1153,7 @@ if missing_figs:
     print("WARNING unused figs:", sorted(missing_figs))
 
 PAGE = """<!doctype html>
-<html lang="id">
+<html lang="id" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

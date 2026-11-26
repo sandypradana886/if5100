@@ -10,6 +10,7 @@
   --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
   --text: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #11151b; --surface: #181d25; --fg: #e5e9ef; --muted: #9aa5b4; --line: #2a313c;
